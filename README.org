@@ -1,0 +1,14 @@
+#+TITLE: README
+* nix-shell
+#+begin_src sh :async t :exports both :results output
+nix-shell shell.nix
+#+end_src
+
+- apache-airflow
+#+begin_src sh :async t :exports both :results output
+airflow db init
+airflow webserver
+#+end_src
+
+
+- run flask tab to create user
