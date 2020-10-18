@@ -27,8 +27,8 @@ python3Packages.buildPythonPackage rec {
   src = fetchFromGitHub rec{
     owner = "apache";
     repo = "airflow";
-    rev = "90384b10f25307282a1a39062316af622583b5e4";
-    sha256 = "sha256-bS26IGSMGHvquMod/ytk/zskARWbaE8s/uSxyWm7BqE=";
+    rev = "728518224b9c6469c74b66d9d2b47b13de00fc8c";
+    sha256 = "sha256-KmVQC+hsDFnilyDrT1RsRTHSMZirw8gn++qLmjJaIAc=";
   };
 
   propagatedBuildInputs = with python3Packages; [ apache_airflow_dep

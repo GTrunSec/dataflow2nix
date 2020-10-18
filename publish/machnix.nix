@@ -973,9 +973,8 @@ let
     };
     "tzlocal" = python-self.buildPythonPackage {
       pname = "tzlocal";
-      version = "2.1";
-      src = fetchPypiWheel "tzlocal" "2.1" "tzlocal-2.1-py2.py3-none-any.whl";
-      format = "wheel";
+      version = "1.5.1";
+      src = fetchPypi "tzlocal" "1.5.1";
       dontStrip = true;
       passthru = (get_passthru python-super "tzlocal" "tzlocal") // { provider = "wheel"; };
       propagatedBuildInputs = with python-self; [ pytz ];

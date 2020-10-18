@@ -11,4 +11,7 @@ airflow webserver
 #+end_src
 
 
-- run flask tab to create user
+- create user
+#+begin_src sh :async t :exports both :results output
+airflow users create --username admin --firstname Tao --lastname Zhang --role Admin --email gtrunsec@hardenedlinux.org
+#+end_src
