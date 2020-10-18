@@ -25,10 +25,10 @@ python3Packages.buildPythonPackage rec {
   doCheck = false;
 
   src = fetchFromGitHub rec{
-    owner = "apache";
+    owner = "GTrunSec";
     repo = "airflow";
-    rev = "728518224b9c6469c74b66d9d2b47b13de00fc8c";
-    sha256 = "sha256-KmVQC+hsDFnilyDrT1RsRTHSMZirw8gn++qLmjJaIAc=";
+    rev = "67f7dcc8edc52149583721ff5d19ce692c923800";
+    sha256 = "sha256-N7DEDI2TPdu+xX8xhd6/dS9QjuzT0INiNCRA3HVVH1o=";
   };
 
   propagatedBuildInputs = with python3Packages; [ apache_airflow_dep
