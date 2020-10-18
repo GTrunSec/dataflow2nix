@@ -20,7 +20,7 @@ let
 in
 python3Packages.buildPythonPackage rec {
   pname = "apache-airflow";
-  version = "1.10.12";
+  version = "2.0.0a1";
 
   doCheck = false;
 

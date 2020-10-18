@@ -1012,7 +1012,7 @@ let
     };
     "werkzeug" = python-self.buildPythonPackage {
       pname = "werkzeug";
-      version = "1.0.1";
+      version = "1.1.0";
       src = pkgs.fetchurl {
         url = "https://github.com/pallets/werkzeug/archive/ad3ac7322144c0b1779618f98b2176b59cf2789a.tar.gz";
         sha256 = "sha256-9IP8obrSYIwLrJ7nhyGsVN5OgJCsEPpi/Avbl9z5Oyw=";
@@ -1024,7 +1024,7 @@ let
                   --replace  "samesite=samesite" "samesite=None"
         '';
     };
-
+    
     "wtforms" = python-self.buildPythonPackage {
       pname = "wtforms";
       version = "2.3.3";
