@@ -6,7 +6,7 @@
 }:
 with python3.pkgs;
 let
-  apache_airflow_dep = import ./publish/python.nix;
+  apache_airflow_dep = import ./nix/python.nix;
   python-nvd3 = python3Packages.buildPythonPackage rec {
     pname = "python-nvd3";
     version = "0.15.0";
