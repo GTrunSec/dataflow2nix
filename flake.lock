@@ -1,0 +1,61 @@
+{
+  "nodes": {
+    "airflow": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1604623448,
+        "narHash": "sha256-2I3xby5lwX7+jIYhzdmf4eI86kklFWTr1F76sMkVcR8=",
+        "owner": "GTrunSec",
+        "repo": "airflow",
+        "rev": "6c40cee3ad849e41a123b2ea6c25758426fcb961",
+        "type": "github"
+      },
+      "original": {
+        "owner": "GTrunSec",
+        "repo": "airflow",
+        "rev": "6c40cee3ad849e41a123b2ea6c25758426fcb961",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1597710717,
+        "narHash": "sha256-3vAocE54PK1uU/HwZWL1rs4vRoNhPnRZNB4TTx6D1Zw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8bdebd463bc77c9b83d66e690cba822a51c34b9b",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "rev": "8bdebd463bc77c9b83d66e690cba822a51c34b9b",
+        "type": "indirect"
+      }
+    },
+    "ranz2nix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1594668772,
+        "narHash": "sha256-JE7lk0rDP5itZqWOwjuv8N18xLbGc6XL/0u9rMnhXUk=",
+        "owner": "andir",
+        "repo": "ranz2nix",
+        "rev": "637276c3110716d2a798e737fe62e54b37190d50",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andir",
+        "repo": "ranz2nix",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "airflow": "airflow",
+        "nixpkgs": "nixpkgs",
+        "ranz2nix": "ranz2nix"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

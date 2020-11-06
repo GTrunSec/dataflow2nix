@@ -1,12 +1,25 @@
 { stdenv
 , python3Packages
 , python3
-, fetchFromGitHub
-, fetchpatch
+, lib
+, callPackage
 }:
 with python3.pkgs;
 let
+  apache_airflow_static = callPackage ./static.nix {};
+
+  flakeLock = lib.importJSON ./flake.lock;
+  loadInput = { locked, ... }:
+    assert locked.type == "github";
+    builtins.fetchTarball {
+      url = "https://github.com/${locked.owner}/${locked.repo}/archive/${locked.rev}.tar.gz";
+      sha256 = locked.narHash;
+    };
+
+  src = loadInput flakeLock.nodes.airflow;
+
   apache_airflow_dep = import ./nix/python.nix;
+
   python-nvd3 = python3Packages.buildPythonPackage rec {
     pname = "python-nvd3";
     version = "0.15.0";
@@ -17,25 +30,22 @@ let
     doCheck = false;
     propagatedBuildInputs = with python3Packages; [ apache_airflow_dep ];
   };
+
 in
 python3Packages.buildPythonPackage rec {
   pname = "apache-airflow";
   version = "2.0.0a1";
 
-  doCheck = false;
+  inherit src;
 
-  src = fetchFromGitHub rec{
-    owner = "GTrunSec";
-    repo = "airflow";
-    rev = "67f7dcc8edc52149583721ff5d19ce692c923800";
-    sha256 = "sha256-N7DEDI2TPdu+xX8xhd6/dS9QjuzT0INiNCRA3HVVH1o=";
-  };
+  doCheck = false;
 
   propagatedBuildInputs = with python3Packages; [ apache_airflow_dep
                                                   python-nvd3
                                                 ];
 
   postPatch = ''
+    cp -r ${apache_airflow_static}/dist airflow/www/static
     substituteInPlace setup.py \
       --replace "python-daemon>=2.1.1, <2.2" "python-daemon" \
       --replace "dill>=0.2.2, <0.3" "dill" \
@@ -53,6 +63,15 @@ python3Packages.buildPythonPackage rec {
       --replace "pandas>=0.17.1, <1.0.0" "pandas" \
       --replace "text-unidecode==1.2" "text-unidecode" \
       --replace "jinja2>=2.10.1, <2.11.0" "jinja2"
+
+      # substituteInPlace airflow/www/webpack.config.js \
+      # --replace "./static/dist" "${apache_airflow_static}/dist" \
+      # --replace "./static" "${apache_airflow_static}"
+
+
+      #  substituteInPlace airflow/www/extensions/init_manifest_files.py \
+      # --replace "static/dist/manifest.json" "${apache_airflow_static}/dist/manifest.json"
+
       '';
 
   makeWrapperArgs = [ "--prefix PYTHONPATH : $PYTHONPATH" ];

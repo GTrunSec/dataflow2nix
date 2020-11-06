@@ -7,4 +7,6 @@ pkgs.mkShell rec {
   buildInputs = [
     apache_airflow
   ];
+  shellHook = ''
+  '';
 }
