@@ -3,17 +3,17 @@
     "airflow": {
       "flake": false,
       "locked": {
-        "lastModified": 1604623448,
-        "narHash": "sha256-2I3xby5lwX7+jIYhzdmf4eI86kklFWTr1F76sMkVcR8=",
-        "owner": "GTrunSec",
+        "lastModified": 1602985571,
+        "narHash": "sha256-KmVQC+hsDFnilyDrT1RsRTHSMZirw8gn++qLmjJaIAc=",
+        "owner": "apache",
         "repo": "airflow",
-        "rev": "6c40cee3ad849e41a123b2ea6c25758426fcb961",
+        "rev": "728518224b9c6469c74b66d9d2b47b13de00fc8c",
         "type": "github"
       },
       "original": {
-        "owner": "GTrunSec",
+        "owner": "apache",
         "repo": "airflow",
-        "rev": "6c40cee3ad849e41a123b2ea6c25758426fcb961",
+        "rev": "728518224b9c6469c74b66d9d2b47b13de00fc8c",
         "type": "github"
       }
     },

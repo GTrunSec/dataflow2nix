@@ -23,7 +23,7 @@ let
 
     nodejs = nodejs-12_x;
     sourcePath = src + "/airflow/www";
-
+    lockFilePath = ./package-lock.json;
     packageOverride = name: spec: if name == "minimist" && spec ? resolved && spec.resolved == "" then {
       resolved = "file://" + (
         toString (

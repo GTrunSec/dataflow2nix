@@ -56,3 +56,5 @@ argcomplete
 
 cryptography
 GitPython
+
+apache-airflow-providers-imap

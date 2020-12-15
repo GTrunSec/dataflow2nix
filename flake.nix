@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/8bdebd463bc77c9b83d66e690cba822a51c34b9b";
     ranz2nix = { url = "github:andir/ranz2nix"; flake = false;};
-    airflow = { url = "github:GTrunSec/airflow/6c40cee3ad849e41a123b2ea6c25758426fcb961"; flake = false;};
+    airflow = { url = "github:apache/airflow/728518224b9c6469c74b66d9d2b47b13de00fc8c"; flake = false;};
   };
 
   outputs = { self, nixpkgs }: {
