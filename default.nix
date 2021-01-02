@@ -3,34 +3,75 @@
 , python3
 , lib
 , callPackage
+, airflow
+, ranz2nix
 }:
 with python3.pkgs;
 let
-  apache_airflow_static = callPackage ./static.nix {};
-
-  flakeLock = lib.importJSON ./flake.lock;
-  loadInput = { locked, ... }:
-    assert locked.type == "github";
-    builtins.fetchTarball {
-      url = "https://github.com/${locked.owner}/${locked.repo}/archive/${locked.rev}.tar.gz";
-      sha256 = locked.narHash;
-    };
-
-  src = loadInput flakeLock.nodes.airflow;
+  apache_airflow_static = callPackage ./static.nix { inherit ranz2nix airflow;};
 
   apache_airflow_dep = import ./nix/python.nix;
 
-  python-nvd3 = python3Packages.buildPythonPackage rec {
-    pname = "python-nvd3";
-    version = "0.15.0";
+  apache-airflow-providers-ftp = python3Packages.buildPythonPackage rec {
+    pname = "apache-airflow-providers-ftp";
+    version = "1.0.0";
     src = python3Packages.fetchPypi {
       inherit pname version;
-      sha256 = "sha256-+9df9H4O8lW0qk86ixDci0Akqlqaer7VskBr08uBdxU=";
+      sha256 = "sha256-G7HqELlevxy4WZmhu4pU9XtA7UPJRL2kom92mT8dT5M=";
     };
     doCheck = false;
     propagatedBuildInputs = with python3Packages; [ apache_airflow_dep ];
+    postPatch = ''
+    substituteInPlace setup.py \
+    --replace "apache-airflow>=2.0.0a0" ""
+    '';
   };
 
+  apache-airflow-providers-sqlite = python3Packages.buildPythonPackage rec {
+    pname = "apache-airflow-providers-sqlite";
+    version = "1.0.0";
+    src = python3Packages.fetchPypi {
+      inherit pname version;
+      sha256 = "sha256-deQsMQRnAJT93cuHHtVKfyX1CNXIkoY9CKUy8WrtChA=";
+    };
+    doCheck = false;
+    propagatedBuildInputs = with python3Packages; [ apache_airflow_dep ];
+    postPatch = ''
+    substituteInPlace setup.py \
+    --replace "apache-airflow>=2.0.0a0" ""
+    '';
+  };
+  apache-airflow-providers-imap = python3Packages.buildPythonPackage rec {
+    pname = "apache-airflow-providers-imap";
+    version = "1.0.0";
+    src = python3Packages.fetchPypi {
+      inherit pname version;
+      sha256 = "sha256-0pI6l2VgEnWZ2jmkkzVPV4lupRL8gXU9RQR4eTVfW0w=";
+    };
+    doCheck = false;
+    propagatedBuildInputs = with python3Packages; [ apache_airflow_dep ];
+    postPatch = ''
+    substituteInPlace setup.py \
+    --replace "apache-airflow>=2.0.0a0" ""
+    '';
+  };
+
+  apache-airflow-providers-http = python3Packages.buildPythonPackage rec {
+    pname = "apache-airflow-providers-http";
+    version = "1.0.0";
+    src = python3Packages.fetchPypi {
+      inherit pname version;
+      sha256 = "sha256-fngLHLw4/LUeFGkkQIhZccUHeIlFnOVgP8fBc0gZRiM=";
+    };
+    doCheck = false;
+    propagatedBuildInputs = with python3Packages; [ apache_airflow_dep ];
+    postPatch = ''
+    substituteInPlace setup.py \
+    --replace "apache-airflow>=2.0.0a0" ""
+    '';
+  };
+
+  src = airflow;
 in
 python3Packages.buildPythonPackage rec {
   pname = "apache-airflow";
@@ -41,37 +82,30 @@ python3Packages.buildPythonPackage rec {
   doCheck = false;
 
   propagatedBuildInputs = with python3Packages; [ apache_airflow_dep
-                                                  python-nvd3
+                                                  apache-airflow-providers-imap
+                                                  apache-airflow-providers-http
+                                                  apache-airflow-providers-sqlite
+                                                  apache-airflow-providers-ftp
                                                 ];
 
   postPatch = ''
     cp -r ${apache_airflow_static}/dist airflow/www/static
+
     substituteInPlace setup.py \
-      --replace "python-daemon>=2.1.1, <2.2" "python-daemon" \
-      --replace "dill>=0.2.2, <0.3" "dill" \
-      --replace "attrs~=19.3" "attrs" \
-      --replace "cattrs~=1.0" "cattrs" \
-      --replace "configparser>=3.5.0, <3.6.0" "configparser" \
-      --replace "werkzeug<1.1.0" "werkzeug" \
-      --replace "future>=0.16.0, <0.17" "future" \
-      --replace "flask-appbuilder>=1.12.5, <2.0.0" "flask-appbuilder" \
-      --replace "flask-admin==1.5.3" "flask-admin" \
-      --replace "flask-swagger==0.2.13" "flask-swagger" \
-      --replace "dumb-init>=1.2.2" "" \
+      --replace "importlib-resources~=1.4" "importlib_resources"
+
+    substituteInPlace setup.cfg \
+      --replace "importlib_metadata~=1.7" "importlib_metadata" \
+      --replace "importlib_resources~=1.4" "importlib_resources" \
+      --replace "sqlalchemy_jsonfield~=1.0" "sqlalchemy-jsonfield" \
       --replace "tzlocal>=1.4,<2.0.0" "tzlocal" \
-      --replace "funcsigs==1.0.0" "funcsigs" \
-      --replace "pandas>=0.17.1, <1.0.0" "pandas" \
-      --replace "text-unidecode==1.2" "text-unidecode" \
-      --replace "jinja2>=2.10.1, <2.11.0" "jinja2"
-
-      # substituteInPlace airflow/www/webpack.config.js \
-      # --replace "./static/dist" "${apache_airflow_static}/dist" \
-      # --replace "./static" "${apache_airflow_static}"
-
-
-      #  substituteInPlace airflow/www/extensions/init_manifest_files.py \
-      # --replace "static/dist/manifest.json" "${apache_airflow_static}/dist/manifest.json"
-
+      --replace "colorlog==4.0.2" "colorlog" \
+      --replace "gunicorn>=19.5.0, <20.0" "gunicorn" \
+      --replace "flask-appbuilder~=3.1.1" "flask-appbuilder" \
+      --replace "flask-caching>=1.5.0, <2.0.0" "flask-caching" \
+      --replace "flask-admin==1.5.3" "flask-admin" \
+      --replace "flask-login>=0.3, <0.5" "flask_login" \
+      --replace "requests>=2.20.0, <2.24.0" "requests"
       '';
 
   makeWrapperArgs = [ "--prefix PYTHONPATH : $PYTHONPATH" ];

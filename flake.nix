@@ -2,16 +2,23 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/8bdebd463bc77c9b83d66e690cba822a51c34b9b";
+    nixpkgs.url = "nixpkgs/7ff5e241a2b96fff7912b7d793a06b4374bd846c";
     ranz2nix = { url = "github:andir/ranz2nix"; flake = false;};
-    airflow = { url = "github:apache/airflow/728518224b9c6469c74b66d9d2b47b13de00fc8c"; flake = false;};
+    flake-utils.url = "github:numtide/flake-utils";
+    airflow = { url = "github:apache/airflow"; flake = false;};
   };
 
-  outputs = { self, nixpkgs }: {
-
-    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
-
-    defaultPackage.x86_64-linux = self.packages.x86_64-linux.hello;
-
-  };
+  outputs = { self, nixpkgs, ranz2nix, airflow, flake-utils }:
+    (flake-utils.lib.eachDefaultSystem
+      (system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+          };
+        in
+          {
+            devShell = import ./devShell.nix { inherit pkgs ranz2nix airflow;};
+          }
+      )
+    );
 }

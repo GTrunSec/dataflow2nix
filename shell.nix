@@ -1,12 +1,3 @@
-with import <nixpkgs> {};
-let
-  apache_airflow = pkgs.callPackage ./. {python3Packages=python37Packages;};
-in
-pkgs.mkShell rec {
-  name = "apache_airflow";
-  buildInputs = [
-    apache_airflow
-  ];
-  shellHook = ''
-  '';
-}
+(import (fetchTarball https://github.com/edolstra/flake-compat/archive/master.tar.gz) {
+  src = ./.;
+}).shellNix

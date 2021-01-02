@@ -5,20 +5,11 @@
 , callPackage
 , fetchurl
 , fetchFromGitHub
+, ranz2nix
+, airflow
 }:
 let
-
-  flakeLock = lib.importJSON ./flake.lock;
-  loadInput = { locked, ... }:
-    assert locked.type == "github";
-    builtins.fetchTarball {
-      url = "https://github.com/${locked.owner}/${locked.repo}/archive/${locked.rev}.tar.gz";
-      sha256 = locked.narHash;
-    };
-
-  ranz2nix = loadInput flakeLock.nodes.ranz2nix;
-  src = loadInput flakeLock.nodes.airflow;
-
+  src = airflow;
   noderanz = callPackage ranz2nix {
 
     nodejs = nodejs-12_x;
