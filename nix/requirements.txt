@@ -2,7 +2,7 @@
 APScheduler
 Authlib
 Babel
-Flask-AppBuilder
+Flask-AppBuilder==3.1.1
 Flask-Babel
 Flask-Bcrypt
 Flask-Caching
@@ -33,7 +33,7 @@ SQLAlchemy
 Sphinx
 Unidecode
 WTForms
-Werkzeug
+Werkzeug==1.0.0
 adal
 aiohttp
 alabaster
@@ -42,7 +42,6 @@ amqp
 analytics-python
 ansiwrap
 apipkg
-apispec
 appdirs
 argcomplete
 arrow

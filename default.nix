@@ -105,6 +105,7 @@ python3Packages.buildPythonPackage rec {
       --replace "flask-caching>=1.5.0, <2.0.0" "flask-caching" \
       --replace "flask-admin==1.5.3" "flask-admin" \
       --replace "flask-login>=0.3, <0.5" "flask_login" \
+      --replace "werkzeug~=1.0, >=1.0.1" "werkzeug" \
       --replace "requests>=2.20.0, <2.24.0" "requests"
       '';
 
