@@ -47,7 +47,6 @@ argcomplete
 arrow
 asn1crypto
 astroid
-
 async-generator
 async-timeout
 atlasclient
