@@ -76,7 +76,7 @@ let
 in
 python3Packages.buildPythonPackage rec {
   pname = "apache-airflow";
-  version = "2.0.0a1";
+  version = "1.0.0rc1-1-ga265fd547";
 
   inherit src;
 
