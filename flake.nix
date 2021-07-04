@@ -2,43 +2,90 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/2247d824fe07f16325596acc7faa286502faffd1";
-    ranz2nix = { url = "github:andir/ranz2nix"; flake = false; };
+    nixpkgs.url = "nixpkgs/f6e4e2ff4139e86f87c080e589413d61631e0a65";
+    master.url = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
-    airflow = { url = "github:apache/airflow"; flake = false; };
-    mach-nix = { url = "github:DavHau/mach-nix/3.1.1"; };
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
+    nvfetcher = { url = "github:berberman/nvfetcher"; };
+    devshell-flake = { url = "github:numtide/devshell"; };
   };
 
-  outputs = { self, nixpkgs, ranz2nix, airflow, flake-utils, mach-nix, flake-compat }:
+  outputs =
+    { self
+    , nixpkgs
+    , master
+    , flake-utils
+    , flake-compat
+    , nvfetcher
+    , devshell-flake
+    }:
     (flake-utils.lib.eachDefaultSystem
       (system:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-            overlays = [
-              self.overlay
-            ];
-          };
-        in
-        rec {
-          devShell = import ./devShell.nix
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            self.overlay
+            (final: prev: { nvfetcher-bin = nvfetcher.defaultPackage."${final.system}"; })
+            devshell-flake.overlay
+          ];
+        };
+      in
+      rec {
+        devShell = with pkgs; devshell.mkShell {
+          packages = [
+            nixpkgs-fmt
+          ];
+          commands = [
             {
-              inherit pkgs ranz2nix airflow; mach-nix = mach-nix.lib.${system};
-            };
-          packages = flake-utils.lib.flattenTree {
-            apache-airflow = pkgs.apache-airflow;
-          };
-          defaultPackage = packages.apache-airflow;
-        }
+              name = pkgs.nvfetcher-bin.pname;
+              help = pkgs.nvfetcher-bin.meta.description;
+              command = "cd $DEVSHELL_ROOT/nix; ${pkgs.nvfetcher-bin}/bin/nvfetcher -c ./sources.toml --no-output $@; nixpkgs-fmt _sources";
+            }
+          ];
+        };
+        packages = flake-utils.lib.flattenTree {
+          apache-airflow = pkgs.apache-airflow;
+          airflow-frontend = pkgs.airflow-frontend;
+        };
+        defaultPackage = packages.apache-airflow;
+      }
       ) // {
       overlay = final: prev:
         {
-          apache-airflow = prev.callPackage ./build.nix {
-            inherit airflow ranz2nix mach-nix;
-            python3Packages = prev.python37Packages;
+          python3 = prev.python3.override
+            (old: {
+              packageOverrides =
+                prev.lib.composeExtensions
+                  (old.packageOverrides or (_: _: { }))
+                  (selfPythonPackages: pythonPackages: {
+                    flask-appbuilder = pythonPackages.flask-appbuilder.overridePythonAttrs (oldAttrs: {
+                      postPatch = oldAttrs.postPatch + ''
+                        substituteInPlace setup.py \
+                        --replace "Flask-JWT-Extended>=4.1.0" "Flask-JWT-Extended" \
+                        --replace "PyJWT>=2.0.1" "PyJWT"
+                      '';
+                    });
+                    pyjwt = pythonPackages.pyjwt.overridePythonAttrs (oldAttrs: {
+                      inherit (final.airflow-sources.pyjwt) src pname version;
+                      doCheck = false;
+                    });
+                    flask-jwt-extended = pythonPackages.flask-jwt-extended.overridePythonAttrs (oldAttrs: {
+                      inherit (final.airflow-sources.flask-jwt-extended) src pname version;
+                      doCheck = false;
+                    });
+                  });
+            });
+
+          airflow-sources = prev.callPackage ./nix/_sources/generated.nix { };
+          airflow-frontend = prev.mkYarnPackage rec{
+            name = "airflow-frontend";
+            #packageJSON = final.airflow-sources.airflow-release.src + "/airflow/www/package.json";
+            packageJSON = ./nix/package.json;
+            src = final.airflow-sources.airflow-release.src + "/airflow/www";
+            yarnLock = final.airflow-sources.airflow-release.src + "/airflow/www/yarn.lock";
           };
+          apache-airflow = prev.callPackage ./nix { };
         };
-    }
-    );
+    });
 }

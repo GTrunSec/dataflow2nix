@@ -1,0 +1,34 @@
+name: "CI"
+on:
+  pull_request:
+  push:
+jobs:
+  nix-tests:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - uses: actions/checkout@v2.3.4
+      with:
+        fetch-depth: 0
+
+    - uses: cachix/install-nix-action@v13
+      with:
+        install_url: https://github.com/numtide/nix-flakes-installer/releases/download/nix-2.4pre20210604_8e6ee1b/install
+        extra_nix_config: |
+          experimental-features = nix-command flakes
+          system-features = nixos-test benchmark big-parallel kvm recursive-nix
+
+    # CI workflows
+
+    - name: Run Nix Flake Show
+      run: nix flake show
+
+    - name: Run Nix Flake Show
+      run: nix -Lv flake check
+
+    - name: Nix Bild with apache-airflow
+      run: nix -Lv build ./#apache-airflow
+
+    - name: Run Nix Format Check
+      run: nix -Lv develop -c nixpkgs-fmt --check .

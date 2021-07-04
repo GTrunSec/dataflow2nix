@@ -1,13 +1,14 @@
-{ pkgs ? import <nixpkgs> {}
+{ pkgs ? import <nixpkgs> { }
 , airflow
 , ranz2nix
 }:
 with pkgs;
 let
-  apache-airflow = callPackage ./default.nix { inherit airflow ranz2nix; python3Packages=python37Packages;};
+  apache-airflow = callPackage ./nix { inherit airflow ranz2nix; };
 in
 mkShell rec {
   buildInputs = [
+    nixpkgs-fmt
     apache-airflow
   ];
 }

@@ -1,9 +1,0 @@
-[mach-nix]
-ref = "3.1.1"
-rev = "1ec92303acd142aa1a3b60bb97745544cf049312"
-sha256 = "06bxmz7x1fnjx2d0gb63fdm0jci2mcdnpa3isbhjr92z1l2a7hl1"
-
-[nixpkgs]
-ref = "2247d824fe07f16325596acc7faa286502faffd1"
-rev = "2247d824fe07f16325596acc7faa286502faffd1"
-sha256 = "09jzdnsq7f276cfkmynqiaqg145k8z908rlr0170ld1sms1a83rw"
