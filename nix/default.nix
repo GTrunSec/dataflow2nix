@@ -3,6 +3,7 @@
 , lib
 , airflow-sources
 , machlib
+, airflow-frontend
 }:
 let
   airflow-requirements = machlib.mkPython rec {
@@ -46,7 +47,7 @@ let
 in
 python3Packages.buildPythonPackage rec {
 
-  inherit (airflow-sources.airflow-source) src pname version;
+  inherit (airflow-sources.airflow-release) src pname version;
 
   doCheck = false;
 
@@ -63,19 +64,19 @@ python3Packages.buildPythonPackage rec {
   ];
 
   preConfigure = ''
-    cp -r ${./dist} airflow/www/static/dist
+    cp -r ${airflow-frontend} airflow/www/static/dist
 
-    substituteInPlace setup.cfg \
-      --replace "markupsafe>=1.1.1, <2.0" "markupsafe" \
-      --replace "tenacity~=6.2.0" "tenacity" \
-      --replace "sqlalchemy>=1.3.18, <1.4" "sqlalchemy" \
-      --replace "flask-login>=0.3, <0.5" "flask-login" \
-      --replace "python-slugify>=3.0.0,<5.0" "python-slugify" \
-      --replace "pyjwt<2" "pyjwt" \
-      --replace "attrs>=20.0, <21.0" "attrs" \
-      --replace "importlib_metadata~=1.7" "importlib_metadata" \
-      --replace "jinja2>=2.10.1, <2.12.0" "jinja2" \
-      --replace "gunicorn>=19.5.0" "gunicorn"
+      substituteInPlace setup.cfg \
+        --replace "markupsafe>=1.1.1, <2.0" "markupsafe" \
+        --replace "tenacity~=6.2.0" "tenacity" \
+        --replace "sqlalchemy>=1.3.18, <1.4" "sqlalchemy" \
+        --replace "flask-login>=0.3, <0.5" "flask-login" \
+        --replace "python-slugify>=3.0.0,<5.0" "python-slugify" \
+        --replace "pyjwt<2" "pyjwt" \
+        --replace "attrs>=20.0, <21.0" "attrs" \
+        --replace "importlib_metadata~=1.7" "importlib_metadata" \
+        --replace "jinja2>=2.10.1, <2.12.0" "jinja2" \
+        --replace "gunicorn>=19.5.0" "gunicorn"
   '';
 
 

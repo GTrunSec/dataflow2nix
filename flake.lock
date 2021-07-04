@@ -114,20 +114,6 @@
         "type": "github"
       }
     },
-    "master": {
-      "locked": {
-        "lastModified": 1625388882,
-        "narHash": "sha256-BX+FGHbmTG7kgQsGvEmD/Qu0RPSM5k6up9of9evp17Y=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "bb936f71c68ff0af3338840786379a5e3993df33",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1622797669,
@@ -210,33 +196,15 @@
         "type": "github"
       }
     },
-    "ranz2nix": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1594668772,
-        "narHash": "sha256-JE7lk0rDP5itZqWOwjuv8N18xLbGc6XL/0u9rMnhXUk=",
-        "owner": "andir",
-        "repo": "ranz2nix",
-        "rev": "637276c3110716d2a798e737fe62e54b37190d50",
-        "type": "github"
-      },
-      "original": {
-        "owner": "andir",
-        "repo": "ranz2nix",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "devshell-flake": "devshell-flake",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "mach-nix": "mach-nix",
-        "master": "master",
         "nixpkgs": "nixpkgs_2",
         "nvfetcher": "nvfetcher",
-        "pypi-deps-db": "pypi-deps-db",
-        "ranz2nix": "ranz2nix"
+        "pypi-deps-db": "pypi-deps-db"
       }
     }
   },

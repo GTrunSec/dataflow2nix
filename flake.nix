@@ -3,12 +3,10 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/release-21.05";
-    master.url = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     nvfetcher = { url = "github:berberman/nvfetcher"; };
     devshell-flake = { url = "github:numtide/devshell"; };
-    ranz2nix = { url = "github:andir/ranz2nix"; flake = false; };
     mach-nix = { url = "github:DavHau/mach-nix"; inputs.pypi-deps-db.follows = "pypi-deps-db"; };
     pypi-deps-db = {
       url = "github:DavHau/pypi-deps-db";
@@ -19,14 +17,12 @@
   outputs =
     { self
     , nixpkgs
-    , master
     , flake-utils
     , flake-compat
     , nvfetcher
     , devshell-flake
     , mach-nix
     , pypi-deps-db
-    , ranz2nix
     }:
     (flake-utils.lib.eachSystem [ "x86_64-linux" ]
       (system:
@@ -44,6 +40,7 @@
         devShell = with pkgs; devshell.mkShell {
           packages = [
             nixpkgs-fmt
+            apache-airflow
           ];
           commands = [
             {
@@ -55,7 +52,7 @@
         };
         packages = flake-utils.lib.flattenTree {
           apache-airflow = pkgs.apache-airflow;
-          #airflow-frontend = pkgs.airflow-frontend;
+          airflow-frontend = pkgs.airflow-frontend;
         };
         defaultPackage = packages.apache-airflow;
       }
@@ -89,14 +86,40 @@
           };
 
           airflow-sources = prev.callPackage ./nix/_sources/generated.nix { };
+          # yarn upgrade && yarn2nix > yarn2nix.nix
+          airflow-frontend-nodeModules = final.mkYarnPackage rec{
+            name = "airflow-frontend-node";
+            packageJSON = ./nix/package.json;
+            src = ./nix;
+            yarnLock = ./nix/yarn.lock;
+            yarnNix = ./nix/yarn.nix;
+          };
 
-          # airflow-frontend = final.mkYarnPackage rec{
-          #   name = "airflow-frontend";
-          #   packageJSON = ./nix/package.json;
-          #   src = final.airflow-sources.airflow-release.src + "/airflow/www";
-          #   yarnLock = ./nix/yarn.lock;
-          #   yarnNix = ./nix/yarn.nix;
-          # };
+          airflow-frontend = with prev; stdenv.mkDerivation rec {
+            name = "airflow-frontend";
+            src = final.airflow-sources.airflow-release.src;
+            nativeBuildInputs = [ yarn nodejs ];
+            configurePhase = ''
+              cd airflow/www
+              export HOME=$PWD
+              cp -r ${final.airflow-frontend-nodeModules}/libexec/airflow/node_modules node_modules
+              chmod -R +rw node_modules
+              export PATH=$PWD/node_modules/.bin/:$PATH
+              export NODE_PATH=$PWD/node_modules/:$NODE_PATH
+              yarn config --offline set yarn-offline-mirror $NODE_PATH
+            '';
+            buildPhase = ''
+              yarn --offline run build
+            '';
+
+            installPhase = ''
+              runHook preInstall
+
+              cp -r static $out
+
+              runHook postInstall
+            '';
+          };
           apache-airflow = prev.callPackage ./nix { };
         };
     });
