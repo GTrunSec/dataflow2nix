@@ -64,7 +64,8 @@ python3Packages.buildPythonPackage rec {
   ];
 
   preConfigure = ''
-    cp -r ${airflow-frontend} airflow/www/static/dist
+    rm -rf airflow/www/static
+    cp -r ${airflow-frontend} airflow/www/static
 
       substituteInPlace setup.cfg \
         --replace "markupsafe>=1.1.1, <2.0" "markupsafe" \

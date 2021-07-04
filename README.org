@@ -4,10 +4,10 @@
 nix-shell shell.nix
 #+end_src
 
-- apache-airflow
+- Initialize the metadata database -> apache-airflow
 #+begin_src sh :async t :exports both :results output
 airflow db init
-airflow webserver
+airflow webserver -p <port> -h <hostname>
 #+end_src
 
 
