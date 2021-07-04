@@ -30,8 +30,11 @@ jobs:
     - name: Nix Bild with airflow-frontend
       run: nix -Lv build ./#airflow-frontend
 
-    - name: Nix Bild with apache-airflow
-      run: nix -Lv build ./#apache-airflow
+    - name: Nix Bild with airflow Release
+      run: nix -Lv build ./#airflow-release
+
+    - name: Nix Bild with airflow Latest
+      run: nix -Lv build ./#airflow-latest
 
     - name: Check Airflow Exec
       run: nix -Lv develop -c airflow -h

@@ -4,10 +4,14 @@ src.github = "apache/airflow"
 src.github_tag = "2.1.1"
 fetch.github = "apache/airflow"
 
-[airflow-source]
-src.github = "apache/airflow"
-fetch.url = "https://github.com/apache/airflow/releases/download/$ver/apache-airflow-$ver-source.tar.gz"
-src.prefix = "v"
+[airflow-latest]
+src.git = "https://github.com/apache/airflow"
+fetch.github = "apache/airflow"
+
+# [airflow-source]
+# src.github = "apache/airflow"
+# fetch.url = "https://github.com/apache/airflow/releases/download/$ver/apache-airflow-$ver-source.tar.gz"
+# src.prefix = "v"
 
 [apache-airflow-providers-http]
 src.pypi = "apache-airflow-providers-http"

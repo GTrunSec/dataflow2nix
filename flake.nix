@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "Apache Airflow to Nix https://github.com/apache/airflow";
 
   inputs = {
     nixpkgs.url = "nixpkgs/release-21.05";
@@ -40,7 +40,7 @@
         devShell = with pkgs; devshell.mkShell {
           packages = [
             nixpkgs-fmt
-            apache-airflow
+            airflow-release
           ];
           commands = [
             {
@@ -51,10 +51,11 @@
           ];
         };
         packages = flake-utils.lib.flattenTree {
-          apache-airflow = pkgs.apache-airflow;
+          airflow-release = pkgs.airflow-release;
           airflow-frontend = pkgs.airflow-frontend;
+          airflow-latest = pkgs.airflow-latest;
         };
-        defaultPackage = packages.apache-airflow;
+        defaultPackage = packages.airflow-release;
       }
       ) // {
       overlay = final: prev:
@@ -120,7 +121,12 @@
               runHook postInstall
             '';
           };
-          apache-airflow = prev.callPackage ./nix { };
+
+          airflow-release = prev.callPackage ./nix { };
+
+          airflow-latest = with final; (final.airflow-release.overridePythonAttrs (old: {
+            inherit (airflow-sources.airflow-latest) src pname version;
+          }));
         };
     });
 }
