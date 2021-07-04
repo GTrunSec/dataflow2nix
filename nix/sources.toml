@@ -4,47 +4,10 @@ src.github = "apache/airflow"
 src.github_tag = "2.1.1"
 fetch.github = "apache/airflow"
 
-# [airflow-release]
-# src.github = "apache/airflow"
-# fetch.url = "https://github.com/apache/airflow/releases/download/$ver/apache-airflow-$ver-source.tar.gz"
-# src.prefix = "v"
-
-[marshmallow-oneofschema]
-src.pypi = "marshmallow-oneofschema"
-fetch.pypi = "marshmallow-oneofschema"
-
-[SQLAlchemy-JSONField]
-src.pypi = "SQLAlchemy-JSONField"
-fetch.pypi = "SQLAlchemy-JSONField"
-
-
-[python-slugify]
-#src.manual = "3.0.0"
-src.pypi = "python-slugify"
-fetch.pypi = "python-slugify"
-
-[cattrs]
-src.manual = "1.5.0"
-fetch.pypi = "cattrs"
-
-[pyjwt]
-src.manual = "1.7.1"
-fetch.pypi = "PyJWT"
-
-
-[flask-jwt-extended]
-src.manual = "3.25.1"
-fetch.pypi = "Flask-JWT-Extended"
-
-
-[importlib-resources]
-#src.pypi = "importlib-resources"
-src.manual = "1.4.0"
-fetch.pypi = "importlib_resources"
-
-[python-nvd3]
-src.pypi = "python-nvd3"
-fetch.pypi = "python-nvd3"
+[airflow-source]
+src.github = "apache/airflow"
+fetch.url = "https://github.com/apache/airflow/releases/download/$ver/apache-airflow-$ver-source.tar.gz"
+src.prefix = "v"
 
 [apache-airflow-providers-http]
 src.pypi = "apache-airflow-providers-http"

@@ -8,6 +8,11 @@
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     nvfetcher = { url = "github:berberman/nvfetcher"; };
     devshell-flake = { url = "github:numtide/devshell"; };
+    mach-nix = { url = "github:DavHau/mach-nix"; inputs.pypi-deps-db.follows = "pypi-deps-db"; };
+    pypi-deps-db = {
+      url = "github:DavHau/pypi-deps-db";
+      flake = false;
+    };
   };
 
   outputs =
@@ -18,8 +23,10 @@
     , flake-compat
     , nvfetcher
     , devshell-flake
+    , mach-nix
+    , pypi-deps-db
     }:
-    (flake-utils.lib.eachDefaultSystem
+    (flake-utils.lib.eachSystem [ "x86_64-linux" ]
       (system:
       let
         pkgs = import nixpkgs {
@@ -46,7 +53,7 @@
         };
         packages = flake-utils.lib.flattenTree {
           apache-airflow = pkgs.apache-airflow;
-          airflow-frontend = pkgs.airflow-frontend;
+          #airflow-frontend = pkgs.airflow-frontend;
         };
         defaultPackage = packages.apache-airflow;
       }
@@ -59,32 +66,35 @@
                 prev.lib.composeExtensions
                   (old.packageOverrides or (_: _: { }))
                   (selfPythonPackages: pythonPackages: {
-                    flask-appbuilder = pythonPackages.flask-appbuilder.overridePythonAttrs (oldAttrs: {
-                      postPatch = oldAttrs.postPatch + ''
-                        substituteInPlace setup.py \
-                        --replace "Flask-JWT-Extended>=4.1.0" "Flask-JWT-Extended" \
-                        --replace "PyJWT>=2.0.1" "PyJWT"
-                      '';
-                    });
-                    pyjwt = pythonPackages.pyjwt.overridePythonAttrs (oldAttrs: {
-                      inherit (final.airflow-sources.pyjwt) src pname version;
-                      doCheck = false;
-                    });
-                    flask-jwt-extended = pythonPackages.flask-jwt-extended.overridePythonAttrs (oldAttrs: {
-                      inherit (final.airflow-sources.flask-jwt-extended) src pname version;
-                      doCheck = false;
-                    });
+                    # flask-appbuilder = pythonPackages.flask-appbuilder.overridePythonAttrs (oldAttrs: {
+                    #   postPatch = oldAttrs.postPatch + ''
+                    #     substituteInPlace setup.py \
+                    #     --replace "Flask-JWT-Extended>=4.1.0" "Flask-JWT-Extended" \
+                    #     --replace "PyJWT>=2.0.1" "PyJWT"
+                    #   '';
+                    # });
+                    # pyjwt = pythonPackages.pyjwt.overridePythonAttrs (oldAttrs: {
+                    #   inherit (final.airflow-sources.pyjwt) src pname version;
+                    #   doCheck = false;
+                    # });
                   });
             });
 
-          airflow-sources = prev.callPackage ./nix/_sources/generated.nix { };
-          airflow-frontend = prev.mkYarnPackage rec{
-            name = "airflow-frontend";
-            #packageJSON = final.airflow-sources.airflow-release.src + "/airflow/www/package.json";
-            packageJSON = ./nix/package.json;
-            src = final.airflow-sources.airflow-release.src + "/airflow/www";
-            yarnLock = final.airflow-sources.airflow-release.src + "/airflow/www/yarn.lock";
+          machlib = import mach-nix {
+            pkgs = prev;
+            pypiDataRev = pypi-deps-db.rev;
+            pypiDataSha256 = pypi-deps-db.narHash;
           };
+
+          airflow-sources = prev.callPackage ./nix/_sources/generated.nix { };
+
+          # airflow-frontend = prev.mkYarnPackage rec{
+          #   name = "airflow-frontend";
+          #   #packageJSON = final.airflow-sources.airflow-release.src + "/airflow/www/package.json";
+          #   packageJSON = ./nix/package.json;
+          #   src = final.airflow-sources.airflow-release.src + "/airflow/www";
+          #   yarnLock = final.airflow-sources.airflow-release.src + "/airflow/www/yarn.lock";
+          # };
           apache-airflow = prev.callPackage ./nix { };
         };
     });

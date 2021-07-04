@@ -2,18 +2,18 @@
 , python3Packages
 , lib
 , airflow-sources
-, airflow-frontend
+, machlib
 }:
 let
-  cattrs = python3Packages.buildPythonPackage rec {
-    inherit (airflow-sources.cattrs) src pname version;
-    doCheck = false;
-    propagatedBuildInputs = with python3Packages; [ attrs ];
-    postPatch = ''
-      substituteInPlace setup.py \
-      --replace "attrs >= 20.1.0" "attrs"
-    '';
+  airflow-requirements = machlib.mkPython rec {
+    requirements = builtins.readFile ./requirements.txt;
+    providers = {
+      requires = "nixpkgs";
+      snakebite = "nixpkgs";
+      GitPython = "nixpkgs";
+    };
   };
+
   apache-airflow-providers-ftp = python3Packages.buildPythonPackage rec {
     inherit (airflow-sources.apache-airflow-providers-ftp) src pname version;
     doCheck = false;
@@ -35,42 +35,18 @@ let
   apache-airflow-providers-http = python3Packages.buildPythonPackage rec {
     inherit (airflow-sources.apache-airflow-providers-http) src pname version;
     doCheck = false;
-    propagatedBuildInputs = with python3Packages; [ requests ];
+    propagatedBuildInputs = with python3Packages; [
+      airflow-requirements
+    ];
     postPatch = ''
       substituteInPlace setup.py \
       --replace "apache-airflow>=2.1.0" ""
     '';
   };
-
-  marshmallow-oneofschema = python3Packages.buildPythonPackage rec {
-    inherit (airflow-sources.marshmallow-oneofschema) src pname version;
-    doCheck = false;
-    propagatedBuildInputs = with python3Packages; [ marshmallow ];
-  };
-  SQLAlchemy-JSONField = python3Packages.buildPythonPackage rec {
-    inherit (airflow-sources.SQLAlchemy-JSONField) src pname version;
-    doCheck = false;
-    propagatedBuildInputs = with python3Packages; [ setuptools_scm sqlalchemy toml ];
-  };
-  importlib-resources = python3Packages.buildPythonPackage rec {
-    inherit (airflow-sources.importlib-resources) src pname version;
-    doCheck = false;
-    propagatedBuildInputs = with python3Packages; [ setuptools_scm toml ];
-  };
-  python-nvd3 = python3Packages.buildPythonPackage rec {
-    inherit (airflow-sources.python-nvd3) src pname version;
-    doCheck = false;
-    propagatedBuildInputs = with python3Packages; [ python-slugify jinja2 ];
-  };
-  python-slugify = python3Packages.buildPythonPackage rec {
-    inherit (airflow-sources.python-slugify) src pname version;
-    doCheck = false;
-    propagatedBuildInputs = with python3Packages; [ unidecode text-unidecode ];
-  };
 in
 python3Packages.buildPythonPackage rec {
 
-  inherit (airflow-sources.airflow-release) src pname version;
+  inherit (airflow-sources.airflow-source) src pname version;
 
   doCheck = false;
 
@@ -80,71 +56,10 @@ python3Packages.buildPythonPackage rec {
     apache-airflow-providers-sqlite
     apache-airflow-providers-ftp
 
-    alembic
-    argcomplete
-    cached-property
-    colorlog
-    configparser
-    croniter
-    dill
-    flask
-    flask-admin
-    flask-bcrypt
-    flask-appbuilder
-    flask-caching
-    flask-jwt-extended
-    flask_login
-    flask-swagger
-    flask_wtf
-    funcsigs
-    future
-    GitPython
-    gunicorn
-    iso8601
-    json-merge-patch
-    jinja2
-    ldap3
-    lxml
-    lazy-object-proxy
-    markdown
-    markupsafe
-    pandas
-    pendulum
-    psutil
-    pygments
-    python-daemon
-    python-dateutil
-    requests
-    setproctitle
-    tabulate
-    tenacity
-    termcolor
-    text-unidecode
-    thrift
-    tzlocal
-    unicodecsv
-    zope_deprecation
-    openapi-spec-validator
-    swagger-ui-bundle
-    inflection
-    tenacity
-    pyjwt
-    httpx
-    clickclick
-    graphviz
-    cattrs
-    flask_login
-    rich
-    importlib-metadata
-    marshmallow-oneofschema
-    SQLAlchemy-JSONField
-    importlib-resources
-    python-nvd3
+    airflow-requirements
   ];
 
   checkInputs = with python3Packages;[
-    snakebite
-    nose
   ];
 
   preConfigure = ''
