@@ -1,5 +1,5 @@
-{ "name": "Airflow",
-  "version": "2.1.0",
+{ "name": "airflow",
+  "version": "2.1.1",
   "description": "Apache Airflow is a platform to programmatically author, schedule and monitor workflows.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

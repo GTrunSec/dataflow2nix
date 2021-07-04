@@ -2,12 +2,13 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/f6e4e2ff4139e86f87c080e589413d61631e0a65";
+    nixpkgs.url = "nixpkgs/release-21.05";
     master.url = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     nvfetcher = { url = "github:berberman/nvfetcher"; };
     devshell-flake = { url = "github:numtide/devshell"; };
+    ranz2nix = { url = "github:andir/ranz2nix"; flake = false; };
     mach-nix = { url = "github:DavHau/mach-nix"; inputs.pypi-deps-db.follows = "pypi-deps-db"; };
     pypi-deps-db = {
       url = "github:DavHau/pypi-deps-db";
@@ -25,6 +26,7 @@
     , devshell-flake
     , mach-nix
     , pypi-deps-db
+    , ranz2nix
     }:
     (flake-utils.lib.eachSystem [ "x86_64-linux" ]
       (system:
@@ -88,12 +90,12 @@
 
           airflow-sources = prev.callPackage ./nix/_sources/generated.nix { };
 
-          # airflow-frontend = prev.mkYarnPackage rec{
+          # airflow-frontend = final.mkYarnPackage rec{
           #   name = "airflow-frontend";
-          #   #packageJSON = final.airflow-sources.airflow-release.src + "/airflow/www/package.json";
           #   packageJSON = ./nix/package.json;
           #   src = final.airflow-sources.airflow-release.src + "/airflow/www";
-          #   yarnLock = final.airflow-sources.airflow-release.src + "/airflow/www/yarn.lock";
+          #   yarnLock = ./nix/yarn.lock;
+          #   yarnNix = ./nix/yarn.nix;
           # };
           apache-airflow = prev.callPackage ./nix { };
         };

@@ -145,16 +145,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1621409647,
-        "narHash": "sha256-QHKQNVQb+MSJL/5AOWDHxd4ZXBvFB6C1zKAeZXnQ/cE=",
+        "lastModified": 1625339526,
+        "narHash": "sha256-X1QROaz6G9+5g+tByffdKmj5LJi3A5IMG+Gf5cvI+jQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f6e4e2ff4139e86f87c080e589413d61631e0a65",
+        "rev": "806c01c9f9945dcd63f6daea8f12a787fbb54dd2",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
-        "rev": "f6e4e2ff4139e86f87c080e589413d61631e0a65",
+        "ref": "release-21.05",
         "type": "indirect"
       }
     },
@@ -210,6 +210,22 @@
         "type": "github"
       }
     },
+    "ranz2nix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1594668772,
+        "narHash": "sha256-JE7lk0rDP5itZqWOwjuv8N18xLbGc6XL/0u9rMnhXUk=",
+        "owner": "andir",
+        "repo": "ranz2nix",
+        "rev": "637276c3110716d2a798e737fe62e54b37190d50",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andir",
+        "repo": "ranz2nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "devshell-flake": "devshell-flake",
@@ -219,7 +235,8 @@
         "master": "master",
         "nixpkgs": "nixpkgs_2",
         "nvfetcher": "nvfetcher",
-        "pypi-deps-db": "pypi-deps-db"
+        "pypi-deps-db": "pypi-deps-db",
+        "ranz2nix": "ranz2nix"
       }
     }
   },
