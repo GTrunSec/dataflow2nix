@@ -11,7 +11,6 @@ let
     providers = {
       requires = "nixpkgs";
       snakebite = "nixpkgs";
-      GitPython = "nixpkgs";
     };
   };
 

@@ -82,8 +82,7 @@
 
           machlib = import mach-nix {
             pkgs = prev;
-            pypiDataRev = pypi-deps-db.rev;
-            pypiDataSha256 = pypi-deps-db.narHash;
+            pypiData = pypi-deps-db;
           };
 
           airflow-sources = prev.callPackage ./nix/_sources/generated.nix { };
@@ -129,5 +128,9 @@
             inherit (airflow-sources.airflow-latest) src pname version;
           }));
         };
-    });
+    }) // {
+      nixosModules = {
+        airflow = import ./nix/module.nix;
+      };
+    };
 }

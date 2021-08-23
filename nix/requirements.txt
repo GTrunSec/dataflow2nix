@@ -1,4 +1,4 @@
-Flask-AppBuilder==3.3.1
+Flask-AppBuilder==3.3.2
 Flask-Babel==1.0.0
 Flask-Bcrypt==0.7.1
 Flask-Caching==1.10.1
@@ -74,4 +74,5 @@ rich==10.4.0
 requests
 pandas
 numpy
-GitPython
+
+GitPython==3.1.18
