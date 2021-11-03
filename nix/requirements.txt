@@ -30,6 +30,7 @@ json-merge-patch==0.2
 ldap3==2.9
 lazy-object-proxy==1.4.3
 
+packaging==20.9
 Markdown==3.3.4
 MarkupSafe==1.1.1
 pendulum==2.1.2

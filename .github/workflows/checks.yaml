@@ -27,6 +27,9 @@ jobs:
     - name: Run Nix Flake Show
       run: nix -Lv flake check
 
+    - name: Update nix verison of GH
+      run: nix -Lv run github:hardenedlinux/nixpkgs-hardenedlinux#gh-nix-update
+
     - name: Nix Bild with airflow-frontend
       run: nix -Lv build ./#airflow-frontend
 

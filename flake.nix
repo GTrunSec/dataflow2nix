@@ -6,10 +6,14 @@
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     nvfetcher = { url = "github:berberman/nvfetcher"; };
-    devshell-flake = { url = "github:numtide/devshell"; };
+    devshell = { url = "github:numtide/devshell"; };
     mach-nix = { url = "github:DavHau/mach-nix"; inputs.pypi-deps-db.follows = "pypi-deps-db"; };
     pypi-deps-db = {
       url = "github:DavHau/pypi-deps-db";
+      flake = false;
+    };
+    npmlock2nix-repo = {
+      url = "github:tweag/npmlock2nix";
       flake = false;
     };
   };
@@ -20,8 +24,9 @@
     , flake-utils
     , flake-compat
     , nvfetcher
-    , devshell-flake
+    , devshell
     , mach-nix
+    , npmlock2nix-repo
     , pypi-deps-db
     }:
     (flake-utils.lib.eachSystem [ "x86_64-linux" ]
@@ -32,21 +37,20 @@
           overlays = [
             self.overlay
             (final: prev: { nvfetcher-bin = nvfetcher.defaultPackage."${final.system}"; })
-            devshell-flake.overlay
+            devshell.overlay
           ];
         };
       in
-      rec {
-        devShell = with pkgs; devshell.mkShell {
+      rec{
+        devShell = with pkgs; pkgs.devshell.mkShell {
           packages = [
-            nixpkgs-fmt
-            airflow-release
+            #airflow-release
           ];
           commands = [
             {
               name = pkgs.nvfetcher-bin.pname;
               help = pkgs.nvfetcher-bin.meta.description;
-              command = "cd $DEVSHELL_ROOT/nix; ${pkgs.nvfetcher-bin}/bin/nvfetcher -c ./sources.toml --no-output $@; nixpkgs-fmt _sources";
+              command = "export NIX_PATH=nixpkgs=${pkgs.path}; cd $PRJ_ROOT/nix; ${pkgs.nvfetcher-bin}/bin/nvfetcher -c ./sources.toml $@";
             }
           ];
         };
@@ -56,9 +60,11 @@
           airflow-latest = pkgs.airflow-latest;
         };
         defaultPackage = packages.airflow-release;
-      }
-      ) // {
+      }) // {
       overlay = final: prev:
+        let
+          npmlock2nix = import npmlock2nix-repo { pkgs = prev; };
+        in
         {
           python3 = prev.python3.override
             (old: {
@@ -84,41 +90,39 @@
             pkgs = prev;
             pypiData = pypi-deps-db;
           };
-
           airflow-sources = prev.callPackage ./nix/_sources/generated.nix { };
           # yarn upgrade && yarn2nix > yarn2nix.nix
-          airflow-frontend-nodeModules = final.mkYarnPackage rec{
+          airflow-frontend = final.mkYarnPackage rec{
             name = "airflow-frontend-node";
-            packageJSON = ./nix/package.json;
-            src = ./nix;
+            packageJSON =
+              let
+                patchedJSON = prev.runCommand "package.json"
+                  {
+                    buildInputs = [ ];
+                  } ''
+                  cp ${final.airflow-sources.airflow-release.src}/airflow/www/package.json $out
+                  sed -i '1 a  "name": "airflow",  \n "version":"${final.airflow-sources.airflow-release.version}",' $out
+                '';
+              in
+              patchedJSON;
+            src = "${final.airflow-sources.airflow-release.src}/airflow/www";
+            # yarnLock = "${final.airflow-sources.airflow-release.src}/airflow/www/yarn.lock";
             yarnLock = ./nix/yarn.lock;
-            yarnNix = ./nix/yarn.nix;
-          };
+            #yarnNix = ./nix/yarn.nix;
+            distPhase = "true";
 
-          airflow-frontend = with prev; stdenv.mkDerivation rec {
-            name = "airflow-frontend";
-            src = final.airflow-sources.airflow-release.src;
-            nativeBuildInputs = [ yarn nodejs ];
             configurePhase = ''
-              cd airflow/www
-              export HOME=$PWD
-              cp -r ${final.airflow-frontend-nodeModules}/libexec/airflow/node_modules node_modules
-              chmod -R +rw node_modules
-              export PATH=$PWD/node_modules/.bin/:$PATH
-              export NODE_PATH=$PWD/node_modules/:$NODE_PATH
-              yarn config --offline set yarn-offline-mirror $NODE_PATH
+              cp -r $node_modules node_modules
             '';
+
             buildPhase = ''
-              yarn --offline run build
+              yarn --offline build
               find package.json yarn.lock static/css static/js -type f | sort | xargs md5sum > static/dist/sum.md5
             '';
 
             installPhase = ''
-              runHook preInstall
-
-              cp -r static $out
-
-              runHook postInstall
+              mkdir -p $out/static/
+              cp -r static/dist $out/static
             '';
           };
 
