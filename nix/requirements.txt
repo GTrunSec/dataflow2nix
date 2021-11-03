@@ -59,7 +59,6 @@ httpx==0.18.2
 
 graphviz==0.16
 importlib-metadata==1.7.0
-importlib-resources~=5.2.0
 marshmallow-oneofschema==2.1.0
 
 SQLAlchemy-JSONField==1.0.0

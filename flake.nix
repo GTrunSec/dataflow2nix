@@ -54,12 +54,16 @@
             }
           ];
         };
+        apps = {
+          airflow-release = flake-utils.lib.mkApp { drv = packages.airflow-release; exePath = "/bin/airflow"; };
+        };
         packages = flake-utils.lib.flattenTree {
           airflow-release = pkgs.airflow-release;
           airflow-frontend = pkgs.airflow-frontend;
           airflow-latest = pkgs.airflow-latest;
         };
         defaultPackage = packages.airflow-release;
+
       }) // {
       overlay = final: prev:
         let
@@ -132,8 +136,15 @@
             {
               #python3Packages = final.python38Packages;
             }).overridePythonAttrs
-            (old: {
+            (old: rec {
               inherit (airflow-sources.airflow-latest) src pname version;
+              airflow-latest-requirements = machlib.mkPython rec {
+                requirements = builtins.readFile ./nix/latest-requirements.txt;
+                providers = { };
+              };
+              propagatedBuildInputs = old.propagatedBuildInputs ++ [
+                airflow-latest-requirements
+              ];
             }));
         };
     }) // {
