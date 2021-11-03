@@ -44,6 +44,7 @@ jobs:
       run: nix -Lv build ./#airflow-release
 
     - name: Nix Bild with airflow Latest
+      continue-on-error: true
       run: nix -Lv build ./#airflow-latest
 
     - name: Check Airflow Exec

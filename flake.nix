@@ -128,9 +128,13 @@
 
           airflow-release = prev.callPackage ./nix { };
 
-          airflow-latest = with final; (final.airflow-release.overridePythonAttrs (old: {
-            inherit (airflow-sources.airflow-latest) src pname version;
-          }));
+          airflow-latest = with final; ((final.airflow-release.override
+            {
+              #python3Packages = final.python38Packages;
+            }).overridePythonAttrs
+            (old: {
+              inherit (airflow-sources.airflow-latest) src pname version;
+            }));
         };
     }) // {
       nixosModules = {
