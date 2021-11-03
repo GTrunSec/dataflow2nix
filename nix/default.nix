@@ -49,8 +49,8 @@ python3Packages.buildPythonPackage rec {
   ] ++ lib.attrValues providers-packages;
 
   postPatch = ''
-     rm -rf airflow/www/static
-     cp -r ${airflow-frontend} airflow/www/static
+    rm -rf airflow/www/static
+    cp -r ${airflow-frontend}/static airflow/www/static
 
     substituteInPlace setup.cfg \
       --replace "markupsafe>=1.1.1, <2.0" "markupsafe" \
