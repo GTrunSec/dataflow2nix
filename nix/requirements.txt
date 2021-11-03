@@ -63,7 +63,13 @@ marshmallow-oneofschema==2.1.0
 
 SQLAlchemy-JSONField==1.0.0
 SQLAlchemy-Utils==0.37.7
-SQLAlchemy==1.3.24
+SQLAlchemy>=1.3.24
+virtualenv
+freezegun
+pytest
+
+#https://airflow.apache.org/docs/apache-airflow-providers-cncf-kubernetes/stable/index.html
+kubernetes==3.0.0
 
 python-nvd3==0.15.0
 

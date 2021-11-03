@@ -3,16 +3,12 @@
 with lib;
 
 let
-
   cfg = config.services.airflow;
   baseDir = "airflow";
   airflowCmd = "${pkgs.airflow}/bin/airflow";
   homeBaseDir = "${config.home.homeDirectory}/${baseDir}";
-
 in
 {
-  meta.maintainers = [ maintainers.eyjhb ];
-
   options = {
     services.airflow = {
       enable = mkEnableOption "Dropbox daemon";
@@ -29,8 +25,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = [ pkgs.airflow ];
-
     systemd.user.services.airflow = {
       Unit = { Description = "airflow daemon"; };
 

@@ -14,73 +14,67 @@ let
     };
   };
 
-  apache-airflow-providers-ftp = python3Packages.buildPythonPackage rec {
-    inherit (airflow-sources.apache-airflow-providers-ftp) src pname version;
-    doCheck = false;
-    propagatedBuildInputs = with python3Packages; [ ];
-  };
+  providersNames = [
+    "apache-airflow-providers-cncf-kubernetes"
+    "apache-airflow-providers-imap"
+    "apache-airflow-providers-http"
+    "apache-airflow-providers-sqlite"
+    "apache-airflow-providers-ftp"
+  ];
 
-  apache-airflow-providers-sqlite = python3Packages.buildPythonPackage rec {
-    inherit (airflow-sources.apache-airflow-providers-sqlite) src pname version;
-    doCheck = false;
-    propagatedBuildInputs = with python3Packages; [ ];
-  };
-
-  apache-airflow-providers-imap = python3Packages.buildPythonPackage rec {
-    inherit (airflow-sources.apache-airflow-providers-imap) src pname version;
-    doCheck = false;
-    propagatedBuildInputs = with python3Packages; [ ];
-  };
-
-  apache-airflow-providers-http = python3Packages.buildPythonPackage rec {
-    inherit (airflow-sources.apache-airflow-providers-http) src pname version;
-    doCheck = false;
-    propagatedBuildInputs = with python3Packages; [
-      airflow-requirements
-    ];
-    postPatch = ''
-      substituteInPlace setup.py \
-      --replace "apache-airflow>=2.1.0" ""
-    '';
-  };
+  providers-packages = (builtins.listToAttrs
+    (map
+      (pkgName: {
+        value = python3Packages.buildPythonPackage {
+          inherit (airflow-sources.${pkgName}) src pname version;
+          doCheck = false;
+          propagatedBuildInputs = with python3Packages; [
+            airflow-requirements
+          ];
+          postPatch = ''
+            substituteInPlace setup.py \
+            --replace "apache-airflow>=2.1.0" ""
+          '';
+        };
+        name = pkgName;
+      })
+      providersNames));
 in
 python3Packages.buildPythonPackage rec {
 
   inherit (airflow-sources.airflow-release) src pname version;
 
-  doCheck = false;
-
   propagatedBuildInputs = with python3Packages; [
-    apache-airflow-providers-imap
-    apache-airflow-providers-http
-    apache-airflow-providers-sqlite
-    apache-airflow-providers-ftp
-
     airflow-requirements
-  ];
+  ] ++ lib.attrValues providers-packages;
 
-  checkInputs = with python3Packages;[
-  ];
+  postPatch = ''
+     rm -rf airflow/www/static
+     cp -r ${airflow-frontend} airflow/www/static
 
-  preConfigure = ''
-    rm -rf airflow/www/static
-    cp -r ${airflow-frontend} airflow/www/static
-
-      substituteInPlace setup.cfg \
-        --replace "markupsafe>=1.1.1, <2.0" "markupsafe" \
-        --replace "tenacity~=6.2.0" "tenacity" \
-        --replace "sqlalchemy>=1.3.18, <1.4" "sqlalchemy" \
-        --replace "flask-login>=0.3, <0.5" "flask-login" \
-        --replace "python-slugify>=3.0.0,<5.0" "python-slugify" \
-        --replace "pyjwt<2" "pyjwt" \
-        --replace "attrs>=20.0, <21.0" "attrs" \
-        --replace "importlib_metadata~=1.7" "importlib_metadata" \
-        --replace "jinja2>=2.10.1, <2.12.0" "jinja2" \
-        --replace "gunicorn>=19.5.0" "gunicorn"
+    substituteInPlace setup.cfg \
+      --replace "markupsafe>=1.1.1, <2.0" "markupsafe" \
+      --replace "flask-login>=0.3, <0.5" "flask-login" \
+      --replace "python-slugify>=3.0.0,<5.0" "python-slugify" \
+      --replace "pyjwt<2" "pyjwt" \
+      --replace "attrs>=20.0, <21.0" "attrs" \
+      --replace "importlib_metadata~=1.7" "importlib_metadata"
   '';
 
 
   makeWrapperArgs = [ "--prefix PYTHONPATH : $PYTHONPATH" ];
+
+  checkPhase = ''
+    export HOME=$(mktemp -d)
+    export AIRFLOW_HOME=$HOME
+    export AIRFLOW__CORE__UNIT_TEST_MODE=True
+    export AIRFLOW_DB="$HOME/airflow.db"
+    export PATH=$PATH:$out/bin
+
+    airflow version
+    airflow db init
+    airflow db reset -y
+  '';
 
   meta = with lib; {
     description = "Programmatically author, schedule and monitor data pipelines";

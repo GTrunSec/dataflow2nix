@@ -23,6 +23,14 @@
       sha256 = "sha256-UIIfJnHMgfCRXdOPdnNIYz0iEmt/k8M8OmUEJWGUSsw=";
     });
   };
+  apache-airflow-providers-cncf-kubernetes = {
+    pname = "apache-airflow-providers-cncf-kubernetes";
+    version = "2.0.3";
+    src = fetchurl {
+      url = "https://pypi.io/packages/source/a/apache-airflow-providers-cncf-kubernetes/apache-airflow-providers-cncf-kubernetes-2.0.3.tar.gz";
+      sha256 = "sha256-nC6NfNrGriaqItnSAEJ4K3MxJjSalspzglrSkbb3X+M=";
+    };
+  };
   apache-airflow-providers-ftp = {
     pname = "apache-airflow-providers-ftp";
     version = "2.0.1";
