@@ -2,6 +2,8 @@ name: "CI"
 on:
   pull_request:
   push:
+  schedule:
+    - cron: "0 0 * * SUN" # every sunday
 jobs:
   nix-tests:
     runs-on: ubuntu-latest
@@ -14,7 +16,7 @@ jobs:
 
     - uses: cachix/install-nix-action@v13
       with:
-        install_url: https://github.com/numtide/nix-flakes-installer/releases/download/nix-2.4pre20210604_8e6ee1b/install
+        install_url: https://github.com/numtide/nix-unstable-installer/releases/download/nix-2.5pre20211026_5667822/install
         extra_nix_config: |
           experimental-features = nix-command flakes
           system-features = nixos-test benchmark big-parallel kvm recursive-nix
@@ -30,6 +32,11 @@ jobs:
     - name: Update nix verison of GH
       run: nix -Lv run github:hardenedlinux/nixpkgs-hardenedlinux#gh-nix-update
 
+    - name: Run nvfetcher
+      run: |
+        nix -Lv develop --command nvfetcher -l changelog
+
+
     - name: Nix Bild with airflow-frontend
       run: nix -Lv build ./#airflow-frontend
 
@@ -41,3 +48,20 @@ jobs:
 
     - name: Check Airflow Exec
       run: nix -Lv develop -c airflow -h
+
+    - name: COMMIT_MSG
+      run: |
+        changlog=$(find . -type f -name "changelog")
+        if [[ ! -z "$(cat $changlog)" ]]; then
+        echo "COMMIT_MSG<<EOF" >>$GITHUB_ENV
+        echo "$(cat $changlog)" >>$GITHUB_ENV
+        echo "EOF" >>$GITHUB_ENV
+        rm -rf $changlog
+        else
+        rm -rf $changlog
+        fi
+    - name: Commit changes
+      if: ${{ env.COMMIT_MSG != null }}
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: ${{ env.COMMIT_MSG }}
