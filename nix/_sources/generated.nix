@@ -3,13 +3,13 @@
 {
   airflow-latest = {
     pname = "airflow-latest";
-    version = "e57c74263884ad5827a5bb9973eb698f0c269cc8";
+    version = "93d2a1626d4da4ae372f5c5edb47a12afc388d33";
     src = fetchFromGitHub ({
       owner = "apache";
       repo = "airflow";
-      rev = "e57c74263884ad5827a5bb9973eb698f0c269cc8";
+      rev = "93d2a1626d4da4ae372f5c5edb47a12afc388d33";
       fetchSubmodules = false;
-      sha256 = "sha256-D82mMHvn25X5dtc8SkESQAw6J+BMyjHct4vKnO7Mbik=";
+      sha256 = "sha256-ozx5O8e1qGLkw/9sG59LxQNYOHZN9FZyfIYlX5y4SJw=";
     });
   };
   airflow-release = {
@@ -25,10 +25,10 @@
   };
   apache-airflow-providers-cncf-kubernetes = {
     pname = "apache-airflow-providers-cncf-kubernetes";
-    version = "2.0.3";
+    version = "2.1.0";
     src = fetchurl {
-      url = "https://pypi.io/packages/source/a/apache-airflow-providers-cncf-kubernetes/apache-airflow-providers-cncf-kubernetes-2.0.3.tar.gz";
-      sha256 = "sha256-nC6NfNrGriaqItnSAEJ4K3MxJjSalspzglrSkbb3X+M=";
+      url = "https://pypi.io/packages/source/a/apache-airflow-providers-cncf-kubernetes/apache-airflow-providers-cncf-kubernetes-2.1.0.tar.gz";
+      sha256 = "sha256-TxWQ53MTJ9KAoxK5MR3Ye/m12IZT49zq1TPImw+mCwk=";
     };
   };
   apache-airflow-providers-ftp = {
