@@ -68,6 +68,7 @@ virtualenv
 freezegun
 pytest
 
+psycopg2
 #https://airflow.apache.org/docs/apache-airflow-providers-cncf-kubernetes/stable/index.html
 kubernetes==3.0.0
 

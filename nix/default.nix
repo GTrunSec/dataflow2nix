@@ -46,6 +46,7 @@ python3Packages.buildPythonPackage rec {
 
   propagatedBuildInputs = with python3Packages; [
     airflow-requirements
+    #pytestCheckHook
   ] ++ lib.attrValues providers-packages;
 
   postPatch = ''
@@ -75,6 +76,10 @@ python3Packages.buildPythonPackage rec {
     airflow db init
     airflow db reset -y
   '';
+
+  pytestFlagsArray = [
+    "tests/core/test_core.py"
+  ];
 
   meta = with lib; {
     description = "Programmatically author, schedule and monitor data pipelines";
