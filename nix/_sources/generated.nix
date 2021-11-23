@@ -3,13 +3,13 @@
 {
   airflow-latest = {
     pname = "airflow-latest";
-    version = "9517342b727b977bcc7a99197c802bc084584c5d";
+    version = "5409fc307b48a41e70094af4f64c491e96a2fb0f";
     src = fetchFromGitHub ({
       owner = "apache";
       repo = "airflow";
-      rev = "9517342b727b977bcc7a99197c802bc084584c5d";
+      rev = "5409fc307b48a41e70094af4f64c491e96a2fb0f";
       fetchSubmodules = false;
-      sha256 = "sha256-7zfz/w98n+nnLqy4LvvPy11I6xb3yeta2PdWllQh2/g=";
+      sha256 = "sha256-JVYxdbVOebb41JJEmEEMASC20YMYOy4CbKAkoOx1gxg=";
     });
   };
   airflow-release = {
