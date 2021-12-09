@@ -49,6 +49,7 @@ python3Packages.buildPythonPackage rec {
     #pytestCheckHook
   ] ++ lib.attrValues providers-packages;
 
+  # https://github.com/apache/airflow/blob/main/setup.cfg
   postPatch = ''
     rm -rf airflow/www/static
     cp -r ${airflow-frontend}/static airflow/www/static
