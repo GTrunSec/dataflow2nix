@@ -4,27 +4,27 @@ with lib;
 
 let
   cfg = config.services.airflow;
-  baseDir = "airflow";
-  airflowCmd = "${pkgs.airflow}/bin/airflow";
-  homeBaseDir = "${config.home.homeDirectory}/${baseDir}";
+  airflowCmd = "${pkgs.airflow-release}/bin/airflow";
+  homeBaseDir = "${config.home.homeDirectory}/.config/";
 in
 {
   options = {
     services.airflow = {
-      enable = mkEnableOption "Dropbox daemon";
+      enable = mkEnableOption "airflow daemon";
 
       path = mkOption {
         type = types.path;
-        default = "${config.home.homeDirectory}/Dropbox";
+        default = "${config.home.homeDirectory}/airflow";
         defaultText =
-          literalExample ''"''${config.home.homeDirectory}/Dropbox"'';
+          literalExample ''"''${config.home.homeDirectory}/airflow"'';
         apply = toString; # Prevent copies to Nix store.
-        description = "Where to put the Dropbox directory.";
+        description = "Where to put the airflow directory.";
       };
     };
   };
 
   config = mkIf cfg.enable {
+    home.packages = [ pkgs.airflow-release ];
     systemd.user.services.airflow = {
       Unit = { Description = "airflow daemon"; };
 
@@ -44,27 +44,10 @@ in
         ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
         ExecStop = "${airflowCmd} stop";
         ExecStart = toString (pkgs.writeShellScript "airflow-start" ''
-          # ensure we have the dirs we need
-          $DRY_RUN_CMD ${pkgs.coreutils}/bin/mkdir $VERBOSE_ARG -p \
-            ${homeBaseDir}/{.airflow,.airflow-dist,Dropbox}
-
-          # symlink them as needed
-          if [[ ! -d ${config.home.homeDirectory}/.airflow ]]; then
-            $DRY_RUN_CMD ${pkgs.coreutils}/bin/ln $VERBOSE_ARG -s \
-              ${homeBaseDir}/.airflow ${config.home.homeDirectory}/.airflow
+          if [[ ! -d ${config.home.homeDirectory}/airflow ]]; then
+          ${airflowCmd} db init
           fi
-
-          if [[ ! -d ${escapeShellArg cfg.path} ]]; then
-            $DRY_RUN_CMD ${pkgs.coreutils}/bin/ln $VERBOSE_ARG -s \
-              ${homeBaseDir}/Dropbox ${escapeShellArg cfg.path}
-          fi
-
-          # get the airflow bins if needed
-          if [[ ! -f $HOME/.airflow-dist/VERSION ]]; then
-            ${pkgs.coreutils}/bin/yes | ${airflowCmd} update
-          fi
-
-          ${airflowCmd} start
+          ${airflowCmd} webserver -p 8888 -H 127.0.0.1
         '');
       };
     };

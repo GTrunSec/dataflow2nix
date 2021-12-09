@@ -2,7 +2,7 @@
   description = "Apache Airflow to Nix https://github.com/apache/airflow";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/release-21.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-21.11";
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     nvfetcher = { url = "github:berberman/nvfetcher"; };
@@ -16,6 +16,7 @@
       url = "github:tweag/npmlock2nix";
       flake = false;
     };
+    home-manager.url = "github:nix-community/home-manager";
   };
 
   outputs =
@@ -28,7 +29,8 @@
     , mach-nix
     , npmlock2nix-repo
     , pypi-deps-db
-    }:
+    , home-manager
+    }@inputs:
     (flake-utils.lib.eachSystem [ "x86_64-linux" ]
       (system:
       let
@@ -57,17 +59,23 @@
         apps = {
           airflow-release = flake-utils.lib.mkApp { drv = packages.airflow-release; exePath = "/bin/airflow"; };
         };
-        packages = flake-utils.lib.flattenTree {
-          airflow-release = pkgs.airflow-release;
-          airflow-frontend = pkgs.airflow-frontend;
-          airflow-latest = pkgs.airflow-latest;
+        packages = flake-utils.lib.flattenTree
+          {
+            airflow-release = pkgs.airflow-release;
+            airflow-frontend = pkgs.airflow-frontend;
+            airflow-latest = pkgs.airflow-latest;
+          } // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {
+          inherit (pkgs.airflow-vm-tests)
+            airflow-vm-systemd;
         };
         defaultPackage = packages.airflow-release;
 
       }) // {
       overlay = final: prev:
         let
-          npmlock2nix = import npmlock2nix-repo { pkgs = prev; };
+          npmlock2nix = import npmlock2nix-repo {
+            pkgs = prev;
+          };
         in
         {
           python3 = prev.python3.override
@@ -146,10 +154,26 @@
                 airflow-latest-requirements
               ];
             }));
+
+          airflow-vm-tests = prev.lib.optionalAttrs prev.stdenv.isLinux (import ./tests/nixos-tests.nix
+            {
+              makeTest = import (prev.path + "/nixos/tests/make-test-python.nix");
+              pkgs = final;
+              inherit self inputs;
+            });
         };
     }) // {
-      nixosModules = {
-        airflow = import ./nix/module.nix;
+      homeModules = {
+        airflow = {
+          imports = [
+            {
+              nixpkgs.config.packageOverrides = pkgs: {
+                inherit (self.packages."${pkgs.system}") airflow-release;
+              };
+            }
+            ./nix/module.nix
+          ];
+        };
       };
     };
 }
