@@ -26,9 +26,6 @@ jobs:
     - name: Run Nix Flake Show
       run: nix flake show
 
-    - name: Run Nix Flake Show
-      run: nix -Lv flake check
-
     - name: Update nix verison of GH
       run: nix -Lv develop github:hardenedlinux/nixpkgs-hardenedlinux -c nixpkgs-hardenedlinux gh-nix-update
 
@@ -51,7 +48,7 @@ jobs:
       run: nix -Lv run ./\#airflow-release -- info
 
     - name: Check Airflow Service
-      run: nix run ./#airflow-vm-systemd --print-build-logs
+      run: nix build ./#airflow-vm-systemd --print-build-logs
 
     - name: COMMIT_MSG
       run: |
