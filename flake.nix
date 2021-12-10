@@ -16,7 +16,6 @@
       url = "github:tweag/npmlock2nix";
       flake = false;
     };
-    home-manager.url = "github:nix-community/home-manager";
   };
 
   outputs =
@@ -29,48 +28,8 @@
     , mach-nix
     , npmlock2nix-repo
     , pypi-deps-db
-    , home-manager
     }@inputs:
-    (flake-utils.lib.eachSystem [ "x86_64-linux" ]
-      (system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [
-            self.overlay
-            (final: prev: { nvfetcher-bin = nvfetcher.defaultPackage."${final.system}"; })
-            devshell.overlay
-          ];
-        };
-      in
-      rec{
-        devShell = with pkgs; pkgs.devshell.mkShell {
-          packages = [
-            #airflow-release
-          ];
-          commands = [
-            {
-              name = pkgs.nvfetcher-bin.pname;
-              help = pkgs.nvfetcher-bin.meta.description;
-              command = "export NIX_PATH=nixpkgs=${pkgs.path}; cd $PRJ_ROOT/nix; ${pkgs.nvfetcher-bin}/bin/nvfetcher -c ./sources.toml $@";
-            }
-          ];
-        };
-        apps = {
-          airflow-release = flake-utils.lib.mkApp { drv = packages.airflow-release; exePath = "/bin/airflow"; };
-        };
-        packages = flake-utils.lib.flattenTree
-          {
-            airflow-release = pkgs.airflow-release;
-            airflow-frontend = pkgs.airflow-frontend;
-            airflow-latest = pkgs.airflow-latest;
-          } // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {
-          inherit (pkgs.airflow-vm-tests)
-            airflow-vm-systemd;
-        };
-        defaultPackage = packages.airflow-release;
-
-      }) // {
+    {
       overlay = final: prev:
         let
           npmlock2nix = import npmlock2nix-repo {
@@ -162,18 +121,57 @@
               inherit self inputs;
             });
         };
-    }) // {
-      homeModules = {
+    } //
+    (flake-utils.lib.eachSystem [ "x86_64-linux" ]
+      (system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            self.overlay
+            nvfetcher.overlay
+            devshell.overlay
+          ];
+        };
+      in
+      rec{
+        devShell = with pkgs; pkgs.devshell.mkShell {
+          packages = [
+            #airflow-release
+          ];
+          commands = [
+            {
+              name = pkgs.nvfetcher-bin.pname;
+              help = pkgs.nvfetcher-bin.meta.description;
+              command = "export NIX_PATH=nixpkgs=${pkgs.path}; cd $PRJ_ROOT/nix; ${pkgs.nvfetcher-bin}/bin/nvfetcher -c ./sources.toml $@";
+            }
+          ];
+        };
+        apps = {
+          airflow-release = flake-utils.lib.mkApp { drv = packages.airflow-release; exePath = "/bin/airflow"; };
+        };
+        packages = flake-utils.lib.flattenTree
+          {
+            airflow-release = pkgs.airflow-release;
+            airflow-frontend = pkgs.airflow-frontend;
+            airflow-latest = pkgs.airflow-latest;
+          } // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {
+          inherit (pkgs.airflow-vm-tests)
+            airflow-vm-systemd;
+        };
+        defaultPackage = packages.airflow-release;
+      }) // {
+      nixosModules = {
         airflow = {
           imports = [
             {
               nixpkgs.config.packageOverrides = pkgs: {
-                inherit (self.packages."${pkgs.system}") airflow-release;
+                inherit (self.packages."x86_64-linux") airflow-release;
               };
             }
             ./nix/module.nix
           ];
         };
       };
-    };
+    });
 }

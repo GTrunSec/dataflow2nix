@@ -4,52 +4,73 @@ with lib;
 
 let
   cfg = config.services.airflow;
-  airflowCmd = "${pkgs.airflow-release}/bin/airflow";
-  homeBaseDir = "${config.home.homeDirectory}/.config/";
+  airflowCmd = "${cfg.package}/bin/airflow";
 in
 {
-  options = {
-    services.airflow = {
-      enable = mkEnableOption "airflow daemon";
+  options =
+    {
+      services.airflow = {
+        enable = mkEnableOption "airflow daemon";
 
-      path = mkOption {
-        type = types.path;
-        default = "${config.home.homeDirectory}/airflow";
-        defaultText =
-          literalExample ''"''${config.home.homeDirectory}/airflow"'';
-        apply = toString; # Prevent copies to Nix store.
-        description = "Where to put the airflow directory.";
+        path = mkOption {
+          type = types.path;
+          default = "/var/lib/airflow";
+          defaultText =
+            literalExample ''"''${config.home.homeDirectory}/airflow"'';
+          apply = toString;
+          description = "Where to put the airflow directory.";
+        };
+        package = mkOption {
+          type = types.package;
+          default = pkgs.airflow-release;
+        };
+        port = mkOption {
+          type = types.int;
+          default = 8888;
+          description = "Where the airflow port number";
+        };
+        ip = mkOption {
+          type = types.str;
+          default = "127.0.0.1";
+          description = "Where the airflow ip address";
+        };
       };
     };
-  };
 
-  config = mkIf cfg.enable {
-    home.packages = [ pkgs.airflow-release ];
-    systemd.user.services.airflow = {
-      Unit = { Description = "airflow daemon"; };
+  config = mkIf cfg.enable
+    {
+      environment.systemPackages = [ pkgs.airflow-release ];
 
-      Install = { WantedBy = [ "network.target" ]; };
+      users.users.airflow = { isSystemUser = true; group = "airflow"; };
+      users.groups.airflow = { };
 
-      Service = {
-        Environment = [
-          "HOME=${homeBaseDir}"
-        ];
-
-        Type = "simple";
-        Restart = "on-failure";
-        PrivateTmp = true;
-        ProtectSystem = "full";
-        Nice = 10;
-
-        ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
-        ExecStop = "${airflowCmd} stop";
-        ExecStart = toString (pkgs.writeShellScript "airflow-start" ''
-          if [[ ! -d ${config.home.homeDirectory}/airflow ]]; then
+      systemd.services.airflow = {
+        description = "airflow Daemon";
+        after = [ "network.target" ];
+        wantedBy = [ "multi-user.target" ];
+        environment = {
+          HOME = "${cfg.path}";
+        };
+        script = ''
+          if [[ ! -d ${cfg.path}/airflow.cfg ]]; then
           ${airflowCmd} db init
           fi
-          ${airflowCmd} webserver -p 8888 -H 127.0.0.1
-        '');
+          ${airflowCmd} webserver -p ${toString cfg.port} -H ${cfg.ip}
+        '';
+        serviceConfig = {
+          Type = "simple";
+          Restart = "on-failure";
+          PrivateTmp = true;
+          WorkingDirectory = "${cfg.path}";
+          ReadWritePaths = "${cfg.path}";
+          RuntimeDirectory = "airflow";
+          CacheDirectory = "airflow";
+          StateDirectory = "airflow";
+          ProtectSystem = "full";
+          Nice = 10;
+          ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
+          ExecStop = "${airflowCmd} stop";
+        };
       };
     };
-  };
 }

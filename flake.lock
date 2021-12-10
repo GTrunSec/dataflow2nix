@@ -92,28 +92,10 @@
         "type": "github"
       }
     },
-    "home-manager": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1638959036,
-        "narHash": "sha256-d75Ow/rV3nq4penfTJz9H3/OlIHttoKoJUDEfink/8k=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "829e89a16f4f96428d1b94e68d4c06107b5491c0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
     "mach-nix": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "pypi-deps-db": [
           "pypi-deps-db"
         ]
@@ -134,21 +116,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1639033976,
-        "narHash": "sha256-3C8lLlt44iDLkBKxi3i6MxUBRD2Z0Zd85Y7fhkecMDc=",
-        "ref": "master",
-        "rev": "47ae9997ab257dc46903a56a9ffa8b4e518e0c38",
-        "revCount": 337291,
-        "type": "git",
-        "url": "file:///nix/nixpkgs"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1622797669,
         "narHash": "sha256-xIyWeoYExzF0KNaKcqfxEX58fN4JTIQxTJWbsAujllc=",
         "owner": "NixOS",
@@ -162,7 +129,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1639078375,
         "narHash": "sha256-BIUsTRX/wOjWV1AYP9n3qq/oOB3sOTYIg/T+tzjjByo=",
@@ -178,7 +145,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1633263894,
         "narHash": "sha256-InuWViZr3SL8PqRROkWhmSd3N8gGkiP7YaA7BRdjmhk=",
@@ -214,7 +181,7 @@
       "inputs": {
         "flake-compat": "flake-compat_2",
         "flake-utils": "flake-utils_3",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1634524567,
@@ -251,9 +218,8 @@
         "devshell": "devshell",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
-        "home-manager": "home-manager",
         "mach-nix": "mach-nix",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "npmlock2nix-repo": "npmlock2nix-repo",
         "nvfetcher": "nvfetcher",
         "pypi-deps-db": "pypi-deps-db"
