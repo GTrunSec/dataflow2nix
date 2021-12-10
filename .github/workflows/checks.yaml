@@ -37,18 +37,21 @@ jobs:
         nix -Lv develop --command nvfetcher -l changelog
 
 
-    - name: Nix Bild with airflow-frontend
+    - name: Nix Build with airflow-frontend
       run: nix -Lv build ./#airflow-frontend
 
-    - name: Nix Bild with airflow Release
+    - name: Nix Build with airflow Release
       run: nix -Lv build ./#airflow-release
 
-    - name: Nix Bild with airflow Latest
+    - name: Nix Build with airflow Latest
       continue-on-error: true
       run: nix -Lv build ./#airflow-latest
 
     - name: Check Airflow Exec
       run: nix -Lv run ./\#airflow-release -- info
+
+    - name: Check Airflow Service
+      run: nix run ./#airflow-vm-systemd --print-build-logs
 
     - name: COMMIT_MSG
       run: |

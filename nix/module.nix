@@ -34,12 +34,31 @@ in
           default = "127.0.0.1";
           description = "Where the airflow ip address";
         };
+        postgresql = mkOption {
+          type = types.bool;
+          default = false;
+          description = "Whether to enable postgresql support";
+        };
       };
     };
 
   config = mkIf cfg.enable
     {
       environment.systemPackages = [ pkgs.airflow-release ];
+
+      services.postgresql = mkIf cfg.postgresql {
+        enable = true;
+        enableTCPIP = true;
+        ensureDatabases = [
+          "airflow_db"
+        ];
+        ensureUsers = [
+          {
+            name = "airflow_user";
+            ensurePermissions."DATABASE airflow_db" = "ALL PRIVILEGES";
+          }
+        ];
+      };
 
       users.users.airflow = { isSystemUser = true; group = "airflow"; };
       users.groups.airflow = { };

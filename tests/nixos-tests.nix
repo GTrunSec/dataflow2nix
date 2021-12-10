@@ -3,7 +3,7 @@
   airflow-vm-systemd = makeTest
     {
       name = "airflow-vm-systemd";
-      machine = { pkgs, ... }: {
+      machine = { ... }: {
         imports = [
           self.nixosModules.airflow
         ];
