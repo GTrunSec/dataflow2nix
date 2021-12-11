@@ -71,21 +71,27 @@ in
           HOME = "${cfg.path}";
         };
         script = ''
-          if [[ ! -d ${cfg.path}/airflow.cfg ]]; then
+          if [[ ! -d ${cfg.path}/airflow/airflow.cfg ]]; then
           ${airflowCmd} db init
           fi
           ${airflowCmd} webserver -p ${toString cfg.port} -H ${cfg.ip}
         '';
         serviceConfig = {
           Type = "simple";
+          User = "airflow";
+          Group = "airflow";
           Restart = "on-failure";
-          PrivateTmp = true;
           WorkingDirectory = "${cfg.path}";
           ReadWritePaths = "${cfg.path}";
           RuntimeDirectory = "airflow";
           CacheDirectory = "airflow";
           StateDirectory = "airflow";
           ProtectSystem = "full";
+          PrivateTmp = true;
+          PrivateUsers = true;
+          PrivateDevices = true;
+          ProtectClock = true;
+          ProtectKernelLogs = true;
           Nice = 10;
           ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
           ExecStop = "${airflowCmd} stop";

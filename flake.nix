@@ -37,12 +37,21 @@
           };
         in
         {
+          airflow-requirements = final.machlib.mkPython rec {
+            requirements = builtins.readFile ./nix/requirements.txt;
+            providers = {
+              requires = "nixpkgs";
+              snakebite = "nixpkgs";
+            };
+          };
+
           python3 = prev.python3.override
             (old: {
               packageOverrides =
                 prev.lib.composeExtensions
                   (old.packageOverrides or (_: _: { }))
                   (selfPythonPackages: pythonPackages: {
+                    airflow-release = prev.callPackage ./nix { };
                     # flask-appbuilder = pythonPackages.flask-appbuilder.overridePythonAttrs (oldAttrs: {
                     #   postPatch = oldAttrs.postPatch + ''
                     #     substituteInPlace setup.py \
@@ -135,18 +144,7 @@
         };
       in
       rec{
-        devShell = with pkgs; pkgs.devshell.mkShell {
-          packages = [
-            #airflow-release
-          ];
-          commands = [
-            {
-              name = pkgs.nvfetcher-bin.pname;
-              help = pkgs.nvfetcher-bin.meta.description;
-              command = "export NIX_PATH=nixpkgs=${pkgs.path}; cd $PRJ_ROOT/nix; ${pkgs.nvfetcher-bin}/bin/nvfetcher -c ./sources.toml $@";
-            }
-          ];
-        };
+        devShell = import ./shell { inherit self inputs pkgs; };
         apps = {
           airflow-release = flake-utils.lib.mkApp { drv = packages.airflow-release; exePath = "/bin/airflow"; };
         };

@@ -4,16 +4,9 @@
 , airflow-sources
 , machlib
 , airflow-frontend
+, airflow-requirements
 }:
 let
-  airflow-requirements = machlib.mkPython rec {
-    requirements = builtins.readFile ./requirements.txt;
-    providers = {
-      requires = "nixpkgs";
-      snakebite = "nixpkgs";
-    };
-  };
-
   providersNames = [
     "apache-airflow-providers-cncf-kubernetes"
     "apache-airflow-providers-imap"
