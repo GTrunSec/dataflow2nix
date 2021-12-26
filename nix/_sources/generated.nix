@@ -3,24 +3,24 @@
 {
   airflow-latest = {
     pname = "airflow-latest";
-    version = "36aa695ea817ea6f7e446558ef108d2c450ebb0c";
+    version = "7a9ab1d7170567b1d53938b2f7345dae2026c6ea";
     src = fetchFromGitHub ({
       owner = "apache";
       repo = "airflow";
-      rev = "36aa695ea817ea6f7e446558ef108d2c450ebb0c";
+      rev = "7a9ab1d7170567b1d53938b2f7345dae2026c6ea";
       fetchSubmodules = false;
-      sha256 = "sha256-i+2Vk2ScgQXHhhhss2ezmcW+CWgJuS7P2/Pjuf2DB00=";
+      sha256 = "sha256-h/wBeXScbT5ql2avOhw1auqvftTNAtgxeB8A/dB8M68=";
     });
   };
   airflow-release = {
     pname = "airflow-release";
-    version = "2.2.3rc1";
+    version = "2.2.3";
     src = fetchFromGitHub ({
       owner = "apache";
       repo = "airflow";
-      rev = "2.2.3rc1";
+      rev = "2.2.3";
       fetchSubmodules = false;
-      sha256 = "sha256-JqIJbAy7T0pBigMEbmkKx/gLjB14jJJ7r1dtnPBeXGo=";
+      sha256 = "sha256-+Ae1Zo6h1DWHxm5Bu2s3zc7hN1tBF1yVwuQR6c9Xwws=";
     });
   };
   apache-airflow-providers-cncf-kubernetes = {
