@@ -3,13 +3,13 @@
 {
   airflow-latest = {
     pname = "airflow-latest";
-    version = "5eccb536e61df50bd39a6b9135cbe23d96ff6f75";
+    version = "5ca5693b81b129cd34367fe8788d48ed70054f95";
     src = fetchFromGitHub ({
       owner = "apache";
       repo = "airflow";
-      rev = "5eccb536e61df50bd39a6b9135cbe23d96ff6f75";
+      rev = "5ca5693b81b129cd34367fe8788d48ed70054f95";
       fetchSubmodules = false;
-      sha256 = "sha256-oqJSoOq/ACd2v3QBZHVcDMvUxh8VNxHhq1Z7EY70JNM=";
+      sha256 = "sha256-M4KNq1qcxH3UlZFTQjv5/ll2Ua5gOYtVXAI+oOFuv58=";
     });
   };
   airflow-release = {
@@ -25,10 +25,10 @@
   };
   apache-airflow-providers-cncf-kubernetes = {
     pname = "apache-airflow-providers-cncf-kubernetes";
-    version = "2.2.0";
+    version = "3.0.1";
     src = fetchurl {
-      url = "https://pypi.io/packages/source/a/apache-airflow-providers-cncf-kubernetes/apache-airflow-providers-cncf-kubernetes-2.2.0.tar.gz";
-      sha256 = "sha256-p0WvCQgVyn0Ww4eKrMER6NttQPs8z3uQN84aZKyuqxI=";
+      url = "https://pypi.io/packages/source/a/apache-airflow-providers-cncf-kubernetes/apache-airflow-providers-cncf-kubernetes-3.0.1.tar.gz";
+      sha256 = "sha256-aIh9CO7LuocJTELscekExvPk9lJmujm7tfWNQ5Ky3oQ=";
     };
   };
   apache-airflow-providers-ftp = {
@@ -41,18 +41,18 @@
   };
   apache-airflow-providers-http = {
     pname = "apache-airflow-providers-http";
-    version = "2.0.1";
+    version = "2.0.2";
     src = fetchurl {
-      url = "https://pypi.io/packages/source/a/apache-airflow-providers-http/apache-airflow-providers-http-2.0.1.tar.gz";
-      sha256 = "sha256-rf4jlHHZHvF1dvlLE8t3A1BOzJ86HTuePIlxwg1cZwE=";
+      url = "https://pypi.io/packages/source/a/apache-airflow-providers-http/apache-airflow-providers-http-2.0.2.tar.gz";
+      sha256 = "sha256-SSfekEX6LPXS8AeQcHz0PJqNAyyNbfz3EmkJ/LHjPbQ=";
     };
   };
   apache-airflow-providers-imap = {
     pname = "apache-airflow-providers-imap";
-    version = "2.0.1";
+    version = "2.1.0";
     src = fetchurl {
-      url = "https://pypi.io/packages/source/a/apache-airflow-providers-imap/apache-airflow-providers-imap-2.0.1.tar.gz";
-      sha256 = "sha256-Yu9qSl4UyyH8SidTrwJPLa39Jf6V3cOTk189/mpTGy8=";
+      url = "https://pypi.io/packages/source/a/apache-airflow-providers-imap/apache-airflow-providers-imap-2.1.0.tar.gz";
+      sha256 = "sha256-e7gVGS5cvZwg0aEutscfg2Lkm7Nm9mCmOJNfQUsrqU8=";
     };
   };
   apache-airflow-providers-sqlite = {
