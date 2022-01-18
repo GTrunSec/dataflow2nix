@@ -1,13 +1,12 @@
 {
   description = "Apache Airflow to Nix https://github.com/apache/airflow";
+  nixConfig = {
+    flake-registry = "https://github.com/hardenedlinux/flake-registry/raw/main/flake-registry.json";
+  };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-21.11";
-    flake-utils.url = "github:numtide/flake-utils";
-    flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
-    nvfetcher = { url = "github:berberman/nvfetcher"; };
-    devshell = { url = "github:numtide/devshell"; };
-    mach-nix = { url = "github:DavHau/mach-nix"; inputs.pypi-deps-db.follows = "pypi-deps-db"; };
+    flake-compat.flake = false;
+    mach-nix = { inputs.pypi-deps-db.follows = "pypi-deps-db"; };
     pypi-deps-db = {
       url = "github:DavHau/pypi-deps-db";
       flake = false;
@@ -23,7 +22,6 @@
     , nixpkgs
     , flake-utils
     , flake-compat
-    , nvfetcher
     , devshell
     , mach-nix
     , npmlock2nix-repo
@@ -138,7 +136,6 @@
           inherit system;
           overlays = [
             self.overlay
-            nvfetcher.overlay
             devshell.overlay
           ];
         };
