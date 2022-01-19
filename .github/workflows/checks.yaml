@@ -26,11 +26,10 @@ jobs:
     - name: Run Nix Flake Show
       run: nix flake show
 
-    - name: Update flake.lock
-      uses: DeterminateSystems/update-flake-lock@v3
-
     - name: Run Nvfetcher Updates
-      run: nix -Lv develop github:hardenedlinux/nixpkgs-hardenedlinux -c update nvfetcher ./nix/sources.toml
+      run: |
+        nix flake update
+        nix -Lv develop github:hardenedlinux/nixpkgs-hardenedlinux -c update nvfetcher ./nix/sources.toml
 
 
     - name: Nix Build with airflow-frontend
