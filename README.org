@@ -1,7 +1,7 @@
 #+TITLE: README
-* nix-shell
+- open development environment
 #+begin_src sh :async t :exports both :results output
-nix-shell shell.nix
+nix -Lv shell
 #+end_src
 
 - Initialize the metadata database -> apache-airflow
@@ -15,3 +15,4 @@ airflow webserver -p <port> -h <hostname>
 #+begin_src sh :async t :exports both :results output
 airflow users create --username admin --firstname Tao --lastname Zhang --role Admin --email gtrunsec@hardenedlinux.org
 #+end_src
+#
