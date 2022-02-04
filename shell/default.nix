@@ -5,7 +5,7 @@
 }:
 pkgs.devshell.mkShell {
   imports = [ (pkgs.devshell.importTOML ./devshell.toml) ];
-  commands = [ { package = pkgs.airflow-release; } ];
+  commands = [ { name = "airflow"; package = pkgs.airflow-release; } ];
   env = [
     {
       name = "PYTHONPATH";
