@@ -14,34 +14,36 @@ let
     "apache-airflow-providers-sqlite"
     "apache-airflow-providers-ftp"
   ];
-
-  providers-packages = (builtins.listToAttrs
-    (map
-      (pkgName: {
-        value = python3Packages.buildPythonPackage {
-          inherit (airflow-sources.${pkgName}) src pname version;
-          doCheck = false;
-          propagatedBuildInputs = with python3Packages; [
-            airflow-requirements
-          ];
-          postPatch = ''
-            substituteInPlace setup.py \
-            --replace "apache-airflow>=2.1.0" ""
-          '';
-        };
-        name = pkgName;
-      })
-      providersNames));
+  providers-packages = (
+    builtins.listToAttrs (
+      map (
+        pkgName: {
+          value = python3Packages.buildPythonPackage {
+            inherit (airflow-sources.${pkgName}) src pname version;
+            doCheck = false;
+            propagatedBuildInputs =
+              with python3Packages; [ airflow-requirements ];
+            postPatch = ''
+              substituteInPlace setup.py \
+              --replace "apache-airflow>=2.1.0" ""
+            '';
+          };
+          name = pkgName;
+        }
+      )
+      providersNames
+    )
+  );
 in
 python3Packages.buildPythonPackage rec {
-
   inherit (airflow-sources.airflow-release) src pname version;
-
-  propagatedBuildInputs = with python3Packages; [
-    airflow-requirements
-    #pytestCheckHook
-  ] ++ lib.attrValues providers-packages;
-
+  propagatedBuildInputs =
+    with python3Packages;
+    [
+      airflow-requirements
+      #pytestCheckHook
+    ]
+    ++ lib.attrValues providers-packages;
   # https://github.com/apache/airflow/blob/main/setup.cfg
   postPatch = ''
     rm -rf airflow/www/static
@@ -55,10 +57,7 @@ python3Packages.buildPythonPackage rec {
       --replace "attrs>=20.0, <21.0" "attrs" \
       --replace "importlib_metadata~=1.7" "importlib_metadata"
   '';
-
-
   makeWrapperArgs = [ "--prefix PYTHONPATH : $PYTHONPATH" ];
-
   checkPhase = ''
     export HOME=$(mktemp -d)
     export AIRFLOW_HOME=$HOME
@@ -70,14 +69,12 @@ python3Packages.buildPythonPackage rec {
     airflow db init
     airflow db reset -y
   '';
-
-  pytestFlagsArray = [
-    "tests/core/test_core.py"
-  ];
-
-  meta = with lib; {
-    description = "Programmatically author, schedule and monitor data pipelines";
-    homepage = "http://airflow.apache.org/";
-    license = licenses.asl20;
-  };
+  pytestFlagsArray = [ "tests/core/test_core.py" ];
+  meta =
+    with lib;
+    {
+      description = "Programmatically author, schedule and monitor data pipelines";
+      homepage = "http://airflow.apache.org/";
+      license = licenses.asl20;
+    };
 }

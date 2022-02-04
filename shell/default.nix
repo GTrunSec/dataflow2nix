@@ -1,10 +1,11 @@
-{ pkgs, self, inputs, ... }:
-
+{ pkgs
+, self
+, inputs
+, ...
+}:
 pkgs.devshell.mkShell {
   imports = [ (pkgs.devshell.importTOML ./devshell.toml) ];
-  commands = [
-    {package = pkgs.airflow-release;}
-    ];
+  commands = [ { package = pkgs.airflow-release; } ];
   env = [
     {
       name = "PYTHONPATH";
