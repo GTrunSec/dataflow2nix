@@ -8,10 +8,10 @@
     flake-compat.flake = false;
     mach-nix = { inputs.pypi-deps-db.follows = "pypi-deps-db"; };
     pypi-deps-db = {
-      url = "github:DavHau/pypi-deps-db";
+      # url = "github:DavHau/pypi-deps-db";
       flake = false;
     };
-    npmlock2nix-repo = {
+    npmlock2nix = {
       url = "github:tweag/npmlock2nix";
       flake = false;
     };
@@ -24,13 +24,13 @@
     , flake-compat
     , devshell
     , mach-nix
-    , npmlock2nix-repo
+    , npmlock2nix
     , pypi-deps-db
     }@inputs:
     {
       overlay = final: prev:
         let
-          npmlock2nix = import npmlock2nix-repo {
+          npmlock2nix = import npmlock2nix {
             pkgs = prev;
           };
         in
@@ -161,7 +161,7 @@
           imports = [
             {
               nixpkgs.config.packageOverrides = pkgs: {
-                inherit (self.packages."x86_64-linux") airflow-release;
+                inherit (self.packages."${pkgs.stdenv.hostPlatform.system}") airflow-release;
               };
             }
             ./nix/module.nix
