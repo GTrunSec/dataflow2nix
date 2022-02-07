@@ -41,7 +41,7 @@ in
     };
   };
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.airflow-release ];
+    environment.systemPackages = [ cfg.package ];
     services.postgresql = mkIf cfg.postgresql {
       enable = true;
       enableTCPIP = true;
