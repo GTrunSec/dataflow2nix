@@ -34,6 +34,7 @@
           devshell = inputs.devshell.legacyPackages."${system}";
         in
           rec {
+            inherit overlay;
             devShell = import ./shell { inherit devshell inputs pkgs; };
             apps = {
               airflow-release = flake-utils.lib.mkApp {

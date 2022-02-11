@@ -48,8 +48,7 @@ in
     };
     airflow-release = prev.callPackage ./. { };
     airflow-latest =
-      with final;
-      (
+      with final; (
         (
           final.airflow-release.override {
             #python3Packages = final.python38Packages;
