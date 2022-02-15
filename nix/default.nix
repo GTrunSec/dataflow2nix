@@ -38,7 +38,8 @@ in
 python3Packages.buildPythonPackage rec {
   inherit (airflow-sources.airflow-release) src pname version;
   propagatedBuildInputs =
-    with python3Packages; [
+    with python3Packages;
+    [
       airflow-requirements
       #pytestCheckHook
     ]

@@ -48,6 +48,7 @@
               }
               // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux { inherit (pkgs.airflow-vm-tests) airflow-vm-systemd; };
             defaultPackage = packages.airflow-release;
+            defaultApp = apps.airflow-release;
           }
       )
       // {

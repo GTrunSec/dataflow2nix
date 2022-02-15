@@ -1,7 +1,10 @@
 #+TITLE: README
 * nix-shell
 #+begin_src sh :async t :exports both :results output
-nix-shell shell.nix
+nix develop --print-build-logs  (for direnv and develop env)
+nix-shell (using flake compact for the native nix-shell)
+nix-build (./result/bin/airflow)
+nix run .#airflow-release -- info (to nix app)
 #+end_src
 
 - Initialize the metadata database -> apache-airflow
