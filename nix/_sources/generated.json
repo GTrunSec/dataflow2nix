@@ -1,0 +1,117 @@
+{
+    "apache-airflow-providers-sqlite": {
+        "pinned": false,
+        "cargoLock": null,
+        "name": "apache-airflow-providers-sqlite",
+        "src": {
+            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-sqlite/apache-airflow-providers-sqlite-2.1.2.tar.gz",
+            "name": null,
+            "type": "url",
+            "sha256": "sha256-fUjHqFGh8DYA0eYyICJTZYH6KxMzz1HVMUEo5qPJZWw="
+        },
+        "version": "2.1.2",
+        "passthru": null,
+        "extract": null,
+        "rustGitDeps": null
+    },
+    "apache-airflow-providers-http": {
+        "pinned": false,
+        "cargoLock": null,
+        "name": "apache-airflow-providers-http",
+        "src": {
+            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-http/apache-airflow-providers-http-2.1.1.tar.gz",
+            "name": null,
+            "type": "url",
+            "sha256": "sha256-T4XkQcgx8Lhaz3aWCyQD4dZYOR4uXsgoENKofOI7gYk="
+        },
+        "version": "2.1.1",
+        "passthru": null,
+        "extract": null,
+        "rustGitDeps": null
+    },
+    "apache-airflow-providers-imap": {
+        "pinned": false,
+        "cargoLock": null,
+        "name": "apache-airflow-providers-imap",
+        "src": {
+            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-imap/apache-airflow-providers-imap-2.2.2.tar.gz",
+            "name": null,
+            "type": "url",
+            "sha256": "sha256-JAq0XmB8trF1UUekMnHwLY50iSY3B/BXiWJF0K0psiQ="
+        },
+        "version": "2.2.2",
+        "passthru": null,
+        "extract": null,
+        "rustGitDeps": null
+    },
+    "airflow-release": {
+        "pinned": false,
+        "cargoLock": null,
+        "name": "airflow-release",
+        "src": {
+            "deepClone": false,
+            "owner": "apache",
+            "name": null,
+            "repo": "airflow",
+            "type": "github",
+            "sha256": "sha256-JCcEgCq1sB8lBaeJy7QQbWU00sGAh5vUmJAptF8M9qo=",
+            "rev": "2.2.4",
+            "leaveDotGit": false,
+            "fetchSubmodules": false
+        },
+        "version": "2.2.4",
+        "passthru": null,
+        "extract": null,
+        "rustGitDeps": null
+    },
+    "apache-airflow-providers-cncf-kubernetes": {
+        "pinned": false,
+        "cargoLock": null,
+        "name": "apache-airflow-providers-cncf-kubernetes",
+        "src": {
+            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-cncf-kubernetes/apache-airflow-providers-cncf-kubernetes-3.1.1.tar.gz",
+            "name": null,
+            "type": "url",
+            "sha256": "sha256-MWXc4dlwgwD+i07Y4sH2PN/Lyzo/1FclhyAEnG/bPB8="
+        },
+        "version": "3.1.1",
+        "passthru": null,
+        "extract": null,
+        "rustGitDeps": null
+    },
+    "apache-airflow-providers-ftp": {
+        "pinned": false,
+        "cargoLock": null,
+        "name": "apache-airflow-providers-ftp",
+        "src": {
+            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-ftp/apache-airflow-providers-ftp-2.1.1.tar.gz",
+            "name": null,
+            "type": "url",
+            "sha256": "sha256-GBBmChbthNP6cmcbF2RXLpWo9k3tPhFeiFbL0BDtDF0="
+        },
+        "version": "2.1.1",
+        "passthru": null,
+        "extract": null,
+        "rustGitDeps": null
+    },
+    "airflow-latest": {
+        "pinned": false,
+        "cargoLock": null,
+        "name": "airflow-latest",
+        "src": {
+            "deepClone": false,
+            "owner": "apache",
+            "name": null,
+            "repo": "airflow",
+            "type": "github",
+            "sha256": "sha256-tH4dHE4OjVMH0e33PSHPBxupoUr1lu5B+tjKfHFojvA=",
+            "rev": "ee1d1433ed30f6ba093dca0e40b783f0d6529c43",
+            "leaveDotGit": false,
+            "fetchSubmodules": false
+        },
+        "version": "ee1d1433ed30f6ba093dca0e40b783f0d6529c43",
+        "passthru": null,
+        "extract": null,
+        "rustGitDeps": null
+    }
+}

@@ -27,8 +27,7 @@ jobs:
       run: nix flake show
 
     - name: Run Nvfetcher Updates
-      run: |
-        nix develop -Lv 'github:GTrunSec/DevSecOps-Cells-Lab?dir=devshell#update -c nvfetcher-update ./nix/sources.toml
+      run: nix develop -Lv -c nvfetcher
 
     - name: Nix Build with airflow-frontend
       run: nix -Lv build ./#airflow-frontend

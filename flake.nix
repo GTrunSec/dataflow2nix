@@ -12,8 +12,7 @@
     pypi-deps-db.flake = false;
 
     npmlock2nix.url = "github:tweag/npmlock2nix";
-    npmlock2nix.configflake = false;
-
+    npmlock2nix.flake = false;
   };
   outputs =
     { self
@@ -35,7 +34,7 @@
         in
           rec {
             inherit overlay;
-            devShell = import ./shell { inherit devshell inputs pkgs; };
+            devShell = import ./devshell { inherit devshell inputs pkgs; };
             apps = {
               airflow-release = flake-utils.lib.mkApp {
                 drv = packages.airflow-release;

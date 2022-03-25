@@ -1,0 +1,5 @@
+[[commands]]
+name = "nvfetcher"
+category = "update"
+command = "nix develop -Lv 'github:GTrunSec/DevSecOps-Cells-Lab?dir=devshell#update' --no-write-lock-file -c nvfetcher-update ./nix/sources.toml"
+help = "Update sources.toml"
