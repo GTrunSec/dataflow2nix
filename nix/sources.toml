@@ -30,5 +30,6 @@ src.pypi = "apache-airflow-providers-ftp"
 fetch.pypi = "apache-airflow-providers-ftp"
 
 [apache-airflow-providers-cncf-kubernetes]
-src.pypi = "apache-airflow-providers-cncf-kubernetes"
+#src.pypi = "apache-airflow-providers-cncf-kubernetes"
+src.manual = "3.0.2"
 fetch.pypi = "apache-airflow-providers-cncf-kubernetes"

@@ -69,12 +69,12 @@
         "cargoLock": null,
         "name": "apache-airflow-providers-cncf-kubernetes",
         "src": {
-            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-cncf-kubernetes/apache-airflow-providers-cncf-kubernetes-3.1.1.tar.gz",
+            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-cncf-kubernetes/apache-airflow-providers-cncf-kubernetes-3.0.2.tar.gz",
             "name": null,
             "type": "url",
-            "sha256": "sha256-MWXc4dlwgwD+i07Y4sH2PN/Lyzo/1FclhyAEnG/bPB8="
+            "sha256": "sha256-CeoQlq9+1d1JdbC+vxthLyTLnZ/pzQcNLzP7sbcBQ7k="
         },
-        "version": "3.1.1",
+        "version": "3.0.2",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
@@ -105,11 +105,11 @@
             "repo": "airflow",
             "type": "github",
             "sha256": "sha256-tH4dHE4OjVMH0e33PSHPBxupoUr1lu5B+tjKfHFojvA=",
-            "rev": "ee1d1433ed30f6ba093dca0e40b783f0d6529c43",
+            "rev": "388f4e8b032fe71ccc9a16d84d7c2064c80575b3",
             "leaveDotGit": false,
             "fetchSubmodules": false
         },
-        "version": "ee1d1433ed30f6ba093dca0e40b783f0d6529c43",
+        "version": "388f4e8b032fe71ccc9a16d84d7c2064c80575b3",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null

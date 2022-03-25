@@ -54,6 +54,7 @@ python3Packages.buildPythonPackage rec {
       --replace "flask-login>=0.3, <0.5" "flask-login" \
       --replace "python-slugify>=3.0.0,<5.0" "python-slugify" \
       --replace "pyjwt<2" "pyjwt" \
+      --replace "sqlalchemy>=1.3.18, <1.4.0" "sqlalchemy" \
       --replace "attrs>=20.0, <21.0" "attrs" \
       --replace "importlib_metadata~=1.7" "importlib_metadata"
   '';
