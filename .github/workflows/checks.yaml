@@ -28,9 +28,7 @@ jobs:
 
     - name: Run Nvfetcher Updates
       run: |
-        nix flake update
-        nix -Lv develop github:hardenedlinux/nixpkgs-hardenedlinux -c update nvfetcher ./nix/sources.toml
-
+        nix develop -Lv 'github:GTrunSec/DevSecOps-Cells-Lab?dir=devshell#update -c nvfetcher-update ./nix/sources.toml
 
     - name: Nix Build with airflow-frontend
       run: nix -Lv build ./#airflow-frontend

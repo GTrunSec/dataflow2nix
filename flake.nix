@@ -5,15 +5,15 @@
   };
   inputs = {
     flake-compat.flake = false;
-    mach-nix = { inputs.pypi-deps-db.follows = "pypi-deps-db"; };
-    pypi-deps-db = {
-      # url = "github:DavHau/pypi-deps-db";
-      flake = false;
-    };
-    npmlock2nix = {
-      url = "github:tweag/npmlock2nix";
-      flake = false;
-    };
+
+    mach-nix.inputs.pypi-deps-db.follows = "pypi-deps-db";
+
+    pypi-deps-db.url = "github:DavHau/pypi-deps-db";
+    pypi-deps-db.flake = false;
+
+    npmlock2nix.url = "github:tweag/npmlock2nix";
+    npmlock2nix.configflake = false;
+
   };
   outputs =
     { self
