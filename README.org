@@ -18,3 +18,13 @@ airflow webserver -p <port> -h <hostname>
 #+begin_src sh :async t :exports both :results output
 airflow users create --username admin --firstname Tao --lastname Zhang --role Admin --email gtrunsec@hardenedlinux.org
 #+end_src
+
+
+* NixOS
+
+- create user
+
+#+begin_src sh :async :exports both :results output
+export HOME=/var/lib/airflow
+airflow users create --username admin --firstname Tao --lastname Zhang --role Admin --email gtrunsec@hardenedlinux.org
+#+end_src
