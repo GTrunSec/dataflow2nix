@@ -1,10 +1,11 @@
-{ pkgs
-, inputs
-, devshell
-, ...
+{
+  pkgs,
+  inputs,
+  devshell,
+  ...
 }:
 devshell.mkShell {
-  imports = [ (devshell.importTOML ./devshell.toml) ];
+  imports = [(devshell.importTOML ./devshell.toml)];
   commands = [
     {
       name = "airflow";

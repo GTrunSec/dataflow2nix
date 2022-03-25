@@ -14,58 +14,55 @@
     npmlock2nix.url = "github:tweag/npmlock2nix";
     npmlock2nix.flake = false;
   };
-  outputs =
-    { self
-    , nixpkgs
-    , flake-utils
-    , flake-compat
-    , devshell
-    , mach-nix
-    , npmlock2nix
-    , pypi-deps-db
-    }
-    @ inputs:
-    (
-      flake-utils.lib.eachSystem [ "x86_64-linux" ] (
-        system: let
-          overlay = import ./nix/overlay.nix { inherit inputs; };
-          pkgs = inputs.nixpkgs.legacyPackages."${system}".appendOverlays [ overlay ];
-          devshell = inputs.devshell.legacyPackages."${system}";
-        in
-          rec {
-            inherit overlay;
-            devShell = import ./devshell { inherit devshell inputs pkgs; };
-            apps = {
-              airflow-release = flake-utils.lib.mkApp {
-                drv = packages.airflow-release;
-                exePath = "/bin/airflow";
-              };
-            };
-            packages =
-              flake-utils.lib.flattenTree {
-                inherit (pkgs) airflow-release airflow-frontend airflow-latest;
-              }
-              // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux { inherit (pkgs.airflow-vm-tests) airflow-vm-systemd; };
-            defaultPackage = packages.airflow-release;
-            defaultApp = apps.airflow-release;
-          }
-      )
-      // {
-        nixosModules = {
-          airflow = {
-            imports = [
-              {
-                nixpkgs.config.packageOverrides = pkgs: {
-                  inherit
-                    (self.packages."${pkgs.stdenv.hostPlatform.system}")
-                    airflow-release
-                    ;
-                };
-              }
-              ./nix/module.nix
-            ];
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+    flake-compat,
+    devshell,
+    mach-nix,
+    npmlock2nix,
+    pypi-deps-db,
+  } @ inputs: (
+    flake-utils.lib.eachSystem ["x86_64-linux"] (
+      system: let
+        overlay = import ./nix/overlay.nix {inherit inputs;};
+        pkgs = inputs.nixpkgs.legacyPackages."${system}".appendOverlays [overlay];
+        devshell = inputs.devshell.legacyPackages."${system}";
+      in rec {
+        inherit overlay;
+        devShell = import ./devshell {inherit devshell inputs pkgs;};
+        apps = {
+          airflow-release = flake-utils.lib.mkApp {
+            drv = packages.airflow-release;
+            exePath = "/bin/airflow";
           };
         };
+        packages =
+          flake-utils.lib.flattenTree {
+            inherit (pkgs) airflow-release airflow-frontend airflow-latest;
+          }
+          // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {inherit (pkgs.airflow-vm-tests) airflow-vm-systemd;};
+        defaultPackage = packages.airflow-release;
+        defaultApp = apps.airflow-release;
       }
-    );
+    )
+    // {
+      nixosModules = {
+        airflow = {
+          imports = [
+            {
+              nixpkgs.config.packageOverrides = pkgs: {
+                inherit
+                  (self.packages."${pkgs.stdenv.hostPlatform.system}")
+                  airflow-release
+                  ;
+              };
+            }
+            ./nix/module.nix
+          ];
+        };
+      };
+    }
+  );
 }
