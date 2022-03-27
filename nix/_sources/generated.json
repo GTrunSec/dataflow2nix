@@ -4,12 +4,12 @@
         "cargoLock": null,
         "name": "apache-airflow-providers-sqlite",
         "src": {
-            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-sqlite/apache-airflow-providers-sqlite-2.1.2.tar.gz",
+            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-sqlite/apache-airflow-providers-sqlite-2.1.3.tar.gz",
             "name": null,
             "type": "url",
-            "sha256": "sha256-fUjHqFGh8DYA0eYyICJTZYH6KxMzz1HVMUEo5qPJZWw="
+            "sha256": "sha256-rObuSYF6adNT9f9xIFlMDs+udHGnMHh6tmHPFlKNEDw="
         },
-        "version": "2.1.2",
+        "version": "2.1.3",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
@@ -19,12 +19,12 @@
         "cargoLock": null,
         "name": "apache-airflow-providers-http",
         "src": {
-            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-http/apache-airflow-providers-http-2.1.1.tar.gz",
+            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-http/apache-airflow-providers-http-2.1.2.tar.gz",
             "name": null,
             "type": "url",
-            "sha256": "sha256-T4XkQcgx8Lhaz3aWCyQD4dZYOR4uXsgoENKofOI7gYk="
+            "sha256": "sha256-XwQia81WJwN9PpA9ywwLdEztyQP2jX7tolw36NbSbzY="
         },
-        "version": "2.1.1",
+        "version": "2.1.2",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
@@ -34,12 +34,12 @@
         "cargoLock": null,
         "name": "apache-airflow-providers-imap",
         "src": {
-            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-imap/apache-airflow-providers-imap-2.2.2.tar.gz",
+            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-imap/apache-airflow-providers-imap-2.2.3.tar.gz",
             "name": null,
             "type": "url",
-            "sha256": "sha256-JAq0XmB8trF1UUekMnHwLY50iSY3B/BXiWJF0K0psiQ="
+            "sha256": "sha256-xxo4SsiaLmkw/uG8hdHiQVJMDV/3/g1ZNlNiy7NbUIg="
         },
-        "version": "2.2.2",
+        "version": "2.2.3",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
@@ -84,12 +84,12 @@
         "cargoLock": null,
         "name": "apache-airflow-providers-ftp",
         "src": {
-            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-ftp/apache-airflow-providers-ftp-2.1.1.tar.gz",
+            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-ftp/apache-airflow-providers-ftp-2.1.2.tar.gz",
             "name": null,
             "type": "url",
-            "sha256": "sha256-GBBmChbthNP6cmcbF2RXLpWo9k3tPhFeiFbL0BDtDF0="
+            "sha256": "sha256-qMl8TmnuPbGlQ/IST4QV6VHJo6kDcyG+Bp8s5ZT4qjw="
         },
-        "version": "2.1.1",
+        "version": "2.1.2",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
@@ -104,12 +104,12 @@
             "name": null,
             "repo": "airflow",
             "type": "github",
-            "sha256": "sha256-tH4dHE4OjVMH0e33PSHPBxupoUr1lu5B+tjKfHFojvA=",
-            "rev": "388f4e8b032fe71ccc9a16d84d7c2064c80575b3",
+            "sha256": "sha256-DqirJTzlcoNQ/S4y3ZucwRmoa2gul7LUT4kNtRxJqZk=",
+            "rev": "bf0a11c63dffe3953d1490cfc04b3a5e0366e710",
             "leaveDotGit": false,
             "fetchSubmodules": false
         },
-        "version": "388f4e8b032fe71ccc9a16d84d7c2064c80575b3",
+        "version": "bf0a11c63dffe3953d1490cfc04b3a5e0366e710",
         "passthru": null,
         "extract": null,
         "rustGitDeps": null
