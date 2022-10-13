@@ -8,3 +8,11 @@ The following platforms are already supported:
  - [X] [[https://github.com/PrefectHQ/prefect][prefect]]
  - [X] [[https://github.com/apache/airflow][airflow]]
  - [ ][[https://github.com/camunda/zeebe][zeebe]]
+
+
+
+* Jupyter Notebook integration
+
+ - [ ] https://github.com/PrefectHQ/prefect-jupyter#run-a-parameterized-notebook
+ - https://airflow.apache.org/docs/apache-airflow/1.10.14/howto/operator/papermill.html
+   - https://github.com/nteract/papermill

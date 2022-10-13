@@ -5,3 +5,7 @@ fetch.github = "PrefectHQ/prefect"
 [prefect-latest]
 src.git = "https://github.com/PrefectHQ/prefect"
 fetch.github = "PrefectHQ/prefect"
+
+[prefect-jupyter]
+src.git = "https://github.com/PrefectHQ/prefect-jupyter"
+fetch.github = "PrefectHQ/prefect-jupyter"

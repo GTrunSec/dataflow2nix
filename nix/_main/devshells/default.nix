@@ -19,5 +19,23 @@ in
         cell.nixago.mdbook
         cell.nixago.treefmt
       ];
+      commands = [
+        {
+          name = "nvfetcher-airflow";
+          command = ''
+            nix develop github:GTrunSec/cells-lab#update \
+            --refresh --command \
+            nvfetcher-update nix/airflow/packages/sources.toml
+          '';
+        }
+        {
+          name = "nvfetcher-prefect";
+          command = ''
+            nix develop github:GTrunSec/cells-lab#update \
+            --refresh --command \
+            nvfetcher-update nix/prefect/packages/sources.toml
+          '';
+        }
+      ];
     };
   }

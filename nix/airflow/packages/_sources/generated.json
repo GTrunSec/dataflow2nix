@@ -108,5 +108,20 @@
             "url": "https://pypi.io/packages/source/a/apache-airflow-providers-sqlite/apache-airflow-providers-sqlite-3.2.1.tar.gz"
         },
         "version": "3.2.1"
+    },
+    "papermill": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "papermill",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-b4+KmwazlnfyB8CRAMjThrz1kvDLvdqfD1DoFEVpdic=",
+            "type": "url",
+            "url": "https://pypi.io/packages/source/p/papermill/papermill-2.4.0.tar.gz"
+        },
+        "version": "2.4.0"
     }
 }

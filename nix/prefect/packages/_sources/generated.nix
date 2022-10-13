@@ -12,6 +12,18 @@
       sha256 = "sha256-rnk4ZVyFbUFHD23t7Yle9gcqWT6Ps7ggzJa8XUZrrbA=";
     });
   };
+  prefect-jupyter = {
+    pname = "prefect-jupyter";
+    version = "e5cf54f7877023e0eb1705836f531baad69b941d";
+    src = fetchFromGitHub ({
+      owner = "PrefectHQ";
+      repo = "prefect-jupyter";
+      rev = "e5cf54f7877023e0eb1705836f531baad69b941d";
+      fetchSubmodules = false;
+      sha256 = "sha256-3oFF0F2RCXLyOXShlfbUyOK0A1Ny+vLqCfDMdu86OsQ=";
+    });
+    date = "2022-10-12";
+  };
   prefect-latest = {
     pname = "prefect-latest";
     version = "de93e28236eb619c6bba52a907e674dfc630050f";

@@ -31,3 +31,7 @@ fetch.pypi = "apache-airflow-providers-common-sql"
 #src.pypi = "apache-airflow-providers-cncf-kubernetes"
 src.manual = "3.0.2"
 fetch.pypi = "apache-airflow-providers-cncf-kubernetes"
+
+[papermill]
+src.pypi = "papermill"
+fetch.pypi = "papermill"

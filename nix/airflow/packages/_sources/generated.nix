@@ -61,4 +61,12 @@
       sha256 = "sha256-UVYIFzdSBueS0r8lS0uiOV/yQ5Mcc4w1ZY311Vy2j8c=";
     };
   };
+  papermill = {
+    pname = "papermill";
+    version = "2.4.0";
+    src = fetchurl {
+      url = "https://pypi.io/packages/source/p/papermill/papermill-2.4.0.tar.gz";
+      sha256 = "sha256-b4+KmwazlnfyB8CRAMjThrz1kvDLvdqfD1DoFEVpdic=";
+    };
+  };
 }

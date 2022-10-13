@@ -19,6 +19,26 @@
         },
         "version": "2.5.0"
     },
+    "prefect-jupyter": {
+        "cargoLocks": null,
+        "date": "2022-10-12",
+        "extract": null,
+        "name": "prefect-jupyter",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "PrefectHQ",
+            "repo": "prefect-jupyter",
+            "rev": "e5cf54f7877023e0eb1705836f531baad69b941d",
+            "sha256": "sha256-3oFF0F2RCXLyOXShlfbUyOK0A1Ny+vLqCfDMdu86OsQ=",
+            "type": "github"
+        },
+        "version": "e5cf54f7877023e0eb1705836f531baad69b941d"
+    },
     "prefect-latest": {
         "cargoLocks": null,
         "date": "2022-10-13",
