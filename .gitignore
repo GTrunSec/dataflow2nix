@@ -4,3 +4,9 @@
 result
 .DS_Store
 .airflow
+.std
+# nixago-auto-created: mdbook-build-folder
+docs/book/**
+
+# nixago: ignore-linked-files
+treefmt.toml

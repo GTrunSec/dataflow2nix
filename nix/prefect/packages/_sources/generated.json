@@ -1,0 +1,42 @@
+{
+    "prefect": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "prefect",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "PrefectHQ",
+            "repo": "prefect",
+            "rev": "2.5.0",
+            "sha256": "sha256-rnk4ZVyFbUFHD23t7Yle9gcqWT6Ps7ggzJa8XUZrrbA=",
+            "type": "github"
+        },
+        "version": "2.5.0"
+    },
+    "prefect-latest": {
+        "cargoLocks": null,
+        "date": "2022-10-13",
+        "extract": null,
+        "name": "prefect-latest",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "PrefectHQ",
+            "repo": "prefect",
+            "rev": "de93e28236eb619c6bba52a907e674dfc630050f",
+            "sha256": "sha256-NEWKU51lZPOa/GV+crntHCYrPS3QM0mQk47agPmJF2o=",
+            "type": "github"
+        },
+        "version": "de93e28236eb619c6bba52a907e674dfc630050f"
+    }
+}

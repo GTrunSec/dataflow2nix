@@ -1,0 +1,7 @@
+[prefect]
+src.github_tag = "PrefectHQ/prefect"
+fetch.github = "PrefectHQ/prefect"
+
+[prefect-latest]
+src.git = "https://github.com/PrefectHQ/prefect"
+fetch.github = "PrefectHQ/prefect"

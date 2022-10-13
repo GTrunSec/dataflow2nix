@@ -26,21 +26,17 @@ jobs:
     - name: Run Nix Flake Show
       run: nix flake show
 
-    - name: Run Nvfetcher Updates
-      run: nix develop -Lv -c nvfetcher
-
-    - name: Nix Build with airflow-frontend
-      run: nix -Lv build ./#airflow-frontend
-
-    - name: Nix Build with airflow Release
-      run: nix -Lv build ./#airflow-release
+    # - name: Run Nvfetcher Updates
+    #   run: nix develop -Lv -c nvfetcher
 
     - name: Nix Build with airflow Latest
-      continue-on-error: true
       run: nix -Lv build ./#airflow-latest
 
-    - name: Check Airflow Exec
-      run: nix -Lv develop -c airflow info
+    - name: Nix Build with prefect
+      run: nix -Lv build ./#prefect
+
+      # - name: Check Airflow Exec
+    #   run: nix -Lv develop -c airflow info
 
     # - name: Check Airflow Service
     #   run: nix build ./#airflow-vm-systemd --print-build-logs

@@ -3,6 +3,7 @@
 src.github_tag = "apache/airflow"
 fetch.github = "apache/airflow"
 src.include_regex = "2.*"
+
 [airflow-latest]
 src.git = "https://github.com/apache/airflow"
 fetch.github = "apache/airflow"
@@ -11,11 +12,9 @@ fetch.github = "apache/airflow"
 # src.github = "apache/airflow"
 # fetch.url = "https://github.com/apache/airflow/releases/download/$ver/apache-airflow-$ver-source.tar.gz"
 # src.prefix = "v"
-
 [apache-airflow-providers-http]
 src.pypi = "apache-airflow-providers-http"
 fetch.pypi = "apache-airflow-providers-http"
-
 
 [apache-airflow-providers-imap]
 src.pypi = "apache-airflow-providers-imap"
@@ -28,6 +27,10 @@ fetch.pypi = "apache-airflow-providers-sqlite"
 [apache-airflow-providers-ftp]
 src.pypi = "apache-airflow-providers-ftp"
 fetch.pypi = "apache-airflow-providers-ftp"
+
+[apache-airflow-providers-common-sql]
+src.pypi = "apache-airflow-providers-common-sql"
+fetch.pypi = "apache-airflow-providers-common-sql"
 
 [apache-airflow-providers-cncf-kubernetes]
 #src.pypi = "apache-airflow-providers-cncf-kubernetes"

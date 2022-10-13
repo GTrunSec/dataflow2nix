@@ -20,7 +20,7 @@ in {
       };
       package = mkOption {
         type = types.package;
-        default = pkgs.airflow-release;
+        default = pkgs.apache-airflow;
       };
       port = mkOption {
         type = types.int;
