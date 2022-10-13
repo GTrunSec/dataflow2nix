@@ -11,14 +11,17 @@
     installPhase = "cp -r dist $out";
     buildCommands = ["npm run build"];
   };
-  prefect-requirements = machlib.mkPython rec {
+  requirements = machlib.mkPython rec {
     requirements = builtins.readFile (source.src + "/requirements.txt");
     providers = {};
   };
 in
   python3Packages.buildPythonPackage {
     inherit (source) src version pname;
-    propagatedBuildInputs = with python3Packages; [prefect-requirements];
+    propagatedBuildInputs = with python3Packages; [requirements];
+    passthru = {
+      inherit requirements;
+    };
     doCheck = false;
     preConfigure = ''
       sed -i 's|__module_path__ / "orion" / "ui"|"${frontend}"|' src/prefect/__init__.py
