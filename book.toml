@@ -2,7 +2,7 @@
 language = "en"
 multilingual = false
 src = "docs"
-title = "Std Template"
+title = "dataflow2nix"
 
 [build]
 build-dir = "docs/book"
