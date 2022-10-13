@@ -17,7 +17,6 @@
     (import ./packages/providers.nix)
   ];
 in {
-  inherit nixpkgs;
   prefect = nixpkgs.python3Packages.callPackage ./packages/prefect.nix {
     source = nixpkgs.prefect-sources.prefect;
   };
