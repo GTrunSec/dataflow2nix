@@ -5,7 +5,7 @@
   nixpkgs = inputs.nixpkgs.appendOverlays [
     (final: prev: {
       # Add your overlays here
-      airflow-sources = prev.callPackage ./_sources/generated.nix {};
+      airflow-sources = prev.callPackage ./packages/_sources/generated.nix {};
     })
   ];
 in {

@@ -1,9 +1,4 @@
 # nvfetcher.toml
-[airflow-release]
-src.github_tag = "apache/airflow"
-fetch.github = "apache/airflow"
-src.include_regex = "2.*"
-
 [airflow-latest]
 src.git = "https://github.com/apache/airflow"
 fetch.github = "apache/airflow"
