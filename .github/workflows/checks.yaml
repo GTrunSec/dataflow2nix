@@ -30,7 +30,7 @@ jobs:
     #   run: nix develop -Lv -c nvfetcher
 
     - name: Nix Build with airflow Latest
-      run: nix -Lv build ./#airflow-latest
+      run: nix -Lv build ./#apache-airflow-latest
 
     - name: Nix Build with prefect
       run: nix -Lv build ./#prefect
