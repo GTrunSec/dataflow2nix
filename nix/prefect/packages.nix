@@ -14,9 +14,11 @@
       };
       npmlock2nix = (prev.callPackage __default__.npmlock2nix {}).build;
     })
+    (import ./packages/providers.nix)
   ];
 in {
-  prefect = nixpkgs.callPackage ./packages/prefect.nix {
+  inherit nixpkgs;
+  prefect = nixpkgs.python3Packages.callPackage ./packages/prefect.nix {
     source = nixpkgs.prefect-sources.prefect;
   };
   prefect-latest = cell.packages.prefect.override {

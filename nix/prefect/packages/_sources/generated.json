@@ -19,6 +19,26 @@
         },
         "version": "2.5.0"
     },
+    "prefect-aws": {
+        "cargoLocks": null,
+        "date": "2022-10-07",
+        "extract": null,
+        "name": "prefect-aws",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "PrefectHQ",
+            "repo": "prefect-aws",
+            "rev": "3dbeec9e6dc430a3fbd101f821b03edf74924fb8",
+            "sha256": "sha256-v3NDUj4taRzc6pvL4E4mBlb+PQraTlZwbXS+zgK192k=",
+            "type": "github"
+        },
+        "version": "3dbeec9e6dc430a3fbd101f821b03edf74924fb8"
+    },
     "prefect-jupyter": {
         "cargoLocks": null,
         "date": "2022-10-12",
