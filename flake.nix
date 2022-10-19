@@ -32,6 +32,9 @@
         (std.blockTypes.functions "overlays")
 
         (std.blockTypes.nixago "nixago")
+
+        (std.blockTypes.functions "task")
+        (std.blockTypes.functions "action")
       ];
     } {
       devShells = inputs.std.harvest inputs.self ["_automation" "devshells"];
@@ -45,5 +48,8 @@
           # ["prefect" "nixosModules"]
         ]
       );
-    };
+    } (inputs.tullia.fromStd{
+      tasks = inputs.std.harvest inputs.self ["tullia" "task"];
+      actions = inputs.std.harvest inputs.self ["tullia" "action"];
+    });
 }

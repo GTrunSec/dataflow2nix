@@ -13,6 +13,8 @@ in
 
       imports = [
         inputs.cells-lab.main.devshellProfiles.default
+
+        inputs.cells.tullia.devshellProfiles.default
       ];
 
       nixago = [
