@@ -1,10 +1,14 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-lock.follows = "nixpkgs";
 
     cells-lab.url = "github:GTrunSec/cells-lab";
     std.follows = "cells-lab/std";
+  };
+
+  inputs = {
+    tullia.url = "github:input-output-hk/tullia";
+    tullia.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {std, ...} @ inputs:
@@ -30,7 +34,7 @@
         (std.blockTypes.nixago "nixago")
       ];
     } {
-      devShells = inputs.std.harvest inputs.self ["_main" "devshells"];
+      devShells = inputs.std.harvest inputs.self ["_automation" "devshells"];
       packages = inputs.std.harvest inputs.self [
         ["airflow" "packages"]
         ["prefect" "packages"]

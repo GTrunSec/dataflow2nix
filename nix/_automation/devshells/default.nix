@@ -27,6 +27,7 @@ in
             --refresh --command \
             nvfetcher-update nix/airflow/packages/sources.toml
           '';
+          help = "update airflow toolchain with nvfetcher";
         }
         {
           name = "nvfetcher-prefect";
@@ -35,6 +36,7 @@ in
             --refresh --command \
             nvfetcher-update nix/prefect/packages/sources.toml
           '';
+          help = "update prefect toolchain with nvfetcher";
         }
       ];
     };
