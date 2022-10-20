@@ -29,8 +29,8 @@ jobs:
     # - name: Run Nvfetcher Updates
     #   run: nix develop -Lv -c nvfetcher
 
-    - name: test
-      run: nix develop --command tullia run go
+    - name: test tullia task
+      run: nix develop .#tullia --command tullia run nix
 
     - name: Nix Build with airflow Latest
       run: nix -Lv build ./#apache-airflow-latest

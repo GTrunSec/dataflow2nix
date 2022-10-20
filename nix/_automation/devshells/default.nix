@@ -43,4 +43,7 @@ in
         }
       ];
     };
+    tullia = {
+      imports = [inputs.cells.tullia.devshellProfiles.default];
+    };
   }
