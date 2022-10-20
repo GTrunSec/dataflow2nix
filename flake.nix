@@ -7,7 +7,8 @@
   };
 
   inputs = {
-    tullia.url = "github:input-output-hk/tullia";
+    # tullia.url = "github:input-output-hk/tullia";
+    tullia.url = "github:input-output-hk/tullia?ref=refs/pull/9/head";
     tullia.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -48,7 +49,7 @@
           # ["prefect" "nixosModules"]
         ]
       );
-    } (inputs.tullia.fromStd{
+    } (inputs.tullia.fromStd {
       tasks = inputs.std.harvest inputs.self ["tullia" "task"];
       actions = inputs.std.harvest inputs.self ["tullia" "action"];
     });

@@ -7,8 +7,6 @@
 in
   l.mapAttrs (_: std.lib.dev.mkShell) {
     default = {...}: {
-      std.adr.enable = false;
-
       name = "dataflow2nix";
 
       imports = [
@@ -39,6 +37,9 @@ in
             nvfetcher-update nix/prefect/packages/sources.toml
           '';
           help = "update prefect toolchain with nvfetcher";
+        }
+        {
+          package = nixpkgs.nsjail;
         }
       ];
     };
