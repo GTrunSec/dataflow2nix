@@ -816,11 +816,11 @@
         "std": "std_2"
       },
       "locked": {
-        "lastModified": 1666289092,
-        "narHash": "sha256-68wIbKAOmAeip2LPefqRez1z5WEXi+GywF+909jgIXU=",
+        "lastModified": 1666369965,
+        "narHash": "sha256-6UFnS2r9XbPud5BgBIoAuZzG2S+aNS/y9F2BEhe+8a4=",
         "owner": "input-output-hk",
         "repo": "tullia",
-        "rev": "ec66ac25d412eba5e5a018c82d6d5c9df8a03040",
+        "rev": "2c9b995942de7d341330af105f3ef13c15e33cb3",
         "type": "github"
       },
       "original": {
