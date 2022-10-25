@@ -1,5 +1,6 @@
-{ inputs, cell}:
-
 {
+  inputs,
+  cell,
+}: {
   airflow = ./airflow.nix;
 }

@@ -1,9 +1,12 @@
-{ inputs, cell}:
-
 {
+  inputs,
+  cell,
+}: {
   default = {
-    commands = [{
-      package = cell.packages.tullia;
-    }];
+    commands = [
+      {
+        package = cell.packages.tullia;
+      }
+    ];
   };
 }
