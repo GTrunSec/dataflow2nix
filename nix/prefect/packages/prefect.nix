@@ -3,13 +3,12 @@
   python3Packages,
   source,
   machlib,
-  npmlock2nix,
+  buildNpmPackage,
 }: let
-  frontend = npmlock2nix {
+  frontend = buildNpmPackage {
     name = "prefect-frontend";
     src = source.src + "/orion-ui";
-    installPhase = "cp -r dist $out";
-    buildCommands = ["npm run build"];
+    npmBuild = "npm run build";
   };
   requirements = machlib.mkPython rec {
     requirements = builtins.readFile (source.src + "/requirements.txt");
@@ -20,7 +19,7 @@ in
     inherit (source) src version pname;
     propagatedBuildInputs = with python3Packages; [requirements];
     passthru = {
-      inherit requirements;
+      inherit requirements frontend;
     };
     doCheck = false;
     preConfigure = ''

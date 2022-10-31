@@ -13,15 +13,15 @@
             "name": null,
             "owner": "PrefectHQ",
             "repo": "prefect",
-            "rev": "2.5.0",
-            "sha256": "sha256-rnk4ZVyFbUFHD23t7Yle9gcqWT6Ps7ggzJa8XUZrrbA=",
+            "rev": "2.6.5",
+            "sha256": "sha256-xf59mfu9Cg8jAnJ/JiC2AOUX9H2yIgZX4p+ITvEAILs=",
             "type": "github"
         },
-        "version": "2.5.0"
+        "version": "2.6.5"
     },
     "prefect-aws": {
         "cargoLocks": null,
-        "date": "2022-10-07",
+        "date": "2022-10-28",
         "extract": null,
         "name": "prefect-aws",
         "passthru": null,
@@ -33,15 +33,15 @@
             "name": null,
             "owner": "PrefectHQ",
             "repo": "prefect-aws",
-            "rev": "3dbeec9e6dc430a3fbd101f821b03edf74924fb8",
-            "sha256": "sha256-v3NDUj4taRzc6pvL4E4mBlb+PQraTlZwbXS+zgK192k=",
+            "rev": "0f74e836a80a466e0fdfb2dc61ac070a1d723c5d",
+            "sha256": "sha256-lG8Zt70IsXLJKUl0J3LAHjSERgri2a95NJvmv0+2Zb4=",
             "type": "github"
         },
-        "version": "3dbeec9e6dc430a3fbd101f821b03edf74924fb8"
+        "version": "0f74e836a80a466e0fdfb2dc61ac070a1d723c5d"
     },
     "prefect-jupyter": {
         "cargoLocks": null,
-        "date": "2022-10-12",
+        "date": "2022-10-25",
         "extract": null,
         "name": "prefect-jupyter",
         "passthru": null,
@@ -53,15 +53,15 @@
             "name": null,
             "owner": "PrefectHQ",
             "repo": "prefect-jupyter",
-            "rev": "e5cf54f7877023e0eb1705836f531baad69b941d",
-            "sha256": "sha256-3oFF0F2RCXLyOXShlfbUyOK0A1Ny+vLqCfDMdu86OsQ=",
+            "rev": "cd1b4cc80a68bb41f92fd836588ecf18f920f93f",
+            "sha256": "sha256-zWQob5lfwlNFRRNXB216mrYkgtnPiIb/v3+YCdDHXSw=",
             "type": "github"
         },
-        "version": "e5cf54f7877023e0eb1705836f531baad69b941d"
+        "version": "cd1b4cc80a68bb41f92fd836588ecf18f920f93f"
     },
     "prefect-latest": {
         "cargoLocks": null,
-        "date": "2022-10-13",
+        "date": "2022-10-31",
         "extract": null,
         "name": "prefect-latest",
         "passthru": null,
@@ -73,10 +73,10 @@
             "name": null,
             "owner": "PrefectHQ",
             "repo": "prefect",
-            "rev": "de93e28236eb619c6bba52a907e674dfc630050f",
-            "sha256": "sha256-NEWKU51lZPOa/GV+crntHCYrPS3QM0mQk47agPmJF2o=",
+            "rev": "f322dc9b4c670961ffa87c8cc68e1064c7bdec6a",
+            "sha256": "sha256-VqU+96paQr53gS3VrxGnumIZjQNM0flJQglirBayYqc=",
             "type": "github"
         },
-        "version": "de93e28236eb619c6bba52a907e674dfc630050f"
+        "version": "f322dc9b4c670961ffa87c8cc68e1064c7bdec6a"
     }
 }
