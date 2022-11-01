@@ -11,6 +11,14 @@ in {
   in {
     config.project.name = "prefect";
     config.services = {
+      postgres = {
+        service.image = "postgres:13";
+        service = {
+          ports = ["15432:5432"];
+          environment.POSTGRES_USER = "prefect";
+          environment.POSTGRES_PASSWORD = "prefect";
+        };
+      };
       prefect = {
         image.contents = [
           (nixpkgs.buildEnv {
