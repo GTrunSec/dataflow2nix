@@ -32,13 +32,13 @@ jobs:
     # - name: test tullia task
     #   run: nix develop .#tullia --command tullia run nix
 
-    - name: Nix Build with airflow Latest
-      run: nix -Lv build ./#apache-airflow-latest
-
-    - name: Nix Build with prefect
+    - name: Build with prefect
       run: nix -Lv build ./#prefect
 
-      # - name: Check Airflow Exec
+    - name: Build with prefect-latest
+      run: nix -Lv build ./#prefect-latest
+
+    # - name: Check Airflow Exec
     #   run: nix -Lv develop -c airflow info
 
     # - name: Check Airflow Service
