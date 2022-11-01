@@ -10,8 +10,7 @@ in
       name = "dataflow2nix";
 
       imports = [
-        inputs.cells-lab.main.devshellProfiles.default
-
+        inputs.std.std.devshellProfiles.default
         inputs.cells.tullia.devshellProfiles.default
       ];
 

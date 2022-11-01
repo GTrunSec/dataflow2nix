@@ -12,8 +12,8 @@ in {
         pkgs = prev;
         pypiData = __inputs__.pypi-deps-db;
       };
-      npmlock2nix = (prev.callPackage __inputs__.npmlock2nix {}).build;
     })
     (import ./packages/providers.nix)
+    __inputs__.npm-buildpackage.overlays.default
   ];
 }
