@@ -15,7 +15,13 @@ in {
         image.contents = [
           (nixpkgs.buildEnv {
             name = "prefect";
-            paths = [nixpkgs.tzdata nixpkgs.bash nixpkgs.coreutils];
+            paths = [
+              nixpkgs.tzdata
+              nixpkgs.bash
+              nixpkgs.coreutils
+              nixpkgs.cacert
+              prefect
+            ];
             pathsToLink = ["/bin" "/etc"];
             postBuild = ''
               cp ${nixpkgs.tzdata}/share/zoneinfo/America/Los_Angeles $out/etc/localtime
@@ -24,18 +30,20 @@ in {
         ];
         service.useHostStore = true;
         service.command = [
-          "sh"
-          "-c"
-          ''
-            ls -il /home
-            ${l.getExe prefect} orion start --host '0.0.0.0'
-          ''
+          "prefect"
+          "orion"
+          "start"
+          "--host"
+          "0.0.0.0"
         ];
         service.ports = [
           "4200:4200" # host:container
         ];
         service.volumes = ["/tmp/prefect:/home"];
-        service.environment.HOME = "/home";
+        service.environment = {
+          HOME = "/home";
+          PREFECT_HOME = "/home";
+        };
         service.stop_signal = "SIGINT";
       };
     };
