@@ -38,13 +38,13 @@
   };
   prefect-latest = {
     pname = "prefect-latest";
-    version = "f322dc9b4c670961ffa87c8cc68e1064c7bdec6a";
+    version = "03a6e4d34ebdf2f672c5a6bbdf7bb63ec9515d93";
     src = fetchFromGitHub ({
       owner = "PrefectHQ";
       repo = "prefect";
-      rev = "f322dc9b4c670961ffa87c8cc68e1064c7bdec6a";
+      rev = "03a6e4d34ebdf2f672c5a6bbdf7bb63ec9515d93";
       fetchSubmodules = false;
-      sha256 = "sha256-VqU+96paQr53gS3VrxGnumIZjQNM0flJQglirBayYqc=";
+      sha256 = "sha256-YY9FqmqAxDiwS0C3u7v9C6s4EBbCsrhz5qzFdT/ORyA=";
     });
     date = "2022-10-31";
   };
