@@ -3,13 +3,18 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     cells-lab.url = "github:GTrunSec/cells-lab";
-    std.follows = "cells-lab/std";
+
+    std.url = "github:divnix/std";
+    std.inputs.arion.follows = "arion";
   };
 
   inputs = {
     tullia.url = "github:input-output-hk/tullia";
     # tullia.url = "github:input-output-hk/tullia?ref=refs/pull/9/head";
     tullia.inputs.nixpkgs.follows = "nixpkgs";
+
+    arion.url = "github:hercules-ci/arion";
+    arion.inputs.nixpkgs.follows = "cells-lab/nixpkgs";
   };
 
   outputs = {std, ...} @ inputs:
@@ -35,7 +40,11 @@
         (nixago "nixago")
 
         (functions "task")
+
         (functions "action")
+
+        (arion "arionComposes")
+        (functions "arionProfiles")
       ];
     } {
       devShells = inputs.std.harvest inputs.self ["_automation" "devshells"];

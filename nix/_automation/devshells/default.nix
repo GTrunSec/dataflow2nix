@@ -40,6 +40,9 @@ in
         {
           package = nixpkgs.nsjail;
         }
+        {
+          package = inputs.arion.packages.${nixpkgs.system}.arion;
+        }
       ];
     };
     tullia = {
