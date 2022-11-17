@@ -37,6 +37,17 @@ in
           '';
           help = "update prefect toolchain with nvfetcher";
         }
+
+        {
+          name = "nvfetcher-skypilot";
+          command = ''
+            nix develop github:GTrunSec/cells-lab#update \
+            --refresh --command \
+            nvfetcher-update nix/skypilot/packages/sources.toml
+          '';
+          help = "update skypilot toolchain with nvfetcher";
+        }
+
         {
           package = nixpkgs.nsjail;
         }

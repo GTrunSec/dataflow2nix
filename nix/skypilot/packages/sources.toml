@@ -1,0 +1,5 @@
+# nvfetcher.toml
+[skypilot]
+src.git = "https://github.com/skypilot-org/skypilot"
+fetch.github = "skypilot-org/skypilot"
+

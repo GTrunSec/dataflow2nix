@@ -5,6 +5,7 @@
     cells-lab.url = "github:GTrunSec/cells-lab";
 
     std.url = "github:divnix/std";
+    std.inputs.nixpkgs.follows = "nixpkgs";
     std.inputs.arion.follows = "arion";
   };
 
@@ -14,7 +15,7 @@
     tullia.inputs.nixpkgs.follows = "nixpkgs";
 
     arion.url = "github:hercules-ci/arion";
-    arion.inputs.nixpkgs.follows = "cells-lab/nixpkgs";
+    arion.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {std, ...} @ inputs:
@@ -45,6 +46,8 @@
 
         (arion "arionComposes")
         (functions "arionProfiles")
+
+        (data "containerJobs")
       ];
     } {
       devShells = inputs.std.harvest inputs.self ["_automation" "devshells"];

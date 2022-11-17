@@ -1,7 +1,7 @@
 {
     "airflow-latest": {
         "cargoLocks": null,
-        "date": "2022-10-31",
+        "date": "2022-11-08",
         "extract": null,
         "name": "airflow-latest",
         "passthru": null,
@@ -13,11 +13,11 @@
             "name": null,
             "owner": "apache",
             "repo": "airflow",
-            "rev": "b29ca4e77d4d80fb1f4d6d4b497a3a14979dd244",
-            "sha256": "sha256-w2ihLW6K0PTQ0dtfwn8zCSrcnE22ZCJqbtiB88oOmQQ=",
+            "rev": "409a4de858385c14d0ea4f32b8c4ad1fcfb9d130",
+            "sha256": "sha256-qtWnbGq+DSCv3CihwCH7CzVO7faO+eK1t7KfQfHuFv4=",
             "type": "github"
         },
-        "version": "b29ca4e77d4d80fb1f4d6d4b497a3a14979dd244"
+        "version": "409a4de858385c14d0ea4f32b8c4ad1fcfb9d130"
     },
     "apache-airflow-providers-cncf-kubernetes": {
         "cargoLocks": null,
