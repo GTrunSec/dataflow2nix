@@ -4,6 +4,7 @@
   source,
   machlib,
   buildNpmPackage,
+  python3,
 }: let
   frontend = buildNpmPackage {
     name = "prefect-frontend";
@@ -15,6 +16,7 @@
   };
   requirements = machlib.mkPython rec {
     requirements = builtins.readFile (source.src + "/requirements.txt");
+    python = "python${builtins.replaceStrings ["."] [""] python3.pythonVersion}";
     providers = {};
   };
 in
