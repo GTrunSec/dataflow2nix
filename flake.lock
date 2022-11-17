@@ -792,6 +792,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-prefect": {
+      "locked": {
+        "lastModified": 1665087388,
+        "narHash": "sha256-FZFPuW9NWHJteATOf79rZfwfRn5fE0wi9kRzvGfDHPA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "95fda953f6db2e9496d2682c4fc7b82f959878f7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "95fda953f6db2e9496d2682c4fc7b82f959878f7",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1665266435,
@@ -808,11 +824,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1668595402,
-        "narHash": "sha256-12zewsdsS3hFyWSb9x8a1pnbYOcsohvWoB6RYkMvlWE=",
+        "lastModified": 1668624850,
+        "narHash": "sha256-0+6kzVtNVVclhbCFVwyKmvnLjQicLrgH0+Xvum8qpC8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c03141948959417b580a9cbd57983af910d6727a",
+        "rev": "7e673586ba9e01fd418000589e5169fef5262041",
         "type": "github"
       },
       "original": {
@@ -947,6 +963,7 @@
         "arion": "arion",
         "cells-lab": "cells-lab",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-prefect": "nixpkgs-prefect",
         "std": "std_2",
         "tullia": "tullia"
       }

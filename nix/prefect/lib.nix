@@ -4,7 +4,7 @@
 }: let
   inherit (inputs.cells._automation.lib) __inputs__;
 in {
-  nixpkgs = inputs.nixpkgs.appendOverlays [
+  nixpkgs = inputs.nixpkgs-prefect.legacyPackages.${inputs.nixpkgs.system}.appendOverlays [
     (final: prev: {
       # Add your overlays here
       prefect-sources = prev.callPackage ./packages/_sources/generated.nix {};
