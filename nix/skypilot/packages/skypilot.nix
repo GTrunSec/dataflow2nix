@@ -5,6 +5,7 @@
   setuptools,
   python3Packages,
   awscli2,
+  bash
 }:
 buildPythonApplication rec {
   inherit (skypilot-sources.skypilot) version src pname;
@@ -45,6 +46,9 @@ buildPythonApplication rec {
     --replace "click<=8.0.4,>=7.0" "click" \
     --replace "rich>=10.0.0" "rich" \
     --replace "ray[default]>=1.9.0,<=2.0.1" "ray"
+
+    substituteInPlace sky/utils/command_runner.py sky/utils/subprocess_utils.py \
+    --replace "/bin/bash" "${bash}/bin/bash"
   '';
 
   meta = with lib; {
