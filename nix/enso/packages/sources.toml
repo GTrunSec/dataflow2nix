@@ -1,0 +1,4 @@
+# nvfetcher.toml
+[enso]
+src.git = "https://github.com/enso-org/enso"
+fetch.github = "enso-org/enso"

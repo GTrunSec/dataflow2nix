@@ -11,8 +11,8 @@
   };
 
   inputs = {
-    tullia.url = "github:input-output-hk/tullia";
-    # tullia.url = "github:input-output-hk/tullia?ref=refs/pull/9/head";
+    # tullia.url = "github:input-output-hk/tullia";
+    tullia.url = "github:input-output-hk/tullia?ref=refs/pull/9/head";
     tullia.inputs.nixpkgs.follows = "nixpkgs";
 
     arion.url = "github:hercules-ci/arion";
@@ -51,7 +51,7 @@
         (data "containerJobs")
       ];
     } {
-      devShells = inputs.std.harvest inputs.self ["_automation" "devshells"];
+      devShells = inputs.std.harvest inputs.self ["automation" "devshells"];
       packages = inputs.std.harvest inputs.self [
         ["airflow" "packages"]
         ["prefect" "packages"]

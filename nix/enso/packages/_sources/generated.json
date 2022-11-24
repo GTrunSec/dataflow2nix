@@ -1,0 +1,22 @@
+{
+    "enso": {
+        "cargoLocks": null,
+        "date": "2022-11-24",
+        "extract": null,
+        "name": "enso",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "enso-org",
+            "repo": "enso",
+            "rev": "f225a962ce8678e3d533d8727d54ae79197a9ef6",
+            "sha256": "sha256-zflGkNAxiFxZ7AJnREK6mVsXJBW5CIQ4iDWLEQ88WuQ=",
+            "type": "github"
+        },
+        "version": "f225a962ce8678e3d533d8727d54ae79197a9ef6"
+    }
+}

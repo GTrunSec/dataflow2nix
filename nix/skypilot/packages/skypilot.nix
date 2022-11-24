@@ -5,7 +5,7 @@
   setuptools,
   python3Packages,
   awscli2,
-  bash
+  bash,
 }:
 buildPythonApplication rec {
   inherit (skypilot-sources.skypilot) version src pname;
