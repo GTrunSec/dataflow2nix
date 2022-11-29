@@ -2,7 +2,7 @@
   inputs,
   cell,
 }: let
-  inherit (inputs.cells-lab._writers.lib) writeShellApplication;
+  inherit (inputs.cells-lab.writers.lib) writeShellApplication;
   inherit (cell.lib) nixpkgs;
 in {
   simple = let
@@ -16,7 +16,6 @@ in {
           ]
           ++ (cell.packages.prefect.passthru.requirements.python.pkgs.selectPkgs
             cell.packages.prefect.passthru.requirements.python.pkgs);
-        ignoreCollisions = true;
       };
   in
     writeShellApplication {
