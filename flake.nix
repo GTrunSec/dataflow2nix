@@ -52,6 +52,7 @@
       ];
     } {
       devShells = inputs.std.harvest inputs.self ["automation" "devshells"];
+      overlays = (inputs.std.harvest inputs.self [["common" "overlays"]]).x86_64-linux;
       packages = inputs.std.harvest inputs.self [
         ["airflow" "packages"]
         ["prefect" "packages"]

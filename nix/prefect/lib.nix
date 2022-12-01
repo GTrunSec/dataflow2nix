@@ -7,6 +7,7 @@ in {
   nixpkgs = inputs.nixpkgs-prefect.legacyPackages.${inputs.nixpkgs.system}.appendOverlays [
     cell.overlays.prefect
     cell.overlays.providers
+    inputs.cells.common.overlays.mach-nix
     __inputs__.npm-buildpackage.overlays.default
   ];
 }

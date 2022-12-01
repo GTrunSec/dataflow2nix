@@ -14,38 +14,38 @@
   };
   prefect-aws = {
     pname = "prefect-aws";
-    version = "519105bb757802fb31953645efa2824aca81dfc7";
+    version = "1cfcefb0b84e54ddb50682bd9e4aad8de9bed3ca";
     src = fetchFromGitHub ({
       owner = "PrefectHQ";
       repo = "prefect-aws";
-      rev = "519105bb757802fb31953645efa2824aca81dfc7";
+      rev = "1cfcefb0b84e54ddb50682bd9e4aad8de9bed3ca";
       fetchSubmodules = false;
-      sha256 = "sha256-dtimDRrGOnWvoMFSk/zInwUWILSMrgzLmptCn6UDvfg=";
+      sha256 = "sha256-fWg9n75PdQi8iW7YEv1sCAZOC9BnHnbtcjwfjbruWnY=";
     });
-    date = "2022-11-17";
+    date = "2022-11-29";
   };
   prefect-jupyter = {
     pname = "prefect-jupyter";
-    version = "d60db97fdae1f72bf4bb2d5ac8e9520839417c88";
+    version = "d7291f989c62bc8baddae0c54c26accf10703334";
     src = fetchFromGitHub ({
       owner = "PrefectHQ";
       repo = "prefect-jupyter";
-      rev = "d60db97fdae1f72bf4bb2d5ac8e9520839417c88";
+      rev = "d7291f989c62bc8baddae0c54c26accf10703334";
       fetchSubmodules = false;
-      sha256 = "sha256-GSqSvn6jiroO/YdUpLp3hDyufk7ihUgAhctixwP1FY8=";
+      sha256 = "sha256-HyypO9MS+3QGluAI+XRuKaJq+SpooGRx8wdWQEF8tL4=";
     });
-    date = "2022-11-19";
+    date = "2022-11-29";
   };
   prefect-latest = {
     pname = "prefect-latest";
-    version = "8885e836ce2bfd205c3894700296070c3375d135";
+    version = "045492f4d2205a0029514f5f00ec7560c06059a8";
     src = fetchFromGitHub ({
       owner = "PrefectHQ";
       repo = "prefect";
-      rev = "8885e836ce2bfd205c3894700296070c3375d135";
+      rev = "045492f4d2205a0029514f5f00ec7560c06059a8";
       fetchSubmodules = false;
-      sha256 = "sha256-sJC1OGjuf2OMZku8ZzjwX45r9P6E642bVrriQIUXAcY=";
+      sha256 = "sha256-At6snEYJ0fObg5JXalOm0MB6qQCQ1FGB3sbeLh7N5PU=";
     });
-    date = "2022-11-29";
+    date = "2022-11-30";
   };
 }
