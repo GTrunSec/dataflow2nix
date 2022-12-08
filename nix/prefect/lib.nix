@@ -11,7 +11,7 @@ in {
     inputs.cells.common.overlays.mach-nix
     __inputs__.npm-buildpackage.overlays.default
   ];
-  mkPrefectJob = {extraPackages ? [], ...}: let
+  mkPrefectJob = {extraPackages ? [], text ? "", ...}: let
     pythonEnv =
       cell.lib.nixpkgs.python3.buildEnv.override
       {
@@ -27,8 +27,6 @@ in {
     writeShellApplication {
       name = "mkPrefecJob";
       runtimeInputs = [pythonEnv];
-      text = ''
-        python "$@"
-      '';
+      inherit text;
     };
 }
