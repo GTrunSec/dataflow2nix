@@ -3,49 +3,49 @@
 {
   prefect = {
     pname = "prefect";
-    version = "2.6.9";
+    version = "2.7.0";
     src = fetchFromGitHub ({
       owner = "PrefectHQ";
       repo = "prefect";
-      rev = "2.6.9";
+      rev = "2.7.0";
       fetchSubmodules = false;
-      sha256 = "sha256-r+0MSgbCwlIhMux0fYL++d5cPXsmMSHRkzW/N+Jb2fU=";
+      sha256 = "sha256-exm+IjWWQj/YV3OyPaGF564+KTanexA5C8K63dc2CNs=";
     });
   };
   prefect-aws = {
     pname = "prefect-aws";
-    version = "1cfcefb0b84e54ddb50682bd9e4aad8de9bed3ca";
+    version = "cdd40bdacec5465050e3fc4f174f4301db294ebc";
     src = fetchFromGitHub ({
       owner = "PrefectHQ";
       repo = "prefect-aws";
-      rev = "1cfcefb0b84e54ddb50682bd9e4aad8de9bed3ca";
+      rev = "cdd40bdacec5465050e3fc4f174f4301db294ebc";
       fetchSubmodules = false;
-      sha256 = "sha256-fWg9n75PdQi8iW7YEv1sCAZOC9BnHnbtcjwfjbruWnY=";
+      sha256 = "sha256-XSJa2EJgH98168n4RHbVE5mYupqDleRoIjiWo7fSik0=";
     });
-    date = "2022-11-29";
+    date = "2022-12-07";
   };
   prefect-jupyter = {
     pname = "prefect-jupyter";
-    version = "d7291f989c62bc8baddae0c54c26accf10703334";
+    version = "6ad26628113225cc8055849e258f64fb59070a6a";
     src = fetchFromGitHub ({
       owner = "PrefectHQ";
       repo = "prefect-jupyter";
-      rev = "d7291f989c62bc8baddae0c54c26accf10703334";
+      rev = "6ad26628113225cc8055849e258f64fb59070a6a";
       fetchSubmodules = false;
-      sha256 = "sha256-HyypO9MS+3QGluAI+XRuKaJq+SpooGRx8wdWQEF8tL4=";
+      sha256 = "sha256-EoyGquOyfzDRbDij0QQy+SKW3hwMlPR9EDOir/dvwQc=";
     });
-    date = "2022-11-29";
+    date = "2022-12-08";
   };
   prefect-latest = {
     pname = "prefect-latest";
-    version = "045492f4d2205a0029514f5f00ec7560c06059a8";
+    version = "7bad9efee34e4c1901a47c557b2b0b70967c2009";
     src = fetchFromGitHub ({
       owner = "PrefectHQ";
       repo = "prefect";
-      rev = "045492f4d2205a0029514f5f00ec7560c06059a8";
+      rev = "7bad9efee34e4c1901a47c557b2b0b70967c2009";
       fetchSubmodules = false;
-      sha256 = "sha256-At6snEYJ0fObg5JXalOm0MB6qQCQ1FGB3sbeLh7N5PU=";
+      sha256 = "sha256-kZoID3t9NibPwwB+H340BCIN6fugNd7cDPP8EfYIC/o=";
     });
-    date = "2022-11-30";
+    date = "2022-12-08";
   };
 }

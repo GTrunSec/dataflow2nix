@@ -25,16 +25,16 @@
       cellsFrom = ./nix;
 
       cellBlocks = with std.blockTypes; [
-        (installables "packages")
-
         (functions "devshellProfiles")
+
         (devshells "devshells")
 
         (runnables "entrypoints")
 
         (functions "lib")
 
-        (functions "packages")
+        (installables "packages" {ci.build = true;})
+
         (functions "nixosModules")
 
         (functions "overlays")
