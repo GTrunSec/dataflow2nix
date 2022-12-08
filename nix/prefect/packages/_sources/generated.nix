@@ -3,13 +3,13 @@
 {
   prefect = {
     pname = "prefect";
-    version = "2.7.0";
+    version = "2.7.1";
     src = fetchFromGitHub ({
       owner = "PrefectHQ";
       repo = "prefect";
-      rev = "2.7.0";
+      rev = "2.7.1";
       fetchSubmodules = false;
-      sha256 = "sha256-exm+IjWWQj/YV3OyPaGF564+KTanexA5C8K63dc2CNs=";
+      sha256 = "sha256-ztEnfLEimshXBDrqgEUpy0JVVHC/7mYdLGTMy6seCCU=";
     });
   };
   prefect-aws = {
@@ -38,14 +38,15 @@
   };
   prefect-latest = {
     pname = "prefect-latest";
-    version = "7bad9efee34e4c1901a47c557b2b0b70967c2009";
-    src = fetchFromGitHub ({
-      owner = "PrefectHQ";
-      repo = "prefect";
-      rev = "7bad9efee34e4c1901a47c557b2b0b70967c2009";
+    version = "33f7de508f740d3afb6bb7ab218ec035c7d40542";
+    src = fetchgit {
+      url = "https://github.com/PrefectHQ/prefect";
+      rev = "33f7de508f740d3afb6bb7ab218ec035c7d40542";
       fetchSubmodules = false;
-      sha256 = "sha256-kZoID3t9NibPwwB+H340BCIN6fugNd7cDPP8EfYIC/o=";
-    });
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-tF9ZA9lvfUhRHFdGRNc6I6qh1FnxNuHhhVnDfkqqjcQ=";
+    };
     date = "2022-12-08";
   };
 }
