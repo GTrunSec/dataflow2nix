@@ -10,42 +10,42 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-    - uses: cachix/install-nix-action@v18
-      with:
-        install_url: https://github.com/numtide/nix-unstable-installer/releases/download/nix-2.12.0pre20220908_c8e8eea/install
-        extra_nix_config: |
-          experimental-features = nix-command flakes
-          system-features = nixos-test benchmark big-parallel kvm recursive-nix
+      - uses: cachix/install-nix-action@v18
+        with:
+          install_url: https://github.com/numtide/nix-unstable-installer/releases/download/nix-2.12.0pre20220908_c8e8eea/install
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            system-features = nixos-test benchmark big-parallel kvm recursive-nix
 
-    # CI workflows
+      # CI workflows
 
-    - name: Run Nix Flake Show
-      run: nix flake show
+      - name: Run Nix Flake Show
+        run: nix flake show
 
-    # - name: Run Nvfetcher Updates
-    #   run: nix develop -Lv -c nvfetcher
+      - name: Run Nvfetcher Updates
+        run: nix develop -Lv -c nvfetcher-prefect
 
-    # - name: test tullia task
-    #   run: nix develop .#tullia --command tullia run nix
+      # - name: test tullia task
+      #   run: nix develop .#tullia --command tullia run nix
 
-    - name: Build with prefect
-      run: nix -Lv build ./#prefect
+      - name: Build with prefect
+        run: nix -Lv build ./#prefect
 
-    - name: Build with prefect-latest
-      run: nix -Lv build ./#prefect-latest
+      - name: Build with prefect-latest
+        run: nix -Lv build ./#prefect-latest
 
-    # - name: Check Airflow Exec
-    #   run: nix -Lv develop -c airflow info
+      # - name: Check Airflow Exec
+      #   run: nix -Lv develop -c airflow info
 
-    # - name: Check Airflow Service
-    #   run: nix build ./#airflow-vm-systemd --print-build-logs
+      # - name: Check Airflow Service
+      #   run: nix build ./#airflow-vm-systemd --print-build-logs
 
-    - name: Commit changes
-      if: ${{ env.COMMIT_MSG != null }}
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: ${{ env.COMMIT_MSG }}
+      - name: Commit changes
+        if: ${{ env.COMMIT_MSG != null }}
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: ${{ env.COMMIT_MSG }}
