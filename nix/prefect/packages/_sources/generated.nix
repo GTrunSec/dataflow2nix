@@ -9,7 +9,7 @@
       repo = "prefect";
       rev = "2.7.1";
       fetchSubmodules = false;
-      sha256 = "sha256-ztEnfLEimshXBDrqgEUpy0JVVHC/7mYdLGTMy6seCCU=";
+      sha256 = "sha256-wv/bs2w0F2Vs9mSi7fgApKpu/tVr4VzAQpoSnu70lwQ=";
     });
   };
   prefect-aws = {
@@ -38,15 +38,15 @@
   };
   prefect-latest = {
     pname = "prefect-latest";
-    version = "ad2960a961b6c4e1a608e9a0227dbe7abce11496";
+    version = "84c77e3cae7870b05b57ce0ab1436766489cf3e6";
     src = fetchgit {
       url = "https://github.com/PrefectHQ/prefect";
-      rev = "ad2960a961b6c4e1a608e9a0227dbe7abce11496";
+      rev = "84c77e3cae7870b05b57ce0ab1436766489cf3e6";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-Vo3xcoLkDjlDAs4j2pOpzBJ1MvFjgBQyUsdxPy06z7E=";
+      sha256 = "sha256-afUmHCbJBTDY7i6mlQvpexpuzgG7loDdFfr6rNGAVv4=";
     };
-    date = "2022-12-09";
+    date = "2022-12-10";
   };
 }
