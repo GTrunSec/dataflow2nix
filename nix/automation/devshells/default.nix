@@ -39,6 +39,15 @@ in
         }
 
         {
+          name = "nvfetcher-malloy";
+          command = ''
+            nix develop github:GTrunSec/cells-lab#update \
+            --refresh --command \
+            nvfetcher-update nix/malloy/packages/sources.toml
+          '';
+          help = "update malloy toolchain with nvfetcher";
+        }
+        {
           name = "nvfetcher-skypilot";
           command = ''
             nix develop github:GTrunSec/cells-lab#update \

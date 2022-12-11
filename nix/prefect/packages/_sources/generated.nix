@@ -38,15 +38,15 @@
   };
   prefect-latest = {
     pname = "prefect-latest";
-    version = "33f7de508f740d3afb6bb7ab218ec035c7d40542";
+    version = "ad2960a961b6c4e1a608e9a0227dbe7abce11496";
     src = fetchgit {
       url = "https://github.com/PrefectHQ/prefect";
-      rev = "33f7de508f740d3afb6bb7ab218ec035c7d40542";
+      rev = "ad2960a961b6c4e1a608e9a0227dbe7abce11496";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-tF9ZA9lvfUhRHFdGRNc6I6qh1FnxNuHhhVnDfkqqjcQ=";
+      sha256 = "sha256-Vo3xcoLkDjlDAs4j2pOpzBJ1MvFjgBQyUsdxPy06z7E=";
     };
-    date = "2022-12-08";
+    date = "2022-12-09";
   };
 }

@@ -1,0 +1,41 @@
+{
+    "malloy-composer": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "malloy-composer",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": true,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "malloydata",
+            "repo": "malloy-composer",
+            "rev": "v0.0.1670541413",
+            "sha256": "sha256-PC+oL/UiIl6SmHXXgXk7kJr1GBTWckkbn2CyddBRXQs=",
+            "type": "github"
+        },
+        "version": "v0.0.1670541413"
+    },
+    "malloy-composer-latest": {
+        "cargoLocks": null,
+        "date": "2022-12-09",
+        "extract": null,
+        "name": "malloy-composer-latest",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": true,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "575468c857ded623fbf5f8afb9d3d46edc56d810",
+            "sha256": "sha256-D6D5oVtbrmH2TbZfzKUYSHKgadheYhSwou4tgIEefyI=",
+            "type": "git",
+            "url": "https://github.com/malloydata/malloy-composer"
+        },
+        "version": "575468c857ded623fbf5f8afb9d3d46edc56d810"
+    }
+}

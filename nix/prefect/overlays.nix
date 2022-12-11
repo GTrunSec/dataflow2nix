@@ -7,6 +7,20 @@ in {
   prefect = final: prev: {
     # Add your overlays here
     prefect-sources = prev.callPackage ./packages/_sources/generated.nix {};
+    prefect = prev.python3Packages.callPackage ./packages/prefect.nix {
+      source = final.prefect-sources.prefect;
+    };
+    prefect-latest = cell.packages.prefect.override {
+      source = final.prefect-sources.prefect-latest;
+    };
+    prefect-poetry = prev.callPackage ({
+      extraPackages ? (_: []),
+      poetry2nix,
+    }:
+      poetry2nix.mkPoetryEnv {
+        projectDir = ./packages/providers;
+        overrides = poetry2nix.overrides.withDefaults (import ./packages/overrides.nix);
+      }) {};
   };
   providers = import ./packages/providers.nix;
 }

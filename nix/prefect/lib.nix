@@ -2,26 +2,41 @@
   inputs,
   cell,
 }: let
+  l = inputs.nixpkgs.lib // builtins;
   inherit (inputs.cells.common.lib) __inputs__;
   inherit (inputs.cells-lab.writers.lib) writeShellApplication;
 in {
-  nixpkgs = inputs.nixpkgs-prefect.legacyPackages.${inputs.nixpkgs.system}.appendOverlays [
+  nixpkgs = inputs.nixpkgs.appendOverlays [
     cell.overlays.prefect
     cell.overlays.providers
-    inputs.cells.common.overlays.mach-nix
+    __inputs__.poetry2nix.overlay
     __inputs__.npm-buildpackage.overlays.default
   ];
-  mkPrefectJob = {extraPackages ? [], text ? "", ...}: let
+
+  mkPrefectJob = {
+    extraLibs ? [],
+    text ? "",
+    providers ? {
+      jupyter = false;
+      aws = false;
+    },
+  }: let
     pythonEnv =
       cell.lib.nixpkgs.python3.buildEnv.override
       {
         extraLibs =
-          [
-            cell.packages.prefect
+          extraLibs
+          ++ [
+            cell.lib.nixpkgs.prefect
+          ]
+          ++ (l.optionals providers.jupyter) [
             cell.lib.nixpkgs.prefect-jupyter
-          ] ++ extraPackages
-          ++ (cell.packages.prefect.passthru.requirements.python.pkgs.selectPkgs
-            cell.packages.prefect.passthru.requirements.python.pkgs);
+            cell.lib.nixpkgs.prefect-aws
+          ]
+          ++ (l.optionals providers.aws) [
+            cell.lib.nixpkgs.prefect-aws
+          ];
+        ignoreCollisions = true;
       };
   in
     writeShellApplication {

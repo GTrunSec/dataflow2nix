@@ -3,14 +3,14 @@
 {
   skypilot = {
     pname = "skypilot";
-    version = "84ed51d70b880a9a9e6bb1dfcaa5f38745411ffe";
+    version = "742c1dc82e62322d4e6d61c68b021b816f6110ad";
     src = fetchFromGitHub ({
       owner = "skypilot-org";
       repo = "skypilot";
-      rev = "84ed51d70b880a9a9e6bb1dfcaa5f38745411ffe";
+      rev = "742c1dc82e62322d4e6d61c68b021b816f6110ad";
       fetchSubmodules = false;
-      sha256 = "sha256-6ixVfDReRGKGt0znLhq4O3NjLbQluvp7zcEOfk6tacE=";
+      sha256 = "sha256-y84ieC5P0KUyh5XISaxW3G/2CWCIbVHfc+maUyTzOs4=";
     });
-    date = "2022-11-15";
+    date = "2022-12-10";
   };
 }

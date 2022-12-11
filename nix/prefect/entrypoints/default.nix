@@ -5,5 +5,10 @@
   inherit (inputs.cells-lab.writers.lib) writeShellApplication;
   inherit (cell.lib) nixpkgs;
 in {
-  simple = cell.lib.mkPrefectJob {};
+  simple = cell.lib.mkPrefectJob {
+    extraLibs = [];
+    text = ''
+      python "$@"
+    '';
+  };
 }

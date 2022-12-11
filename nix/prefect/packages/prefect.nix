@@ -1,10 +1,11 @@
 {
   lib,
-  python3Packages,
+  poetry2nix,
   source,
-  machlib,
   buildNpmPackage,
   python3,
+  extraPackages ? (_: []),
+  groups ? [],
 }: let
   frontend = buildNpmPackage {
     name = "prefect-frontend";
@@ -14,19 +15,22 @@
       npm run build
     '';
   };
-  requirements = machlib.mkPython rec {
-    requirements = builtins.readFile (source.src + "/requirements.txt");
-    python = "python${builtins.replaceStrings ["."] [""] python3.pythonVersion}";
-    providers = {};
-  };
 in
-  python3Packages.buildPythonPackage {
+  # python3Packages.buildPythonPackage {
+  (poetry2nix.mkPoetryApplication {
+    projectDir = ./.;
     inherit (source) src version pname;
-    propagatedBuildInputs = with python3Packages; [requirements];
+
+    overrides = poetry2nix.overrides.withDefaults (import ./overrides.nix);
+
+    inherit groups;
+
     passthru = {
-      inherit requirements frontend;
+      inherit frontend;
     };
+
     doCheck = false;
+
     preConfigure = ''
       sed -i 's|__module_path__ / "orion" / "ui"|"${frontend}"|' src/prefect/__init__.py
     '';
@@ -38,4 +42,11 @@ in
       homepage = "https://github.com/PrefectHQ/prefect";
       license = licenses.asl20;
     };
-  }
+  })
+  .overridePythonAttrs (old: {
+    passthru =
+      old.passthru
+      // {
+        inherit frontend;
+      };
+  })

@@ -1,0 +1,9 @@
+[malloy-composer]
+src.github_tag = "malloydata/malloy-composer"
+fetch.github = "malloydata/malloy-composer"
+git.fetchSubmodules = true
+
+[malloy-composer-latest]
+src.git = "https://github.com/malloydata/malloy-composer"
+fetch.git = "https://github.com/malloydata/malloy-composer"
+git.fetchSubmodules = true
