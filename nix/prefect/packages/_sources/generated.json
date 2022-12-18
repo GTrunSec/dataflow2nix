@@ -13,11 +13,11 @@
             "name": null,
             "owner": "PrefectHQ",
             "repo": "prefect",
-            "rev": "2.7.1",
-            "sha256": "sha256-wv/bs2w0F2Vs9mSi7fgApKpu/tVr4VzAQpoSnu70lwQ=",
+            "rev": "2.7.3",
+            "sha256": "sha256-i73iX3+gy5+FgpFFbg+YwiBZxxcWKmhmmhaiPRtuCVI=",
             "type": "github"
         },
-        "version": "2.7.1"
+        "version": "2.7.3"
     },
     "prefect-aws": {
         "cargoLocks": null,
@@ -61,7 +61,7 @@
     },
     "prefect-latest": {
         "cargoLocks": null,
-        "date": "2022-12-10",
+        "date": "2022-12-17",
         "extract": null,
         "name": "prefect-latest",
         "passthru": null,
@@ -71,11 +71,11 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "84c77e3cae7870b05b57ce0ab1436766489cf3e6",
-            "sha256": "sha256-afUmHCbJBTDY7i6mlQvpexpuzgG7loDdFfr6rNGAVv4=",
+            "rev": "9eb05f2a7036ad1be96a65abae575bf88b55b5cc",
+            "sha256": "sha256-0SqqMzXQMI5LfDTymry21K8LRR4bFBZGJx4Y7hEoWH8=",
             "type": "git",
             "url": "https://github.com/PrefectHQ/prefect"
         },
-        "version": "84c77e3cae7870b05b57ce0ab1436766489cf3e6"
+        "version": "9eb05f2a7036ad1be96a65abae575bf88b55b5cc"
     }
 }
