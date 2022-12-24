@@ -3,14 +3,14 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     cells-lab.url = "github:GTrunSec/cells-lab";
 
-    std.url = "github:divnix/std";
+    std.follows = "cells-lab/std";
     std.inputs.nixpkgs.follows = "nixpkgs";
     std.inputs.arion.follows = "arion";
   };
 
   inputs = {
-    # tullia.url = "github:input-output-hk/tullia";
-    tullia.url = "github:input-output-hk/tullia?ref=refs/pull/9/head";
+    tullia.url = "github:input-output-hk/tullia";
+    # tullia.url = "github:input-output-hk/tullia?ref=refs/pull/9/head";
     tullia.inputs.nixpkgs.follows = "nixpkgs";
 
     arion.url = "github:hercules-ci/arion";
