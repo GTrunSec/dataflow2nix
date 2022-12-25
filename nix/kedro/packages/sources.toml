@@ -1,0 +1,12 @@
+[kedro]
+src.github_tag = "kedro-org/kedro"
+fetch.github = "kedro-org/kedro"
+
+[kedro-latest]
+src.git = "https://github.com/kedro-org/kedro"
+fetch.git = "https://github.com/kedro-org/kedro"
+
+[kedro-viz]
+src.git = "https://github.com/kedro-org/kedro-viz"
+fetch.github = "kedro-org/kedro-viz"
+

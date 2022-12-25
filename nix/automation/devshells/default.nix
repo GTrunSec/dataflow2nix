@@ -58,6 +58,15 @@ in
         }
 
         {
+          name = "nvfetcher-kedro";
+          command = ''
+            nix develop github:GTrunSec/cells-lab#update \
+            --refresh --command \
+            nvfetcher-update nix/kedro/packages/sources.toml
+          '';
+          help = "update kedro toolchain with nvfetcher";
+        }
+        {
           package = nixpkgs.nsjail;
         }
         {
