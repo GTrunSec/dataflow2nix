@@ -661,7 +661,7 @@ testing = ["Django (<3.1)", "attrs", "colorama", "docopt", "pytest (<7.0.0)"]
 name = "jinja2"
 version = "3.1.2"
 description = "A very fast and expressive template engine."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -1595,7 +1595,7 @@ test = ["websockets"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "12a0832ff07d2abcff7df8dddd7087cbc4500bb20c13042c85d0ef812a7aac66"
+content-hash = "33fa95e88bce7a078de3eb6ade4174be4b32ecc7f26a1322636fcec53ea505c2"
 
 [metadata.files]
 aiosqlite = [
