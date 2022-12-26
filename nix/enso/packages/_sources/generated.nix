@@ -3,14 +3,30 @@
 {
   enso = {
     pname = "enso";
-    version = "f225a962ce8678e3d533d8727d54ae79197a9ef6";
+    version = "37af06b14d86d4b888fb30778067e0a025b91c9c";
     src = fetchFromGitHub ({
       owner = "enso-org";
       repo = "enso";
-      rev = "f225a962ce8678e3d533d8727d54ae79197a9ef6";
+      rev = "37af06b14d86d4b888fb30778067e0a025b91c9c";
       fetchSubmodules = false;
-      sha256 = "sha256-zflGkNAxiFxZ7AJnREK6mVsXJBW5CIQ4iDWLEQ88WuQ=";
+      sha256 = "sha256-nH4F1MW1skjjBBvmie0kqthlXeMfFyJo0RcIaxtiG/M=";
     });
-    date = "2022-11-24";
+    date = "2022-12-23";
+  };
+  enso-appimage = {
+    pname = "enso-appimage";
+    version = "2022.6.1";
+    src = fetchurl {
+      url = "https://github.com/enso-org/enso/releases/download/2022.7.1-nightly.2022.12.24/enso-linux-2022.7.1-nightly.2022.12.24.AppImage";
+      sha256 = "sha256-ezb/11hCuEsBtJ6pWlSBjfxXClIP5mS72wvsAnAgm0c=";
+    };
+  };
+  enso-engine = {
+    pname = "enso-engine";
+    version = "2022.6.1";
+    src = fetchurl {
+      url = "https://github.com/enso-org/enso/releases/download/2022.7.1-nightly.2022.12.24/enso-engine-2022.7.1-nightly.2022.12.24-linux-amd64.tar.gz";
+      sha256 = "sha256-K62hOESbMsZMd00LMKyDMf72+ZktkK/tiCSOQp+0Ik4=";
+    };
   };
 }

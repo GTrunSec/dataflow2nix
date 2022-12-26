@@ -18,61 +18,31 @@ in
         cell.nixago.mdbook
         cell.nixago.treefmt
       ];
-      commands = [
-        {
-          name = "nvfetcher-airflow";
-          command = ''
-            nix develop github:GTrunSec/cells-lab#update \
-            --refresh --command \
-            nvfetcher-update nix/airflow/packages/sources.toml
-          '';
-          help = "update airflow toolchain with nvfetcher";
-        }
-        {
-          name = "nvfetcher-prefect";
-          command = ''
-            nix develop github:GTrunSec/cells-lab#update \
-            --refresh --command \
-            nvfetcher-update nix/prefect/packages/sources.toml
-          '';
-          help = "update prefect toolchain with nvfetcher";
-        }
-
-        {
-          name = "nvfetcher-malloy";
-          command = ''
-            nix develop github:GTrunSec/cells-lab#update \
-            --refresh --command \
-            nvfetcher-update nix/malloy/packages/sources.toml
-          '';
-          help = "update malloy toolchain with nvfetcher";
-        }
-        {
-          name = "nvfetcher-skypilot";
-          command = ''
-            nix develop github:GTrunSec/cells-lab#update \
-            --refresh --command \
-            nvfetcher-update nix/skypilot/packages/sources.toml
-          '';
-          help = "update skypilot toolchain with nvfetcher";
-        }
-
-        {
-          name = "nvfetcher-kedro";
-          command = ''
-            nix develop github:GTrunSec/cells-lab#update \
-            --refresh --command \
-            nvfetcher-update nix/kedro/packages/sources.toml
-          '';
-          help = "update kedro toolchain with nvfetcher";
-        }
-        {
-          package = nixpkgs.nsjail;
-        }
-        {
-          package = inputs.arion.packages.${nixpkgs.system}.arion;
-        }
-      ];
+      commands =
+        [
+          {
+            package = nixpkgs.nsjail;
+          }
+          {
+            package = inputs.arion.packages.${nixpkgs.system}.arion;
+          }
+        ]
+        ++ (map (x: {
+            name = "nvfetcher-${x}";
+            command = ''
+              nix develop github:GTrunSec/cells-lab#update \
+              --refresh --command \
+              nvfetcher-update nix/${x}/packages/sources.toml
+            '';
+            help = "update ${x} toolchain with nvfetcher";
+          }) [
+            "airflow"
+            "prefect"
+            "malloy"
+            "skypilot"
+            "kedro"
+            "enso"
+          ]);
     };
     tullia = {
       imports = [inputs.cells.tullia.devshellProfiles.default];

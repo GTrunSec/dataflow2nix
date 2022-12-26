@@ -2,3 +2,13 @@
 [enso]
 src.git = "https://github.com/enso-org/enso"
 fetch.github = "enso-org/enso"
+
+[enso-appimage]
+src.github = "enso-org/enso"
+fetch.url = "https://github.com/enso-org/enso/releases/download/2022.7.1-nightly.2022.12.24/enso-linux-2022.7.1-nightly.2022.12.24.AppImage"
+# https://github.com/enso-org/enso/releases/download/2022.7.1-nightly.2022.12.24/enso-linux-2022.7.1-nightly.2022.12.24.AppImage
+src.prefix = "v"
+
+[enso-engine]
+src.github = "enso-org/enso"
+fetch.url = "https://github.com/enso-org/enso/releases/download/2022.7.1-nightly.2022.12.24/enso-engine-2022.7.1-nightly.2022.12.24-linux-amd64.tar.gz"

@@ -4,5 +4,5 @@
 }: let
   inherit (cell.lib) nixpkgs;
 in {
-  inherit (nixpkgs) enso;
+  inherit (nixpkgs) enso enso-appimage;
 }
