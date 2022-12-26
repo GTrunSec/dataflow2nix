@@ -6,19 +6,8 @@
   python3,
   extraPackages ? (_: []),
   groups ? [],
-  pip-tools,
-  setuptools,
-  fetchPypi,
-  fetchFromGitHub,
+  kedro-sources,
 }: let
-  frontend = buildNpmPackage {
-    name = "kedro-viz";
-    src = source.src;
-    installPhase = "cp -r dist $out";
-    npmBuild = ''
-      npm run build
-    '';
-  };
 in
   # python3Packages.buildPythonPackage {
   (poetry2nix.mkPoetryApplication {
@@ -27,14 +16,9 @@ in
 
     overrides = poetry2nix.overrides.withDefaults (import ./overrides.nix);
 
-
     propagatedBuildInputs = [];
 
     inherit groups;
-
-    passthru = {
-      inherit frontend;
-    };
 
     doCheck = false;
 
@@ -53,11 +37,4 @@ in
       homepage = "https://github.com/kedro-org/kedro";
       license = licenses.asl20;
     };
-  })
-  .overridePythonAttrs (old: {
-    passthru =
-      old.passthru
-      // {
-        inherit frontend;
-      };
   })

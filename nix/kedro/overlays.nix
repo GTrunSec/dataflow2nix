@@ -11,6 +11,8 @@ in {
     kedro = prev.python3Packages.callPackage ./packages/kedro.nix {
       source = final.kedro-sources.kedro;
     };
+
+    kedro-viz = prev.python3Packages.callPackage ./packages/kedro-viz.nix {};
     kedro-latest = cell.packages.kedro.override {
       source = final.kedro-sources.kedro-latest;
     };
