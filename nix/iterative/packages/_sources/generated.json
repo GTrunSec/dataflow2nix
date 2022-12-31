@@ -1,0 +1,177 @@
+{
+    "dvc": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "dvc",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "iterative",
+            "repo": "dvc",
+            "rev": "2.38.1",
+            "sha256": "sha256-GJoPorv2tpmZW5Cqta1o9yic8FdHHQCUkO48hWReCG8=",
+            "type": "github"
+        },
+        "version": "2.38.1"
+    },
+    "dvc-data": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "dvc-data",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "iterative",
+            "repo": "dvc-data",
+            "rev": "0.28.4",
+            "sha256": "sha256-ocwOIhguH460+HJ0sE5Wj+KOiyG4NprJ+QaO+YtfTGU=",
+            "type": "github"
+        },
+        "version": "0.28.4"
+    },
+    "dvc-http": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "dvc-http",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "iterative",
+            "repo": "dvc-http",
+            "rev": "2.28.0",
+            "sha256": "sha256-3lis5YtZU6w3j1E8lyt0+F5DuSDnMsqKY2NvLKoWHy4=",
+            "type": "github"
+        },
+        "version": "2.28.0"
+    },
+    "dvc-latest": {
+        "cargoLocks": null,
+        "date": "2022-12-30",
+        "extract": null,
+        "name": "dvc-latest",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "iterative",
+            "repo": "dvc",
+            "rev": "f386f7c082717f986e2bbd8b53e05eb87616ccb2",
+            "sha256": "sha256-l3+hthlvIb5pl1D7htMBWpsuOZnq2KQo3b85zeSGTKU=",
+            "type": "github"
+        },
+        "version": "f386f7c082717f986e2bbd8b53e05eb87616ccb2"
+    },
+    "dvc-objects": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "dvc-objects",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "iterative",
+            "repo": "dvc-objects",
+            "rev": "0.14.0",
+            "sha256": "sha256-Refpekyr114mIGvbaAynxldA+s83EtALeLoTQO73b/M=",
+            "type": "github"
+        },
+        "version": "0.14.0"
+    },
+    "dvc-render": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "dvc-render",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "iterative",
+            "repo": "dvc-render",
+            "rev": "0.0.17",
+            "sha256": "sha256-GDfrkcKP/EZZ/ONZ2Afoxj4Q8sp8mRmtZf93kXcNQcg=",
+            "type": "github"
+        },
+        "version": "0.0.17"
+    },
+    "dvc-task": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "dvc-task",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "iterative",
+            "repo": "dvc-task",
+            "rev": "0.1.9",
+            "sha256": "sha256-+v1M8bKcHWUTz4DJ85tB1qdFYKI0k8TS/Dvf166o920=",
+            "type": "github"
+        },
+        "version": "0.1.9"
+    },
+    "dvclive": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "dvclive",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-dRRXZP+sBISybJv4fmtTju/aZuK87iRuIo9ufnHUsqI=",
+            "type": "url",
+            "url": "https://pypi.io/packages/source/d/dvclive/dvclive-1.3.0.tar.gz"
+        },
+        "version": "1.3.0"
+    },
+    "iterative-telemetry": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "iterative-telemetry",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "iterative",
+            "repo": "iterative-telemetry",
+            "rev": "0.0.6",
+            "sha256": "sha256-ZZgXeX0uvV+4IzMw5z4l2XlI56+bRS4nB1EEpxdexMA=",
+            "type": "github"
+        },
+        "version": "0.0.6"
+    }
+}

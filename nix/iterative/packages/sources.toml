@@ -1,0 +1,36 @@
+# nvfetcher.toml
+[dvc]
+src.github_tag = "iterative/dvc"
+fetch.github = "iterative/dvc"
+
+[dvc-latest]
+src.git = "https://github.com/iterative/dvc"
+fetch.github = "iterative/dvc"
+
+[dvc-render]
+src.github_tag = "iterative/dvc-render"
+fetch.github = "iterative/dvc-render"
+
+[dvc-objects]
+src.github_tag = "iterative/dvc-objects"
+fetch.github = "iterative/dvc-objects"
+
+[dvc-http]
+src.github_tag = "iterative/dvc-http"
+fetch.github = "iterative/dvc-http"
+
+[dvc-data]
+src.github_tag = "iterative/dvc-data"
+fetch.github = "iterative/dvc-data"
+
+[dvc-task]
+src.github_tag = "iterative/dvc-task"
+fetch.github = "iterative/dvc-task"
+
+[iterative-telemetry]
+src.github_tag = "iterative/iterative-telemetry"
+fetch.github = "iterative/iterative-telemetry"
+
+[dvclive]
+src.pypi = "dvclive"
+fetch.pypi = "dvclive"

@@ -9,4 +9,3 @@ fetch.git = "https://github.com/kedro-org/kedro"
 [kedro-viz]
 src.git = "https://github.com/kedro-org/kedro-viz"
 fetch.github = "kedro-org/kedro-viz"
-
