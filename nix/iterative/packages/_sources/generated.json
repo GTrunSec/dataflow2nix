@@ -61,7 +61,7 @@
     },
     "dvc-latest": {
         "cargoLocks": null,
-        "date": "2022-12-30",
+        "date": "2023-01-03",
         "extract": null,
         "name": "dvc-latest",
         "passthru": null,
@@ -73,11 +73,11 @@
             "name": null,
             "owner": "iterative",
             "repo": "dvc",
-            "rev": "f386f7c082717f986e2bbd8b53e05eb87616ccb2",
-            "sha256": "sha256-l3+hthlvIb5pl1D7htMBWpsuOZnq2KQo3b85zeSGTKU=",
+            "rev": "4b0fa4d5591bba19da0026ead202a8b7fd278812",
+            "sha256": "sha256-VcpbcY5xYNJZhKPbeQv7eZyTAPT9v2HKyEizEzezEZc=",
             "type": "github"
         },
-        "version": "f386f7c082717f986e2bbd8b53e05eb87616ccb2"
+        "version": "4b0fa4d5591bba19da0026ead202a8b7fd278812"
     },
     "dvc-objects": {
         "cargoLocks": null,
@@ -148,11 +148,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-dRRXZP+sBISybJv4fmtTju/aZuK87iRuIo9ufnHUsqI=",
+            "sha256": "sha256-vpzYeGtWQ46iE0fFKgbNKRICRXdaNwHMeDzHM2Lplc0=",
             "type": "url",
-            "url": "https://pypi.io/packages/source/d/dvclive/dvclive-1.3.0.tar.gz"
+            "url": "https://pypi.io/packages/source/d/dvclive/dvclive-1.3.1.tar.gz"
         },
-        "version": "1.3.0"
+        "version": "1.3.1"
     },
     "iterative-telemetry": {
         "cargoLocks": null,

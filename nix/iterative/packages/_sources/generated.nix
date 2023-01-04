@@ -36,15 +36,15 @@
   };
   dvc-latest = {
     pname = "dvc-latest";
-    version = "f386f7c082717f986e2bbd8b53e05eb87616ccb2";
+    version = "4b0fa4d5591bba19da0026ead202a8b7fd278812";
     src = fetchFromGitHub ({
       owner = "iterative";
       repo = "dvc";
-      rev = "f386f7c082717f986e2bbd8b53e05eb87616ccb2";
+      rev = "4b0fa4d5591bba19da0026ead202a8b7fd278812";
       fetchSubmodules = false;
-      sha256 = "sha256-l3+hthlvIb5pl1D7htMBWpsuOZnq2KQo3b85zeSGTKU=";
+      sha256 = "sha256-VcpbcY5xYNJZhKPbeQv7eZyTAPT9v2HKyEizEzezEZc=";
     });
-    date = "2022-12-30";
+    date = "2023-01-03";
   };
   dvc-objects = {
     pname = "dvc-objects";
@@ -81,10 +81,10 @@
   };
   dvclive = {
     pname = "dvclive";
-    version = "1.3.0";
+    version = "1.3.1";
     src = fetchurl {
-      url = "https://pypi.io/packages/source/d/dvclive/dvclive-1.3.0.tar.gz";
-      sha256 = "sha256-dRRXZP+sBISybJv4fmtTju/aZuK87iRuIo9ufnHUsqI=";
+      url = "https://pypi.io/packages/source/d/dvclive/dvclive-1.3.1.tar.gz";
+      sha256 = "sha256-vpzYeGtWQ46iE0fFKgbNKRICRXdaNwHMeDzHM2Lplc0=";
     };
   };
   iterative-telemetry = {
