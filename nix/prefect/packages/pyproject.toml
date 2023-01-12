@@ -42,6 +42,7 @@ typer = ">=0.4.2"
 typing-extensions = ">=4.1.0"
 uvicorn = ">=0.14.0"
 jinja2 = "^3.1.2"
+dateparser = "^1.1.5"
 
 [tool.poetry.group.jupyter.dependencies]
 ipykernel = "^6.19.2"

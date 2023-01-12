@@ -3,50 +3,50 @@
 {
   prefect = {
     pname = "prefect";
-    version = "2.7.4";
+    version = "2.7.7";
     src = fetchFromGitHub ({
       owner = "PrefectHQ";
       repo = "prefect";
-      rev = "2.7.4";
+      rev = "2.7.7";
       fetchSubmodules = false;
-      sha256 = "sha256-jzG+A+oXrX35vNJePvDNIr+dKD+P1RKR5777IeT6dMQ=";
+      sha256 = "sha256-bUbAQD+NCUJC+eaMM8Hrd+pNKJ9RQ+C9vN8F9mUgLWI=";
     });
   };
   prefect-aws = {
     pname = "prefect-aws";
-    version = "cdd40bdacec5465050e3fc4f174f4301db294ebc";
+    version = "893d026d3a4f48180879697c571b9f33675b8bcb";
     src = fetchFromGitHub ({
       owner = "PrefectHQ";
       repo = "prefect-aws";
-      rev = "cdd40bdacec5465050e3fc4f174f4301db294ebc";
+      rev = "893d026d3a4f48180879697c571b9f33675b8bcb";
       fetchSubmodules = false;
-      sha256 = "sha256-XSJa2EJgH98168n4RHbVE5mYupqDleRoIjiWo7fSik0=";
+      sha256 = "sha256-VQx6umt0SwZTfnyQ0dJ9L/8M6pw0fRd46UljZQDPlfY=";
     });
-    date = "2022-12-07";
+    date = "2023-01-06";
   };
   prefect-jupyter = {
     pname = "prefect-jupyter";
-    version = "6ad26628113225cc8055849e258f64fb59070a6a";
+    version = "cc28cc12d108803828e706b59fc18261f3aa6f8c";
     src = fetchFromGitHub ({
       owner = "PrefectHQ";
       repo = "prefect-jupyter";
-      rev = "6ad26628113225cc8055849e258f64fb59070a6a";
+      rev = "cc28cc12d108803828e706b59fc18261f3aa6f8c";
       fetchSubmodules = false;
-      sha256 = "sha256-EoyGquOyfzDRbDij0QQy+SKW3hwMlPR9EDOir/dvwQc=";
+      sha256 = "sha256-L32+Ekwyy47nOE50teMcOFnM/yWtrJmyt58j1e4jAIE=";
     });
-    date = "2022-12-08";
+    date = "2023-01-09";
   };
   prefect-latest = {
     pname = "prefect-latest";
-    version = "7f86749d76c075bbfd38afc01dd61f758b3cbc19";
+    version = "8b54496506311674be27d992e6c1fb4ee987800f";
     src = fetchgit {
       url = "https://github.com/PrefectHQ/prefect";
-      rev = "7f86749d76c075bbfd38afc01dd61f758b3cbc19";
+      rev = "8b54496506311674be27d992e6c1fb4ee987800f";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-+uLsgEQ0rcYACQcp45MnDaA6fUfB4g5q4BZdSZZZAC4=";
+      sha256 = "sha256-tV6jyggOqkxifIaShdposGHrnjptjfm48aNUj5Nahpw=";
     };
-    date = "2022-12-23";
+    date = "2023-01-11";
   };
 }
