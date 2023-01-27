@@ -7,7 +7,7 @@
     command = {inherit type text;};
   };
 in {
-    ci = {
+  ci = {
     config ? {},
     pkgs,
     ...
@@ -37,7 +37,7 @@ in {
     };
 
   format-nix =
-    cmd "shell" "alejandra flake.nix"
+    cmd "shell" "treefmt"
     // {
       dependencies = [nixpkgs.alejandra];
     };
