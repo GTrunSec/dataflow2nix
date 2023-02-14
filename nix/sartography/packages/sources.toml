@@ -1,0 +1,3 @@
+[spiffworkflow]
+src.github_tag = "sartography/SpiffWorkflow"
+fetch.github = "sartography/SpiffWorkflow"
