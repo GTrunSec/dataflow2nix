@@ -6,6 +6,25 @@ final: prev: let
   };
 in
   {
+    cryptography = prev.cryptography.overridePythonAttrs (old: {
+      cargoDeps = with old;
+        prev.pkgs.rustPlatform.fetchCargoTarball {
+          inherit (old) src;
+          sourceRoot = "${pname}-${version}/${cargoRoot}";
+          name = "${pname}-${version}";
+          hash = "sha256-0x+KIqJznDEyIUqVuYfIESKmHBWfzirPeX2R/cWlngc=";
+        };
+    });
+    orjson = prev.orjson.overridePythonAttrs (old: {
+      cargoDeps = with old;
+        prev.pkgs.rustPlatform.fetchCargoTarball {
+          inherit (old) src;
+          sourceRoot = "${pname}-${version}";
+          name = "${pname}-${version}";
+          hash = "sha256-8T//q6nQoZhh8oJWDCeQf3gYRew58dXAaxkYELY4CJM=";
+        };
+    });
+
     apprise = prev.apprise.overridePythonAttrs (attrs: {
       format = "setuptools";
       nativeBuildInputs =
