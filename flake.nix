@@ -6,6 +6,7 @@
     std.follows = "cells-lab/std";
     std.inputs.nixpkgs.follows = "nixpkgs";
     std.inputs.arion.follows = "arion";
+    std-data-collection.follows = "cells-lab/std-data-collection";
   };
 
   inputs = {

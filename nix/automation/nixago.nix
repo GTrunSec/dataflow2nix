@@ -2,21 +2,21 @@
   inputs,
   cell,
 }: let
-  inherit (inputs) std;
+  inherit (inputs) std std-data-collection;
 in {
-  mdbook = std.presets.nixago.mdbook {
-    configData = {
+  mdbook = std-data-collection.data.configs.mdbook {
+    data = {
       book.title = "dataflow2nix";
     };
   };
 
-  treefmt = std.presets.nixago.treefmt {
-    configData.formatter.nix = {
+  treefmt = std-data-collection.data.configs.treefmt {
+    data.formatter.nix = {
       excludes = [
         "generated.nix"
       ];
     };
-    configData.formatter.prettier = {
+    data.formatter.prettier = {
       excludes = [
         "generated.json"
       ];
