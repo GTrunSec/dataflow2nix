@@ -6,6 +6,10 @@
 in {
   spiffworkflow = final: prev: {
     # Add your overlays here
-    spiffworkflow-sources = prev.callPackage ./packages/_sources/generated.nix {};
+    starography-sources = prev.callPackage ./packages/_sources/generated.nix {};
+
+    spiffworkflow = prev.callPackage ./packages/spiffworkflow {
+      source = final.starography-sources.spiffworkflow;
+    };
   };
 }

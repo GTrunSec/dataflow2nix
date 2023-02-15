@@ -5,7 +5,8 @@
   inherit (inputs.cells.common.lib) __inputs__;
   inherit (inputs.cells-lab.writers.lib) writeShellApplication;
 in {
-  nixpkgs = inputs.nixpkgs-prefect.legacyPackages.${inputs.nixpkgs.system}.appendOverlays [
+  nixpkgs = inputs.nixpkgs.appendOverlays [
     cell.overlays.spiffworkflow
+    __inputs__.poetry2nix.overlay
   ];
 }

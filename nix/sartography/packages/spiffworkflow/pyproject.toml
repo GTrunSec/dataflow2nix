@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "spiffworkflow"
+version = "0.1.0"
+description = ""
+authors = ["guangtao <gtrunsec@hardenedlinux.org>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+coverage = "^7.1.0"
+lxml = "^4.9.2"
+setuptools = ">=59.1"
+celery = "^5.2.7"
+configparser = "^5.3.0"
+dateparser = "^1.1.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
