@@ -23,8 +23,8 @@ jobs:
       - name: Run Nix Flake Show
         run: nix flake show
 
-      - name: Run Nvfetcher Updates
-        run: nix develop -Lv -c nvfetcher-prefect
+      # - name: Run Nvfetcher Updates
+      #   run: nix develop -Lv -c nvfetcher-prefect
 
       # - name: test tullia task
       #   run: nix develop .#tullia --command tullia run nix

@@ -14,8 +14,6 @@
 
   overrides = poetry2nix.overrides.withDefaults (import ./overrides.nix);
 
-  preferWheel = true;
-
   inherit groups;
 
   meta = with lib; {

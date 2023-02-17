@@ -49,4 +49,9 @@ in
     tullia = {
       imports = [inputs.cells.tullia.devshellProfiles.default];
     };
+    dev = {
+      imports = [
+        inputs.cells.sartography.devshellProfiles.default
+      ];
+    };
   }
