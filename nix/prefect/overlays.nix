@@ -15,7 +15,7 @@ in {
     };
     prefect-poetry = prev.callPackage ({poetry2nix}:
       poetry2nix.mkPoetryEnv {
-        projectDir = ./packages/providers;
+        projectDir = ./packages;
         overrides = poetry2nix.overrides.withDefaults (import ./packages/overrides.nix);
       }) {};
   };
