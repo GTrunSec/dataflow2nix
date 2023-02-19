@@ -46,3 +46,5 @@ in
   }
   // addNativeBuildInputs "coolname" [final.setuptools]
   // addNativeBuildInputs "asgi-lifespan" [final.setuptools]
+  ## aws
+  // addNativeBuildInputs "mypy-boto3-secretsmanager" [final.setuptools]

@@ -6,6 +6,7 @@
   python3,
   extraPackages ? (_: []),
   groups ? [],
+  overrides ? [],
 }: let
   frontend = buildNpmPackage {
     name = "prefect-frontend";
@@ -21,7 +22,7 @@ in
     projectDir = ./.;
     inherit (source) src version pname;
 
-    overrides = poetry2nix.overrides.withDefaults (import ./overrides.nix);
+    overrides = (poetry2nix.overrides.withDefaults (import ./overrides.nix)) ++ overrides;
 
     inherit groups;
 
