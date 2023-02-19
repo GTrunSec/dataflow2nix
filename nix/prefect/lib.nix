@@ -8,7 +8,6 @@
 in {
   nixpkgs = inputs.nixpkgs.appendOverlays [
     cell.overlays.prefect
-    cell.overlays.providers
     __inputs__.poetry2nix.overlay
     __inputs__.npm-buildpackage.overlays.default
   ];
