@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       bd955aa1-0975-494d-8f0e-12a153ef2694
+:END:
+#+TITLE: rath
+#+AUTHOR: GuangTao Zhang
+#+EMAIL: gtrunsec@hardenedlinux.org
+#+DATE: 2023-02-15 Wed 20:42
+
+* [[https://github.com/Kanaries/Rath][“Kanaries/Rath: Automated data exploratory analysis and visualization tools.”🔊]]

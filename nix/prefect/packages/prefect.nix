@@ -48,5 +48,6 @@ in
       old.passthru
       // {
         inherit frontend;
+        pyproject = lib.importTOML ./pyproject.toml;
       };
   })

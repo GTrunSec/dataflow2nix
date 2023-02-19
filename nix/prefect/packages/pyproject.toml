@@ -47,13 +47,10 @@ jsonschema = { version = ">=3.2.0,<5.0.0" }
 websockets = ">=10.4"
 
 [tool.poetry.group.jupyter.dependencies]
-ipykernel = "^6.19.2"
-papermill = "^2.4.0"
-nbconvert = "^7.2.6"
+prefect-jupyter = { git = "https://github.com/PrefectHQ/prefect-jupyter" }
 
 [tool.poetry.group.aws.dependencies]
-botocore = "^1.29.27"
-boto3 = "^1.26.27"
+prefect-aws = { git = "https://github.com/PrefectHQ/prefect-aws" }
 
 [build-system]
 requires = ["poetry-core"]
