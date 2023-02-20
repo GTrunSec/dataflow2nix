@@ -7,6 +7,7 @@
   extraPackages ? (_: []),
   groups ? [],
   overrides ? [],
+  preferWheels ? true,
 }: let
   frontend = buildNpmPackage {
     name = "prefect-frontend";
@@ -17,14 +18,14 @@
     '';
   };
 in
-  # python3Packages.buildPythonPackage {
   (poetry2nix.mkPoetryApplication {
     projectDir = ./.;
+
     inherit (source) src version pname;
 
-    overrides = (poetry2nix.overrides.withDefaults (import ./overrides.nix)) ++ overrides;
+    inherit groups preferWheels;
 
-    inherit groups;
+    overrides = (import ./overrides.nix poetry2nix);
 
     passthru = {
       inherit frontend;
@@ -49,6 +50,5 @@ in
       old.passthru
       // {
         inherit frontend;
-        pyproject = lib.importTOML ./pyproject.toml;
       };
   })
