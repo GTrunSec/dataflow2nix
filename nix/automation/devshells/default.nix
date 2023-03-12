@@ -30,7 +30,7 @@ in
         ++ (map (x: {
             name = "nvfetcher-${x}";
             command = ''
-              nix develop github:GTrunSec/cells-lab#update \
+              nix develop github:GTrunSec/std-ext#update \
               --refresh --command \
               nvfetcher-update nix/${x}/packages/sources.toml
             '';

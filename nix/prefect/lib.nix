@@ -4,7 +4,7 @@
 }: let
   l = inputs.nixpkgs.lib // builtins;
   inherit (inputs.cells.common.lib) __inputs__;
-  inherit (inputs.cells-lab.writers.lib) writeShellApplication;
+  inherit (inputs.std-ext.writers.lib) writeShellApplication;
 in {
   nixpkgs = inputs.nixpkgs.appendOverlays [
     cell.overlays.prefect

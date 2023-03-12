@@ -1,12 +1,12 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    cells-lab.url = "github:GTrunSec/cells-lab";
+    std-ext.url = "github:GTrunSec/std-ext";
 
-    std.follows = "cells-lab/std";
+    std.follows = "std-ext/std";
     std.inputs.nixpkgs.follows = "nixpkgs";
     std.inputs.arion.follows = "arion";
-    std-data-collection.follows = "cells-lab/std-data-collection";
+    std-data-collection.follows = "std-ext/std-data-collection";
   };
 
   inputs = {

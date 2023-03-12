@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/f1ffcf798e93b169321106a4aef79526a2b4bd0a";
+    nixpkgs.url = "github:NixOS/nixpkgs/796b4a3c1d903c4b9270cd2548fe46f524eeb886";
     npm-buildpackage.url = "github:serokell/nix-npm-buildpackage";
     npm-buildpackage.inputs.nixpkgs.follows = "nixpkgs";
 
