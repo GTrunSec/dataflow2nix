@@ -42,5 +42,4 @@ poetry2nix: let
       preferWheel = false;
     };
   };
-in
-  [preOverlay poetry2nix.defaultPoetryOverrides postOverlay]
+in [preOverlay poetry2nix.defaultPoetryOverrides postOverlay]

@@ -25,7 +25,7 @@ in
 
     inherit groups preferWheels;
 
-    overrides = (import ./overrides.nix poetry2nix);
+    overrides = import ./overrides.nix poetry2nix;
 
     passthru = {
       inherit frontend;

@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "prefect-poetry-dev"
+version = "0.1.0"
+description = ""
+authors = ["GTrunSec <gtrunsec@hardenedlinux.org>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+prefect = "^2.8.5"
+
+[tool.poetry.group.jupyter.dependencies]
+prefect-jupyter = { git = "https://github.com/PrefectHQ/prefect-jupyter" }
+
+[tool.poetry.group.aws.dependencies]
+prefect-aws = { git = "https://github.com/PrefectHQ/prefect-aws" }
+
+[tool.poetry.group.github.dependencies]
+prefect-github = "^0.1.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

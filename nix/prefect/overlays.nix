@@ -13,10 +13,12 @@ in {
     prefect-latest = cell.packages.prefect.override {
       source = final.prefect-sources.prefect-latest;
     };
-    prefect-poetry = prev.callPackage ({poetry2nix}:
+    prefect-dev = prev.callPackage ({poetry2nix}:
       poetry2nix.mkPoetryEnv {
-        projectDir = ./packages;
-        overrides = poetry2nix.overrides.withDefaults (import ./packages/overrides.nix);
+        preferWheels = true;
+        groups = [];
+        projectDir = ./packages/dev;
+        overrides = import ./packages/overrides.nix poetry2nix;
       }) {};
   };
 }

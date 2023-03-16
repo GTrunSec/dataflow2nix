@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.follows = "std-ext/nixpkgs";
     std-ext.url = "github:GTrunSec/std-ext";
 
     std.follows = "std-ext/std";
