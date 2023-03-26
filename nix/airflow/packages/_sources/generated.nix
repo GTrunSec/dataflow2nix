@@ -3,15 +3,15 @@
 {
   airflow-latest = {
     pname = "airflow-latest";
-    version = "409a4de858385c14d0ea4f32b8c4ad1fcfb9d130";
+    version = "8f77cf8189bcf99bf8773e2f66585132fb2fa55e";
     src = fetchFromGitHub ({
       owner = "apache";
       repo = "airflow";
-      rev = "409a4de858385c14d0ea4f32b8c4ad1fcfb9d130";
+      rev = "8f77cf8189bcf99bf8773e2f66585132fb2fa55e";
       fetchSubmodules = false;
-      sha256 = "sha256-qtWnbGq+DSCv3CihwCH7CzVO7faO+eK1t7KfQfHuFv4=";
+      sha256 = "sha256-jJBaHLwlTgUBqwSgR2XqYjbQcQcgNv5X3Ztmd0viPmk=";
     });
-    date = "2022-11-08";
+    date = "2023-03-26";
   };
   apache-airflow-providers-cncf-kubernetes = {
     pname = "apache-airflow-providers-cncf-kubernetes";
@@ -23,42 +23,42 @@
   };
   apache-airflow-providers-common-sql = {
     pname = "apache-airflow-providers-common-sql";
-    version = "1.2.0";
+    version = "1.3.4";
     src = fetchurl {
-      url = "https://pypi.io/packages/source/a/apache-airflow-providers-common-sql/apache-airflow-providers-common-sql-1.2.0.tar.gz";
-      sha256 = "sha256-UQzXMgFCSFFBlnJ+ZJ7Sxwlg88SnO2K0whoqWL2StEU=";
+      url = "https://pypi.io/packages/source/a/apache-airflow-providers-common-sql/apache-airflow-providers-common-sql-1.3.4.tar.gz";
+      sha256 = "sha256-knBdkFZWaLF7gq/d93BWz2sxqyYh49F368F8BjfM39Q=";
     };
   };
   apache-airflow-providers-ftp = {
     pname = "apache-airflow-providers-ftp";
-    version = "3.1.0";
+    version = "3.3.1";
     src = fetchurl {
-      url = "https://pypi.io/packages/source/a/apache-airflow-providers-ftp/apache-airflow-providers-ftp-3.1.0.tar.gz";
-      sha256 = "sha256-a4uuT65HwDl05Gf8C4yv0MKUGNcQsrezLxwRpUOJIWg=";
+      url = "https://pypi.io/packages/source/a/apache-airflow-providers-ftp/apache-airflow-providers-ftp-3.3.1.tar.gz";
+      sha256 = "sha256-fwsOw04LpsVMBhd8Oi5EPg1NAMP90Dm2hahfv/8YO/Y=";
     };
   };
   apache-airflow-providers-http = {
     pname = "apache-airflow-providers-http";
-    version = "4.0.0";
+    version = "4.2.0";
     src = fetchurl {
-      url = "https://pypi.io/packages/source/a/apache-airflow-providers-http/apache-airflow-providers-http-4.0.0.tar.gz";
-      sha256 = "sha256-GSUy+2y6DjbJJtkDCnDIO3jl5+xNxrOlsEsugLwDQx8=";
+      url = "https://pypi.io/packages/source/a/apache-airflow-providers-http/apache-airflow-providers-http-4.2.0.tar.gz";
+      sha256 = "sha256-wKG+Qlis00f3OQPDXQhC4jt2O0IkcXSZM7uRb618Bto=";
     };
   };
   apache-airflow-providers-imap = {
     pname = "apache-airflow-providers-imap";
-    version = "3.0.0";
+    version = "3.1.1";
     src = fetchurl {
-      url = "https://pypi.io/packages/source/a/apache-airflow-providers-imap/apache-airflow-providers-imap-3.0.0.tar.gz";
-      sha256 = "sha256-3rYx8rOmLnTtYK1n2mma2hu5RWyWRphCob49FGg0kss=";
+      url = "https://pypi.io/packages/source/a/apache-airflow-providers-imap/apache-airflow-providers-imap-3.1.1.tar.gz";
+      sha256 = "sha256-a51FtG9hnrDirKze4MGK2YN04a/oqWa6ZtpT1hYIT/w=";
     };
   };
   apache-airflow-providers-sqlite = {
     pname = "apache-airflow-providers-sqlite";
-    version = "3.2.1";
+    version = "3.3.1";
     src = fetchurl {
-      url = "https://pypi.io/packages/source/a/apache-airflow-providers-sqlite/apache-airflow-providers-sqlite-3.2.1.tar.gz";
-      sha256 = "sha256-UVYIFzdSBueS0r8lS0uiOV/yQ5Mcc4w1ZY311Vy2j8c=";
+      url = "https://pypi.io/packages/source/a/apache-airflow-providers-sqlite/apache-airflow-providers-sqlite-3.3.1.tar.gz";
+      sha256 = "sha256-jXT0uO84xa8jAAMp0+hagoShKs8yxbZz+oTjz72uGlM=";
     };
   };
   papermill = {

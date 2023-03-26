@@ -16,16 +16,15 @@ poetry2nix: let
   in
     {
       orjson = prev.orjson.overridePythonAttrs (old: {
-        cargoDeps = with old;
-          prev.pkgs.rustPlatform.importCargoLock {
-            lockFile = "${unpackSource old.src}/Cargo.lock";
-          };
+        cargoDeps = prev.pkgs.rustPlatform.importCargoLock {
+          lockFile = "${unpackSource old.src}/Cargo.lock";
+        };
       });
       cryptography = prev.cryptography.overridePythonAttrs (old: {
-        cargoDeps = with old;
-          prev.pkgs.rustPlatform.importCargoLock {
-            lockFile = "${unpackSource old.src}/src/rust/Cargo.lock";
-          };
+        cargoDeps = prev.pkgs.rustPlatform.importCargoLock {
+          lockFile = "${unpackSource old.src}/src/rust/Cargo.lock";
+        };
+        nativeBuildInputs = (old.nativeBuildInputs or []) ++ [prev.pkgs.pkg-config];
       });
     }
     // addNativeBuildInputs "coolname" [final.setuptools]

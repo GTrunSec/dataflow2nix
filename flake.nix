@@ -2,18 +2,15 @@
   inputs = {
     nixpkgs.follows = "std-ext/nixpkgs";
     std-ext.url = "github:GTrunSec/std-ext";
+    std-ext.inputs.std.follows = "std";
 
-    std.follows = "std-ext/std";
+    std.url = "github:divnix/std";
     std.inputs.nixpkgs.follows = "nixpkgs";
     std.inputs.arion.follows = "arion";
     std-data-collection.follows = "std-ext/std-data-collection";
   };
 
   inputs = {
-    tullia.url = "github:input-output-hk/tullia";
-    # tullia.url = "github:input-output-hk/tullia?ref=refs/pull/9/head";
-    tullia.inputs.nixpkgs.follows = "nixpkgs";
-
     arion.url = "github:hercules-ci/arion";
     arion.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -62,8 +59,9 @@
           # ["prefect" "nixosModules"]
         ]
       );
-    } (inputs.tullia.fromStd {
-      tasks = inputs.std.harvest inputs.self ["tullia" "task"];
-      actions = inputs.std.harvest inputs.self ["tullia" "action"];
-    });
+    };
+    # (inputs.tullia.fromStd {
+    #   tasks = inputs.std.harvest inputs.self ["tullia" "task"];
+    #   actions = inputs.std.harvest inputs.self ["tullia" "action"];
+    # })
 }

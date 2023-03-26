@@ -13,15 +13,15 @@
             "name": null,
             "owner": "malloydata",
             "repo": "malloy-composer",
-            "rev": "v0.0.1670541413",
-            "sha256": "sha256-PC+oL/UiIl6SmHXXgXk7kJr1GBTWckkbn2CyddBRXQs=",
+            "rev": "v0.0.1676069706",
+            "sha256": "sha256-8vJj9hUsPl4pTQrYET/8smt5dNbNOqQWg6Jkmu83HN4=",
             "type": "github"
         },
-        "version": "v0.0.1670541413"
+        "version": "v0.0.1676069706"
     },
     "malloy-composer-latest": {
         "cargoLocks": null,
-        "date": "2022-12-09",
+        "date": "2023-03-10",
         "extract": null,
         "name": "malloy-composer-latest",
         "passthru": null,
@@ -31,11 +31,11 @@
             "fetchSubmodules": true,
             "leaveDotGit": false,
             "name": null,
-            "rev": "575468c857ded623fbf5f8afb9d3d46edc56d810",
-            "sha256": "sha256-D6D5oVtbrmH2TbZfzKUYSHKgadheYhSwou4tgIEefyI=",
+            "rev": "2217a1c0eeed54b0212e903af88a69853b36c616",
+            "sha256": "sha256-7njiHx3FBb7oANRbcBwdMif3MK/ymzuZnk772gL4F00=",
             "type": "git",
             "url": "https://github.com/malloydata/malloy-composer"
         },
-        "version": "575468c857ded623fbf5f8afb9d3d46edc56d810"
+        "version": "2217a1c0eeed54b0212e903af88a69853b36c616"
     }
 }

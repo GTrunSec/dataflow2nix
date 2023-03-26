@@ -11,7 +11,7 @@ in
 
       imports = [
         inputs.std.std.devshellProfiles.default
-        inputs.cells.tullia.devshellProfiles.default
+        # inputs.cells.tullia.devshellProfiles.default
       ];
 
       nixago = [

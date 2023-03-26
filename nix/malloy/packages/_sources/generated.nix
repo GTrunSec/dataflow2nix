@@ -3,26 +3,26 @@
 {
   malloy-composer = {
     pname = "malloy-composer";
-    version = "v0.0.1670541413";
+    version = "v0.0.1676069706";
     src = fetchFromGitHub ({
       owner = "malloydata";
       repo = "malloy-composer";
-      rev = "v0.0.1670541413";
+      rev = "v0.0.1676069706";
       fetchSubmodules = true;
-      sha256 = "sha256-PC+oL/UiIl6SmHXXgXk7kJr1GBTWckkbn2CyddBRXQs=";
+      sha256 = "sha256-8vJj9hUsPl4pTQrYET/8smt5dNbNOqQWg6Jkmu83HN4=";
     });
   };
   malloy-composer-latest = {
     pname = "malloy-composer-latest";
-    version = "575468c857ded623fbf5f8afb9d3d46edc56d810";
+    version = "2217a1c0eeed54b0212e903af88a69853b36c616";
     src = fetchgit {
       url = "https://github.com/malloydata/malloy-composer";
-      rev = "575468c857ded623fbf5f8afb9d3d46edc56d810";
+      rev = "2217a1c0eeed54b0212e903af88a69853b36c616";
       fetchSubmodules = true;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-D6D5oVtbrmH2TbZfzKUYSHKgadheYhSwou4tgIEefyI=";
+      sha256 = "sha256-7njiHx3FBb7oANRbcBwdMif3MK/ymzuZnk772gL4F00=";
     };
-    date = "2022-12-09";
+    date = "2023-03-10";
   };
 }
