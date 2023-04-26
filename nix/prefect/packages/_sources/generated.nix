@@ -3,26 +3,26 @@
 {
   prefect = {
     pname = "prefect";
-    version = "2.8.7";
+    version = "2.10.5";
     src = fetchFromGitHub ({
       owner = "PrefectHQ";
       repo = "prefect";
-      rev = "2.8.7";
+      rev = "2.10.5";
       fetchSubmodules = false;
-      sha256 = "sha256-fg9PiW7uegvPnps/MranR4CDbeXBv184fXK1yCb6pQQ=";
+      sha256 = "sha256-d/1eNPRB9EwT80xYfHLwayytPkdBW5ZsfBj3Ydu/g3Q=";
     });
   };
   prefect-latest = {
     pname = "prefect-latest";
-    version = "f5e1b10ffa0183f330356697fcaf17a8b7a63c0e";
+    version = "490b7ab55b6667e45ed845c87326c9bb23fbd1c8";
     src = fetchgit {
       url = "https://github.com/PrefectHQ/prefect";
-      rev = "f5e1b10ffa0183f330356697fcaf17a8b7a63c0e";
+      rev = "490b7ab55b6667e45ed845c87326c9bb23fbd1c8";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-HZX4VqmmXs8SNxt7qBt9DyGOD/EocWEx5Ck59DI/YH4=";
+      sha256 = "sha256-pODV43Vv3/exEQebkrIbsT5QtrN8q0cCAfLAeZ9LfpU=";
     };
-    date = "2023-03-26";
+    date = "2023-04-25";
   };
 }

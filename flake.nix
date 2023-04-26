@@ -53,12 +53,12 @@
         ["airflow" "packages"]
         ["prefect" "packages"]
       ];
-      nixosModules = builtins.getAttr "x86_64-linux" (
+      nixosModules = (
         inputs.std.harvest inputs.self [
           ["airflow" "nixosModules"]
           # ["prefect" "nixosModules"]
         ]
-      );
+      ).x86_64-linux;
     };
     # (inputs.tullia.fromStd {
     #   tasks = inputs.std.harvest inputs.self ["tullia" "task"];
