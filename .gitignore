@@ -9,4 +9,5 @@ result
 docs/book/**
 
 # nixago: ignore-linked-files
+/treefmt.toml
 treefmt.toml

@@ -15,8 +15,9 @@ in
       ];
 
       nixago = [
-        cell.nixago.mdbook
-        cell.nixago.treefmt
+        # cell.nixago.mdbook
+        (inputs.std-ext.preset.nixago.treefmt
+          inputs.std-ext.preset.configs.treefmt.nvfetcher)
       ];
       commands =
         [

@@ -12,12 +12,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: nixbuild/nix-quick-install-action@v22
-        with:
-          nix_conf: |
-            experimental-features = nix-command flakes
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
+      - uses: nixbuild/nix-quick-install-action@v25
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       # CI workflows
 
       - name: Run Nix Flake Show
