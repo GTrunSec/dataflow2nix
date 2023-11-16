@@ -1,68 +1,77 @@
 {
   inputs = {
-    nixpkgs.follows = "std-ext/nixpkgs";
-    std-ext.url = "github:GTrunSec/std-ext";
-    std-ext.inputs.std.follows = "std";
-
-    std.url = "github:divnix/std";
-    std.inputs.devshell.follows = "std-ext/devshell";
-    std.inputs.nixpkgs.follows = "nixpkgs";
-    std.inputs.arion.follows = "arion";
-    std.inputs.nixago.follows = "std-ext/nixago";
+    nixpkgs.follows = "omnibusStd/nixpkgs";
+    omnibusStd.url = "github:gtrunsec/omnibus/?dir=local";
+    omnibus.url = "github:gtrunsec/omnibus";
+    std.follows = "omnibusStd/std";
   };
 
-  inputs = {
-    arion.url = "github:hercules-ci/arion";
-    arion.inputs.nixpkgs.follows = "nixpkgs";
-  };
+  outputs =
+    { std, ... }@inputs:
+    std.growOn
+      {
+        inherit inputs;
+        cellsFrom = ./nix;
 
-  outputs = {std, ...} @ inputs:
-    std.growOn {
-      inherit inputs;
-      cellsFrom = ./nix;
+        cellBlocks = with std.blockTypes; [
+          (functions "devshellProfiles")
 
-      cellBlocks = with std.blockTypes; [
-        (functions "devshellProfiles")
+          (devshells "devshells")
 
-        (devshells "devshells")
+          (runnables "entrypoints")
 
-        (runnables "entrypoints")
+          (functions "lib")
 
-        (functions "lib")
+          (installables "packages" { ci.build = true; })
 
-        (installables "packages" {ci.build = true;})
+          (functions "nixosModules")
+          (functions "pops")
 
-        (functions "nixosModules")
+          (functions "overlays")
 
-        (functions "overlays")
+          (nixago "nixago")
 
-        (nixago "nixago")
+          (functions "task")
 
-        (functions "task")
+          (functions "action")
 
-        (functions "action")
+          (arion "arionComposes")
+          (functions "arionProfiles")
 
-        (arion "arionComposes")
-        (functions "arionProfiles")
-
-        (data "containerJobs")
-      ];
-    } {
-      devShells = inputs.std.harvest inputs.self ["automation" "devshells"];
-      overlays = (inputs.std.harvest inputs.self [["common" "overlays"]]).x86_64-linux;
-      packages = inputs.std.harvest inputs.self [
-        ["airflow" "packages"]
-        ["prefect" "packages"]
-      ];
-      nixosModules =
-        (
-          inputs.std.harvest inputs.self [
-            ["airflow" "nixosModules"]
-            # ["prefect" "nixosModules"]
+          (data "containerJobs")
+        ];
+      }
+      {
+        devShells = inputs.std.harvest inputs.self [
+          "automation"
+          "devshells"
+        ];
+        overlays =
+          (inputs.std.harvest inputs.self [
+            [
+              "repo"
+              "overlays"
+            ]
+          ]).x86_64-linux;
+        packages = inputs.std.harvest inputs.self [
+          [
+            "airflow"
+            "packages"
           ]
-        )
-        .x86_64-linux;
-    };
+          [
+            "prefect"
+            "packages"
+          ]
+        ];
+        nixosModules =
+          (inputs.std.harvest inputs.self [
+            [
+              "airflow"
+              "nixosModules"
+            ]
+            # ["prefect" "nixosModules"]
+          ]).x86_64-linux;
+      };
   # (inputs.tullia.fromStd {
   #   tasks = inputs.std.harvest inputs.self ["tullia" "task"];
   #   actions = inputs.std.harvest inputs.self ["tullia" "action"];

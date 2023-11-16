@@ -1,9 +1,8 @@
-{
-  inputs,
-  cell,
-}: let
+{ inputs, cell }:
+let
   inherit (inputs) nixpkgs;
-in {
+in
+{
   default.packages = [
     (nixpkgs.python3.buildEnv.override {
       extraLibs = with nixpkgs.python3Packages; [

@@ -10,13 +10,9 @@ python3Packages.buildPythonPackage rec {
 
   SETUPTOOLS_SCM_PRETEND_VERSION = version;
 
-  nativeBuildInputs = [
-    setuptools-scm
-  ];
+  nativeBuildInputs = [ setuptools-scm ];
 
-  propagatedBuildInputs = with python3Packages; [
-    fsspec
-  ];
+  propagatedBuildInputs = with python3Packages; [ fsspec ];
   preConfigure = ''
     rm -rf setup.cfg
   '';

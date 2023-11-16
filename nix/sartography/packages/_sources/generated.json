@@ -1,22 +1,22 @@
 {
-    "spiffworkflow": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "spiffworkflow",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "sartography",
-            "repo": "SpiffWorkflow",
-            "rev": "v1.2.1",
-            "sha256": "sha256-O7c/Lb7ayhPqXfEr6MYe1phItQ23yziOXTekbqyxGug=",
-            "type": "github"
-        },
-        "version": "v1.2.1"
-    }
+  "spiffworkflow": {
+    "cargoLocks": null,
+    "date": null,
+    "extract": null,
+    "name": "spiffworkflow",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "sartography",
+      "repo": "SpiffWorkflow",
+      "rev": "v1.2.1",
+      "sha256": "sha256-O7c/Lb7ayhPqXfEr6MYe1phItQ23yziOXTekbqyxGug=",
+      "type": "github"
+    },
+    "version": "v1.2.1"
+  }
 }

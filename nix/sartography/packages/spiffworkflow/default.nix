@@ -4,8 +4,8 @@
   source,
   buildNpmPackage,
   python3,
-  extraPackages ? (_: []),
-  groups ? [],
+  extraPackages ? (_: [ ]),
+  groups ? [ ],
 }:
 # python3Packages.buildPythonPackage {
 (poetry2nix.mkPoetryApplication {

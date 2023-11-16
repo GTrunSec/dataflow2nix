@@ -12,7 +12,7 @@ buildPythonApplication rec {
 
   format = "pyproject";
 
-  nativeBuildInputs = [setuptools];
+  nativeBuildInputs = [ setuptools ];
 
   propagatedBuildInputs = with python3Packages; [
     pulp
@@ -55,6 +55,6 @@ buildPythonApplication rec {
     description = "SkyPilot is a framework for easily running machine learning workloads on any cloud through a unified interface";
     homepage = "https://github.com/skypilot-org/skypilot";
     license = licenses.asl20;
-    maintainers = with maintainers; [gtrunsec];
+    maintainers = with maintainers; [ gtrunsec ];
   };
 }

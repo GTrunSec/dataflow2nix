@@ -4,17 +4,19 @@
   source,
   buildNpmPackage,
   python3,
-  extraPackages ? (_: []),
-  groups ? [],
+  extraPackages ? (_: [ ]),
+  groups ? [ ],
   kedro-sources,
-}: let
-in (poetry2nix.mkPoetryApplication {
+}:
+let
+in
+(poetry2nix.mkPoetryApplication {
   projectDir = ./.;
   inherit (source) src version pname;
 
   overrides = poetry2nix.overrides.withDefaults (import ./overrides.nix);
 
-  propagatedBuildInputs = [];
+  propagatedBuildInputs = [ ];
 
   inherit groups;
 
@@ -26,9 +28,7 @@ in (poetry2nix.mkPoetryApplication {
     --replace "pip-tools~=6.10" "pip-tools>=0.0.0"
   '';
 
-  makeWrapperArgs = [
-    "--prefix PYTHONPATH : $PYTHONPATH"
-  ];
+  makeWrapperArgs = [ "--prefix PYTHONPATH : $PYTHONPATH" ];
 
   meta = with lib; {
     description = "https://github.com/kedro-org/kedro/blob/main/dependency/requirements.txt";

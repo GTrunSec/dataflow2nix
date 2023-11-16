@@ -1,9 +1,8 @@
+{ inputs, cell }:
+let
+  inherit (inputs.cells.repo.lib) __inputs__;
+in
 {
-  inputs,
-  cell,
-}: let
-  inherit (inputs.cells.common.lib) __inputs__;
-in {
   mach-nix = final: prev: {
     machlib = import __inputs__.mach-nix {
       pkgs = prev;

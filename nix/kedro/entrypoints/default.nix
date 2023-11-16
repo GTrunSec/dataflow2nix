@@ -1,12 +1,11 @@
-{
-  inputs,
-  cell,
-}: let
+{ inputs, cell }:
+let
   inherit (inputs.std-ext.writers.lib) writeShellApplication;
   inherit (cell.lib) nixpkgs;
-in {
+in
+{
   simple = cell.lib.mkPrefectJob {
-    extraLibs = [];
+    extraLibs = [ ];
     text = ''
       python "$@"
     '';

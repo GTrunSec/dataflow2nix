@@ -1,12 +1,11 @@
-{
-  inputs,
-  cell,
-}: let
-  inherit (inputs.cells.common.lib) __inputs__;
+{ inputs, cell }:
+let
+  inherit (inputs.cells.repo.lib) __inputs__;
   inherit (inputs.std-ext.writers.lib) writeShellApplication;
-in {
+in
+{
   nixpkgs = inputs.nixpkgs.appendOverlays [
     cell.overlays.spiffworkflow
-    __inputs__.poetry2nix.overlay
+    __inputs__.poetry2nix.overlays.default
   ];
 }

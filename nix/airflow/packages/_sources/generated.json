@@ -1,127 +1,127 @@
 {
-    "airflow-latest": {
-        "cargoLocks": null,
-        "date": "2023-03-26",
-        "extract": null,
-        "name": "airflow-latest",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "apache",
-            "repo": "airflow",
-            "rev": "8f77cf8189bcf99bf8773e2f66585132fb2fa55e",
-            "sha256": "sha256-jJBaHLwlTgUBqwSgR2XqYjbQcQcgNv5X3Ztmd0viPmk=",
-            "type": "github"
-        },
-        "version": "8f77cf8189bcf99bf8773e2f66585132fb2fa55e"
+  "airflow-latest": {
+    "cargoLocks": null,
+    "date": "2023-03-26",
+    "extract": null,
+    "name": "airflow-latest",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "apache",
+      "repo": "airflow",
+      "rev": "8f77cf8189bcf99bf8773e2f66585132fb2fa55e",
+      "sha256": "sha256-jJBaHLwlTgUBqwSgR2XqYjbQcQcgNv5X3Ztmd0viPmk=",
+      "type": "github"
     },
-    "apache-airflow-providers-cncf-kubernetes": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "apache-airflow-providers-cncf-kubernetes",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-CeoQlq9+1d1JdbC+vxthLyTLnZ/pzQcNLzP7sbcBQ7k=",
-            "type": "url",
-            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-cncf-kubernetes/apache-airflow-providers-cncf-kubernetes-3.0.2.tar.gz"
-        },
-        "version": "3.0.2"
+    "version": "8f77cf8189bcf99bf8773e2f66585132fb2fa55e"
+  },
+  "apache-airflow-providers-cncf-kubernetes": {
+    "cargoLocks": null,
+    "date": null,
+    "extract": null,
+    "name": "apache-airflow-providers-cncf-kubernetes",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-CeoQlq9+1d1JdbC+vxthLyTLnZ/pzQcNLzP7sbcBQ7k=",
+      "type": "url",
+      "url": "https://pypi.io/packages/source/a/apache-airflow-providers-cncf-kubernetes/apache-airflow-providers-cncf-kubernetes-3.0.2.tar.gz"
     },
-    "apache-airflow-providers-common-sql": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "apache-airflow-providers-common-sql",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-knBdkFZWaLF7gq/d93BWz2sxqyYh49F368F8BjfM39Q=",
-            "type": "url",
-            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-common-sql/apache-airflow-providers-common-sql-1.3.4.tar.gz"
-        },
-        "version": "1.3.4"
+    "version": "3.0.2"
+  },
+  "apache-airflow-providers-common-sql": {
+    "cargoLocks": null,
+    "date": null,
+    "extract": null,
+    "name": "apache-airflow-providers-common-sql",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-knBdkFZWaLF7gq/d93BWz2sxqyYh49F368F8BjfM39Q=",
+      "type": "url",
+      "url": "https://pypi.io/packages/source/a/apache-airflow-providers-common-sql/apache-airflow-providers-common-sql-1.3.4.tar.gz"
     },
-    "apache-airflow-providers-ftp": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "apache-airflow-providers-ftp",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-fwsOw04LpsVMBhd8Oi5EPg1NAMP90Dm2hahfv/8YO/Y=",
-            "type": "url",
-            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-ftp/apache-airflow-providers-ftp-3.3.1.tar.gz"
-        },
-        "version": "3.3.1"
+    "version": "1.3.4"
+  },
+  "apache-airflow-providers-ftp": {
+    "cargoLocks": null,
+    "date": null,
+    "extract": null,
+    "name": "apache-airflow-providers-ftp",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-fwsOw04LpsVMBhd8Oi5EPg1NAMP90Dm2hahfv/8YO/Y=",
+      "type": "url",
+      "url": "https://pypi.io/packages/source/a/apache-airflow-providers-ftp/apache-airflow-providers-ftp-3.3.1.tar.gz"
     },
-    "apache-airflow-providers-http": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "apache-airflow-providers-http",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-wKG+Qlis00f3OQPDXQhC4jt2O0IkcXSZM7uRb618Bto=",
-            "type": "url",
-            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-http/apache-airflow-providers-http-4.2.0.tar.gz"
-        },
-        "version": "4.2.0"
+    "version": "3.3.1"
+  },
+  "apache-airflow-providers-http": {
+    "cargoLocks": null,
+    "date": null,
+    "extract": null,
+    "name": "apache-airflow-providers-http",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-wKG+Qlis00f3OQPDXQhC4jt2O0IkcXSZM7uRb618Bto=",
+      "type": "url",
+      "url": "https://pypi.io/packages/source/a/apache-airflow-providers-http/apache-airflow-providers-http-4.2.0.tar.gz"
     },
-    "apache-airflow-providers-imap": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "apache-airflow-providers-imap",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-a51FtG9hnrDirKze4MGK2YN04a/oqWa6ZtpT1hYIT/w=",
-            "type": "url",
-            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-imap/apache-airflow-providers-imap-3.1.1.tar.gz"
-        },
-        "version": "3.1.1"
+    "version": "4.2.0"
+  },
+  "apache-airflow-providers-imap": {
+    "cargoLocks": null,
+    "date": null,
+    "extract": null,
+    "name": "apache-airflow-providers-imap",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-a51FtG9hnrDirKze4MGK2YN04a/oqWa6ZtpT1hYIT/w=",
+      "type": "url",
+      "url": "https://pypi.io/packages/source/a/apache-airflow-providers-imap/apache-airflow-providers-imap-3.1.1.tar.gz"
     },
-    "apache-airflow-providers-sqlite": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "apache-airflow-providers-sqlite",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-jXT0uO84xa8jAAMp0+hagoShKs8yxbZz+oTjz72uGlM=",
-            "type": "url",
-            "url": "https://pypi.io/packages/source/a/apache-airflow-providers-sqlite/apache-airflow-providers-sqlite-3.3.1.tar.gz"
-        },
-        "version": "3.3.1"
+    "version": "3.1.1"
+  },
+  "apache-airflow-providers-sqlite": {
+    "cargoLocks": null,
+    "date": null,
+    "extract": null,
+    "name": "apache-airflow-providers-sqlite",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-jXT0uO84xa8jAAMp0+hagoShKs8yxbZz+oTjz72uGlM=",
+      "type": "url",
+      "url": "https://pypi.io/packages/source/a/apache-airflow-providers-sqlite/apache-airflow-providers-sqlite-3.3.1.tar.gz"
     },
-    "papermill": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "papermill",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-b4+KmwazlnfyB8CRAMjThrz1kvDLvdqfD1DoFEVpdic=",
-            "type": "url",
-            "url": "https://pypi.io/packages/source/p/papermill/papermill-2.4.0.tar.gz"
-        },
-        "version": "2.4.0"
-    }
+    "version": "3.3.1"
+  },
+  "papermill": {
+    "cargoLocks": null,
+    "date": null,
+    "extract": null,
+    "name": "papermill",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "name": null,
+      "sha256": "sha256-b4+KmwazlnfyB8CRAMjThrz1kvDLvdqfD1DoFEVpdic=",
+      "type": "url",
+      "url": "https://pypi.io/packages/source/p/papermill/papermill-2.4.0.tar.gz"
+    },
+    "version": "2.4.0"
+  }
 }

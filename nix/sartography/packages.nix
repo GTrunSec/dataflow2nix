@@ -1,8 +1,7 @@
-{
-  inputs,
-  cell,
-}: let
+{ inputs, cell }:
+let
   inherit (cell.lib) nixpkgs;
-in {
+in
+{
   inherit (nixpkgs) spiffworkflow;
 }

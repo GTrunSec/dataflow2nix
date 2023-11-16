@@ -1,9 +1,9 @@
-final: prev: let
+final: prev:
+let
   addNativeBuildInputs = drvName: inputs: {
-    "${drvName}" = prev.${drvName}.overridePythonAttrs (old: {
-      propagatedBuildInputs = (old.propagatedBuildInputs or []) ++ inputs;
-    });
+    "${drvName}" = prev.${drvName}.overridePythonAttrs (
+      old: { propagatedBuildInputs = (old.propagatedBuildInputs or [ ]) ++ inputs; }
+    );
   };
 in
-  {}
-  // addNativeBuildInputs "celery" [final.setuptools]
+{ } // addNativeBuildInputs "celery" [ final.setuptools ]

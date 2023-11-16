@@ -4,10 +4,12 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.services.airflow;
   airflowCmd = "${cfg.package}/bin/airflow";
-in {
+in
+{
   options = {
     services.airflow = {
       enable = mkEnableOption "airflow daemon";
@@ -40,11 +42,11 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    environment.systemPackages = [cfg.package];
+    environment.systemPackages = [ cfg.package ];
     services.postgresql = mkIf cfg.postgresql {
       enable = true;
       enableTCPIP = true;
-      ensureDatabases = ["airflow_db"];
+      ensureDatabases = [ "airflow_db" ];
       ensureUsers = [
         {
           name = "airflow_user";
@@ -56,12 +58,14 @@ in {
       isSystemUser = true;
       group = "airflow";
     };
-    users.groups.airflow = {};
+    users.groups.airflow = { };
     systemd.services.airflow = {
       description = "airflow Daemon";
-      after = ["network.target"];
-      wantedBy = ["multi-user.target"];
-      environment = {HOME = "${cfg.path}";};
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
+      environment = {
+        HOME = "${cfg.path}";
+      };
       script = ''
         if [[ ! -d ${cfg.path}/airflow/airflow.cfg ]]; then
         ${airflowCmd} db init

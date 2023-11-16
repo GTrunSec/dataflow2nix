@@ -1,12 +1,12 @@
-{
-  inputs,
-  cell,
-}: let
+{ inputs, cell }:
+let
   l = nixpkgs.lib // builtins;
   inherit (inputs) nixpkgs std;
 in
-  l.mapAttrs (_: std.lib.dev.mkShell) {
-    default = {...}: {
+l.mapAttrs (_: std.lib.dev.mkShell) {
+  default =
+    { ... }:
+    {
       name = "dataflow2nix";
 
       imports = [
@@ -14,21 +14,21 @@ in
         # inputs.cells.tullia.devshellProfiles.default
       ];
 
-      nixago = [
-        # cell.nixago.mdbook
-        (inputs.std-ext.preset.nixago.treefmt
-          inputs.std-ext.preset.configs.treefmt.nvfetcher)
-      ];
+      packages = [ nixpkgs.poetry ];
+      nixago =
+        [
+          # cell.nixago.mdbook
+          cell.nixago.treefmt.default
+        ];
       commands =
         [
-          {
-            package = nixpkgs.nsjail;
-          }
-          {
-            package = inputs.arion.packages.${nixpkgs.system}.arion;
-          }
+          { package = nixpkgs.nsjail; }
+          # {
+          #   package = inputs.arion.packages.${nixpkgs.system}.arion;
+          # }
         ]
-        ++ (map (x: {
+        ++ (map
+          (x: {
             name = "nvfetcher-${x}";
             command = ''
               nix develop github:GTrunSec/std-ext#update \
@@ -36,7 +36,8 @@ in
               nvfetcher-update nix/${x}/packages/sources.toml
             '';
             help = "update ${x} toolchain with nvfetcher";
-          }) [
+          })
+          [
             "airflow"
             "prefect"
             "malloy"
@@ -45,14 +46,13 @@ in
             "enso"
             "iterative"
             "sartography"
-          ]);
+          ]
+        );
     };
-    tullia = {
-      imports = [inputs.cells.tullia.devshellProfiles.default];
-    };
-    dev = {
-      imports = [
-        inputs.cells.sartography.devshellProfiles.default
-      ];
-    };
-  }
+  tullia = {
+    imports = [ inputs.cells.tullia.devshellProfiles.default ];
+  };
+  dev = {
+    imports = [ inputs.cells.sartography.devshellProfiles.default ];
+  };
+}

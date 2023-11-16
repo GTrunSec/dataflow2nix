@@ -1,61 +1,61 @@
 {
-    "kedro": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "kedro",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "kedro-org",
-            "repo": "kedro",
-            "rev": "0.18.4",
-            "sha256": "sha256-e76ePAHo4O0WJfoE8F1AXVwL8G6sDnxyBeQ2sI1P63c=",
-            "type": "github"
-        },
-        "version": "0.18.4"
+  "kedro": {
+    "cargoLocks": null,
+    "date": null,
+    "extract": null,
+    "name": "kedro",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "kedro-org",
+      "repo": "kedro",
+      "rev": "0.18.4",
+      "sha256": "sha256-e76ePAHo4O0WJfoE8F1AXVwL8G6sDnxyBeQ2sI1P63c=",
+      "type": "github"
     },
-    "kedro-latest": {
-        "cargoLocks": null,
-        "date": "2022-12-21",
-        "extract": null,
-        "name": "kedro-latest",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "rev": "848fe1c68a144775acdc6dea64c6000c702b3f57",
-            "sha256": "sha256-EOVozoogpYjqLxUhkeHkvHXrL+l1DViniNcQk3mnL+o=",
-            "type": "git",
-            "url": "https://github.com/kedro-org/kedro"
-        },
-        "version": "848fe1c68a144775acdc6dea64c6000c702b3f57"
+    "version": "0.18.4"
+  },
+  "kedro-latest": {
+    "cargoLocks": null,
+    "date": "2022-12-21",
+    "extract": null,
+    "name": "kedro-latest",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "rev": "848fe1c68a144775acdc6dea64c6000c702b3f57",
+      "sha256": "sha256-EOVozoogpYjqLxUhkeHkvHXrL+l1DViniNcQk3mnL+o=",
+      "type": "git",
+      "url": "https://github.com/kedro-org/kedro"
     },
-    "kedro-viz": {
-        "cargoLocks": null,
-        "date": "2022-12-16",
-        "extract": null,
-        "name": "kedro-viz",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "kedro-org",
-            "repo": "kedro-viz",
-            "rev": "29adc5ee5fff6f90fb6ab9bdc22491201b6e7609",
-            "sha256": "sha256-Du70H3NCWJ40WZKdLf/VWVV9IuSSOcpDjOaQvppgDv0=",
-            "type": "github"
-        },
-        "version": "29adc5ee5fff6f90fb6ab9bdc22491201b6e7609"
-    }
+    "version": "848fe1c68a144775acdc6dea64c6000c702b3f57"
+  },
+  "kedro-viz": {
+    "cargoLocks": null,
+    "date": "2022-12-16",
+    "extract": null,
+    "name": "kedro-viz",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": false,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "kedro-org",
+      "repo": "kedro-viz",
+      "rev": "29adc5ee5fff6f90fb6ab9bdc22491201b6e7609",
+      "sha256": "sha256-Du70H3NCWJ40WZKdLf/VWVV9IuSSOcpDjOaQvppgDv0=",
+      "type": "github"
+    },
+    "version": "29adc5ee5fff6f90fb6ab9bdc22491201b6e7609"
+  }
 }

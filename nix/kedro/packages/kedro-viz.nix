@@ -9,12 +9,20 @@
   cairo,
   pango,
   openssl,
-}: let
+}:
+let
   frontend = buildNpmPackage {
     name = "kedro-viz";
     src = kedro-sources.kedro-viz.src;
     installPhase = "cp -r build $out/";
-    extraNodeModulesArgs.buildInputs = [python3 pkg-config pixman cairo pango openssl];
+    extraNodeModulesArgs.buildInputs = [
+      python3
+      pkg-config
+      pixman
+      cairo
+      pango
+      openssl
+    ];
     extraEnvVars = {
       NODE_OPTIONS = "--openssl-legacy-provider";
     };
@@ -23,19 +31,15 @@
     '';
   };
 in
-  python3Packages.buildPythonPackage {
-    inherit (kedro-sources.kedro-viz) pname version;
-    src = kedro-sources.kedro-viz.src;
-    preConfigure = ''
-      cd package
-    '';
-    propagatedBuildInputs = [
-      (kedro.override {
-        groups = ["kedro-viz"];
-      })
-    ];
-    doCheck = false;
-    passthru = {
-      inherit frontend;
-    };
-  }
+python3Packages.buildPythonPackage {
+  inherit (kedro-sources.kedro-viz) pname version;
+  src = kedro-sources.kedro-viz.src;
+  preConfigure = ''
+    cd package
+  '';
+  propagatedBuildInputs = [ (kedro.override { groups = [ "kedro-viz" ]; }) ];
+  doCheck = false;
+  passthru = {
+    inherit frontend;
+  };
+}

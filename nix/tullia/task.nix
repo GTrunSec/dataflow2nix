@@ -1,17 +1,19 @@
-{
-  inputs,
-  cell,
-}: let
+{ inputs, cell }:
+let
   inherit (inputs) nixpkgs;
   cmd = type: text: {
-    command = {inherit type text;};
+    command = {
+      inherit type text;
+    };
   };
-in {
-  ci = {
-    config ? {},
-    pkgs,
-    ...
-  }:
+in
+{
+  ci =
+    {
+      config ? { },
+      pkgs,
+      ...
+    }:
     cmd "shell" ''
       echo Fact:
       cat ${pkgs.writeText "fact.json" (builtins.toJSON (config.facts.push or ""))}
@@ -24,11 +26,8 @@ in {
       ];
     };
 
-  update = {
-    pkgs,
-    config,
-    ...
-  }:
+  update =
+    { pkgs, config, ... }:
     cmd "shell" "nix flake lock --update-input std"
     // {
       preset.nix.enable = true;
@@ -36,9 +35,7 @@ in {
       env.HOME = "/home";
     };
 
-  format-nix =
-    cmd "shell" "treefmt"
-    // {
-      dependencies = [nixpkgs.alejandra];
-    };
+  format-nix = cmd "shell" "treefmt" // {
+    dependencies = [ nixpkgs.alejandra ];
+  };
 }

@@ -1,41 +1,41 @@
 {
-    "malloy-composer": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "malloy-composer",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": true,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "malloydata",
-            "repo": "malloy-composer",
-            "rev": "v0.0.1676069706",
-            "sha256": "sha256-8vJj9hUsPl4pTQrYET/8smt5dNbNOqQWg6Jkmu83HN4=",
-            "type": "github"
-        },
-        "version": "v0.0.1676069706"
+  "malloy-composer": {
+    "cargoLocks": null,
+    "date": null,
+    "extract": null,
+    "name": "malloy-composer",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": true,
+      "leaveDotGit": false,
+      "name": null,
+      "owner": "malloydata",
+      "repo": "malloy-composer",
+      "rev": "v0.0.1676069706",
+      "sha256": "sha256-8vJj9hUsPl4pTQrYET/8smt5dNbNOqQWg6Jkmu83HN4=",
+      "type": "github"
     },
-    "malloy-composer-latest": {
-        "cargoLocks": null,
-        "date": "2023-03-10",
-        "extract": null,
-        "name": "malloy-composer-latest",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": true,
-            "leaveDotGit": false,
-            "name": null,
-            "rev": "2217a1c0eeed54b0212e903af88a69853b36c616",
-            "sha256": "sha256-7njiHx3FBb7oANRbcBwdMif3MK/ymzuZnk772gL4F00=",
-            "type": "git",
-            "url": "https://github.com/malloydata/malloy-composer"
-        },
-        "version": "2217a1c0eeed54b0212e903af88a69853b36c616"
-    }
+    "version": "v0.0.1676069706"
+  },
+  "malloy-composer-latest": {
+    "cargoLocks": null,
+    "date": "2023-03-10",
+    "extract": null,
+    "name": "malloy-composer-latest",
+    "passthru": null,
+    "pinned": false,
+    "src": {
+      "deepClone": false,
+      "fetchSubmodules": true,
+      "leaveDotGit": false,
+      "name": null,
+      "rev": "2217a1c0eeed54b0212e903af88a69853b36c616",
+      "sha256": "sha256-7njiHx3FBb7oANRbcBwdMif3MK/ymzuZnk772gL4F00=",
+      "type": "git",
+      "url": "https://github.com/malloydata/malloy-composer"
+    },
+    "version": "2217a1c0eeed54b0212e903af88a69853b36c616"
+  }
 }

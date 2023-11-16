@@ -7,9 +7,7 @@
 python3Packages.buildPythonPackage {
   format = "pyproject";
   inherit (iteractive-sources.iterative-telemetry) pname version src;
-  nativeBuildInputs = [
-    setuptools
-  ];
+  nativeBuildInputs = [ setuptools ];
   propagatedBuildInputs = with python3Packages; [
     distro
     appdirs
